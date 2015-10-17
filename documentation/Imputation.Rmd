@@ -15,6 +15,10 @@
 - [Joseph L. Schafer](http://sites.stat.psu.edu/~jls/)  seminal monograph
   Schafer, J.L. (1997)
   Analysis of Incomplete Multivariate Data, Chapman & Hall, London.
+  
+- [Schafer & Graham](http://www.nyu.edu/classes/shrout/G89-2247/Schafer&Graham2002.pdf)
+  Missing Data: Our View of the State of the Art, American Psychological
+  Assoction.
 
  Came with 4 S-PLUS "packages" called  NORM, CAT, MIX, PAN}
  --> http://sites.stat.psu.edu/~jls/misoftwa.html
