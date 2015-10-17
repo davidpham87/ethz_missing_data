@@ -1,0 +1,84 @@
+
+# Missing Data --- Imputation etc
+
+- Netflix Challenge --> becomes "fashion"
+- aka "Matrix completion"
+
+## Literature
+
+### Books
+
+- Roderick J.A. Little and Donald B. Rubin
+  Statistical Analysis with Missing Data  (Wiley; 2nd ed., 2002)
+  Freely available (chapter wise) via [ETH Library](http://www.library.ethz.ch/primo_library/libweb/action/search.do?cs=frb&ct=frb&frbg=123779766&fctN=facet_frbrgroupid&fctV=123779766&doc=ebi01_prod010259824&lastPag=&lastPagIndx=1&rfnGrp=frbr&frbrSrt=date&dscnt=0&vl%28611274651UI1%29=all_items&vl%28134576197UI0%29=any&frbg=&scp.scps=scope%3A%28ELENDING%29%2Cscope%3A%28%22ARCHIVDATENBANK%22%29%2Cscope%3A%28data_archive%29%2Cscope%3A%28ebi01_prod%29%2Cscope%3A%28EPICS%29%2Cscope%3A%28replay%29%2Cscope%3A%28retroseals%29%2Cscope%3A%28cmistar%29&tab=default_tab&dstmp=1442558558993&srt=rank&ct=search&mode=Basic&&dum=true&indx=1&tb=t&vl%281UIStartWith0%29=contains&vl%28freeText0%29=Little%20Rubin%20%22missing%20data%22&vid=DADS&fn=search)
+
+- [Joseph L. Schafer](http://sites.stat.psu.edu/~jls/)  seminal monograph
+  Schafer, J.L. (1997)
+  Analysis of Incomplete Multivariate Data, Chapman & Hall, London.
+
+ Came with 4 S-PLUS "packages" called  NORM, CAT, MIX, PAN}
+ --> http://sites.stat.psu.edu/~jls/misoftwa.html
+ Versions of all four of these are available on CRAN:
+```{r}
+sapply(c("norm", "cat", "mix", "pan"), packageDescription)
+```
+
+## R packages
+
+### Bioconductor:
+#### impute : Hastie et al:  knn.impute()
+Based on [missing.pdf](file:///u/maechler/save/papers/Hastie-etc/imputing-missing_1999.pdf)
+paper, Hastie et al. (1999).
+
+### CRAN
+
+#### [CRAN task view 'Multivariate'](https://cran.ch.r-project.org/web/views/Multivariate.html)
+  has section __Missing data__  (which seems *not* comprehensive to me):
+
+	[mitools] provides tools for multiple imputation,
+	[mice] provides multivariate imputation by chained equations
+	[mvnmle] provides ML estimation for multivariate normal data with missing values,
+	[mix] provides multiple imputation for mixed categorical and continuous data.
+	[pan] provides multiple imputation for missing panel data.
+	[VIM] provides methods for the visualisation as well as imputation of missing data.
+	aregImpute() and transcan() from [Hmisc] provide further imputation methods.
+	[monomvn] deals with estimation models where the missing data pattern is monotone.
+
+#### Schafer's  ("norm", "cat", "mix", "pan") -- see above
+
+#### Lumley's ['mitools'](https://cran.ch.r-project.org/web/package=mitools)
+
+
+#### imputeR
+
+#### softImpute:
+	Title: Matrix Completion via Iterative Soft-Thresholded SVD
+	Version: 1.4
+	Date: 2015-2-13
+	Author: Trevor Hastie and Rahul Mazumder
+
+
+
+#### imputation : Archived in 2014 (policy violation: running on all cores)
+- by Jeff Wong  [on Github](https://github.com/jeffwong/imputation)
+- also mentions the important paper by Cai, Candes, Shen et al
+	 [(preprint on ArXiv)](http://arxiv.org/format/0810.3286v1),
+	 _Singular Value Thresholding Algorithm for Matrix Completion_
+
+### (We)blogs etc on R packages:
+
+#### Amelia
+
+#### Mad (Data) Scientist
+
+[//]: Definitions of References --- all this is **not** visible on final doc!
+
+[mitools]: https://cran.ch.r-project.org/package=mitools
+[mice]: https://cran.ch.r-project.org/package=mice
+[mvnlme]: https://cran.ch.r-project.org/package=mvnlme
+[mix]: https://cran.ch.r-project.org/package=mix
+[pan]: https://cran.ch.r-project.org/package=pan
+[VIM]: https://cran.ch.r-project.org/package=VIM
+[Hmisc]: https://cran.ch.r-project.org/package=Hmisc
+[monomvn]: https://cran.ch.r-project.org/package=monomvn
+
