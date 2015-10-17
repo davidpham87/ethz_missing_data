@@ -118,13 +118,20 @@ P(Y=s \vert M=0) = \frac{P(M=0 \vert Y=s)}{P(M=0)}\ P(Y=s),
 \end{align*}
 hence our estimation of $P(Y=s)$ might still be biased with the factor of $P(M=0 \vert Y=s)/P(M=0)$.
 
-# Gelman, Hill, Data analysis using regression and multilevel/hierarchical models
+# Missing data [@schafer2002missing]
 
-Chapter 25 of [@gelman2006data] contains information about missing values.
+> With or without missing data, the goal of a statistical procedure should be to
+  make valid and efficient inferences about a population of interest—not to
+  estimate, predict, or recover missing observations nor to obtain the same
+  results that we would have seen with complete data.
 
-# Little, Robin, Statistical analysis with missing data
+# Data analysis using regression and multilevel/hierarchical models [@gelman2006data]
 
-The monograph [@little2002statistical] describes mechanisms underlying the
+Chapter 25 of contains information about missing values.
+
+# Statistical analysis with missing data [@little2002statistical]
+
+The monograph  describes mechanisms underlying the
 missingness come in several type (_mi_, _mice_, _Amelia_ in R packages).
 
 # Bibliography
