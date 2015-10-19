@@ -207,8 +207,69 @@ overstating the number of observation $N$ and the downward bias into
 $S^2$. Under MCAR the coverage is only $2\Phi(z_\alpha r) - 1$ where $r$ is the
 rate of missingness.
 
+#### Imputing from unconditional distributions
 
+Hot deck imputation fills in nonrespondents' data with values from actual
+respondents, that is we replace with a random draw from the observed values. This methods still distort correlation and standard errors.
 
+#### Imputing conditional means
+
+In the univariate situation (where only one value is of interest), one can fill
+with a prediction from the other variable using regression methods. 
+
+> This is nearly ptimal for a limited class of estimations problem if special
+  correction are made to standard errors.
+
+However, it overstates the correlation and covariance as $R^2$ for imputed value is $1.00$.
+
+#### Imputing from conditional distribution
+
+Under MAR assumption, the weaknesses from the previous methods are overcome by
+drawing an obesrvation from the fitted regression distribution of $Y$ given
+$X$. In general, one has to sample from 
+
+\begin{align*} 
+P(Y_{mis} \vert Y_{obs}, \theta), 
+\end{align*} 
+
+where, in practice, we replace $\theta$ with its estimated value $\hat\theta$
+from $Y_{obs}$. With monotone patterns, one can set a seqence of regression for $Y_j$ given $Y_1, \dots, Y_{j-1}$, for $j\in {1, \dots, p}$.
+
+#### Undercoverage and reasonnable application
+
+In a simulation exerices, one can deduce that the actual coverae is much loewr
+thatn $95\%$. Compared to CC, if the missing rate is low, single imputation
+might still be a valid method. For example, if $p=25$ and the missing rate
+$r=0.03$, then CC would delete $1-(1-r)^p=0.53$ of the cases, whereas
+conditional distribution would allow to use all the participants.
+
+### Maximum likelihood estimation
+
+One of the advantage of using the MLE $\hat\theta$ is hypothesis testing. If
+$\tilde\theta$ is the MLE for the null hypothesis, one could use likelihood-ratio tests and thus compare
+
+\begin{align*}
+2 [l(\hat\theta; Y_{obs}) - l(\tilde \theta; Y_{obs})]
+\end{align*}
+
+and the $(1-\alpha)$-quantile of the $\chi^2_{p}$ distribution. Hence one would
+not need to compute the second derivative of $l$ in order to get Fisher
+information (or equivalently the asymptotic standard error of the MLE).
+
+In order to solve the maximization problem, one often resolve to use the EM
+algorithm. ML still has the problem of undercoverage.
+
+#### Assumptions 
+
+Sample size has to be large enough for the ML estimates be approximately
+unbiased and normally distributed and with missing data, the sample might be
+larger than usual. Thenlikelihood functions comes from an asusmed parametric
+model for complete data $P(Y_{obs}, Y_{mis}; \theta)$, hence departure from
+model assumptions might effect inference. MAR is still assumed.
+
+#### Multiple imputation
+
+TODO:NEXT
 
 # Data analysis using regression and multilevel/hierarchical models [@gelman2006data]
 
@@ -221,4 +282,6 @@ missingness come in several type (_mi_, _mice_, _Amelia_ in R packages).
 
 # Bibliography
 
-[//]: # (TODO: understand the within variance data set term)
+[//0]: # (TODO: understand the within variance data set term)
+[//3]: # (TODO: use simulation study for testing like in [@schafer2002missing])
+[//4]: # (TODO: Understand the EM algorithm)
