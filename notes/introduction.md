@@ -310,7 +310,7 @@ variance du to nonresponse. See [schafer1997@multivariate] for more cases.
 This model still use the MAR asusmption. 
 
 Obviously, the missing values problem is dealt before the analysis with MI,
-in contrast with ML.
+in contrast with ML. The danger from MI is the ability ot use different models for imputation and analysis.
 
 
 # Data analysis using regression and multilevel/hierarchical models [@gelman2006data]
