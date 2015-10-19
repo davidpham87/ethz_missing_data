@@ -249,7 +249,7 @@ One of the advantage of using the MLE $\hat\theta$ is hypothesis testing. If
 $\tilde\theta$ is the MLE for the null hypothesis, one could use likelihood-ratio tests and thus compare
 
 \begin{align*}
-2 [l(\hat\theta; Y_{obs}) - l(\tilde \theta; Y_{obs})]
+2 [l(\hat\theta; Y_{obs}) - l(\tilde \theta; Y_{obs})],
 \end{align*}
 
 and the $(1-\alpha)$-quantile of the $\chi^2_{p}$ distribution. Hence one would
@@ -267,9 +267,51 @@ larger than usual. Thenlikelihood functions comes from an asusmed parametric
 model for complete data $P(Y_{obs}, Y_{mis}; \theta)$, hence departure from
 model assumptions might effect inference. MAR is still assumed.
 
-#### Multiple imputation
+### Multiple imputation
 
-TODO:NEXT
+Multiple imputation (MI) solves the problem of understating uncertainty. MI is
+similar to bootstrapping methods: one make artifical $B$ samples and
+complete-case analysis. The final estimates (except standard errors) are then
+the arithmetic mean. Standard errors should reflect missing-data uncertainty
+and finte-sample variation.
+
+An advantage of MI is the number of need imputation: the efficiency based on
+$B$ samples relative o an infinite number is $(1 + \lambda/B)^{-1}$, where
+$\lambda$ is the rate of missing information, which measures the increase in
+the large-sample variance of a paramter estimate due to missing values. $B=20$
+is often good in practice.
+
+#### Combining standard errors
+
+In the one-dimensional case, if the sample is large enough so that the
+estimator $Q$ follows a gaussian distribution, then the estimate $\hat Q$ and
+the standard error $T$ can be computed from the estimates of $(Q^j,
+U^j)_{j=1}^B$, $Q^j$, respectively, $U^j$ being the fitted value of $Q$,
+respectively the standard error, for data sets $j$
+
+\begin{align*}
+\hat Q & = B^{-1} \sum_{j=1}^B Q^j, \\
+\hat U & = B^{-1} \sum_{j=1}^B U^j, \\
+M & = (B-1)^{-1}\sum_{j=1}^B(Q^j - \hat Q)^2, \\
+T & = \hat U + (1 + B^{-1}) M.
+\end{align*}
+
+For confidence interval, the Student's $t$ approximation can be used with the
+degree of freedom given by
+
+\begin{align*}
+\nu = (B-1)\Big[1 + \frac{\hat U}{(1 + B^{-1})M} \Big]^2.
+\end{align*}
+
+The estimated rate of missing information for $Q$ is approximately
+$\tau/(\tau+1)$ where $\tau = (1 + B^{-1})M/\hat U$, the relative increase in
+variance du to nonresponse. See [schafer1997@multivariate] for more cases.
+
+This model still use the MAR asusmption. 
+
+Obviously, the missing values problem is dealt before the analysis with MI,
+in contrast with ML.
+
 
 # Data analysis using regression and multilevel/hierarchical models [@gelman2006data]
 
@@ -282,6 +324,6 @@ missingness come in several type (_mi_, _mice_, _Amelia_ in R packages).
 
 # Bibliography
 
-[//0]: # (TODO: understand the within variance data set term)
 [//3]: # (TODO: use simulation study for testing like in [@schafer2002missing])
 [//4]: # (TODO: Understand the EM algorithm)
+[//5]: # (TODO: add schafer1997@multivariate)
