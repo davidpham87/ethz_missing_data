@@ -1,27 +1,36 @@
+---
+bibliography: ../biblio.bib
+
+---
+
 
 # Missing Data --- Imputation etc
+
+# Notes from 2015-10-03
 
 - Netflix Challenge --> becomes "fashion"
 - aka "Matrix completion"
 
 ## Literature
 
-### Books
+### Books and Papers
 
-- Roderick J.A. Little and Donald B. Rubin
+- [Schafer & Graham](http://www.nyu.edu/classes/shrout/G89-2247/Schafer&Graham2002.pdf)
+  Missing Data: Our View of the State of the Art, American Psychological
+  Association. [@schafer2002missing]
+
+- [@little2002statistical] Roderick J.A. Little and Donald B. Rubin
   Statistical Analysis with Missing Data  (Wiley; 2nd ed., 2002)
   Freely available (chapter wise) via [ETH Library](http://www.library.ethz.ch/primo_library/libweb/action/search.do?cs=frb&ct=frb&frbg=123779766&fctN=facet_frbrgroupid&fctV=123779766&doc=ebi01_prod010259824&lastPag=&lastPagIndx=1&rfnGrp=frbr&frbrSrt=date&dscnt=0&vl%28611274651UI1%29=all_items&vl%28134576197UI0%29=any&frbg=&scp.scps=scope%3A%28ELENDING%29%2Cscope%3A%28%22ARCHIVDATENBANK%22%29%2Cscope%3A%28data_archive%29%2Cscope%3A%28ebi01_prod%29%2Cscope%3A%28EPICS%29%2Cscope%3A%28replay%29%2Cscope%3A%28retroseals%29%2Cscope%3A%28cmistar%29&tab=default_tab&dstmp=1442558558993&srt=rank&ct=search&mode=Basic&&dum=true&indx=1&tb=t&vl%281UIStartWith0%29=contains&vl%28freeText0%29=Little%20Rubin%20%22missing%20data%22&vid=DADS&fn=search)
 
-- [Joseph L. Schafer](http://sites.stat.psu.edu/~jls/)  seminal monograph
-  Schafer, J.L. (1997)
-  Analysis of Incomplete Multivariate Data, Chapman & Hall, London.
-  
-- [Schafer & Graham](http://www.nyu.edu/classes/shrout/G89-2247/Schafer&Graham2002.pdf)
-  Missing Data: Our View of the State of the Art, American Psychological
-  Assoction.
+- [Joseph L. Schafer](http://sites.stat.psu.edu/~jls/) seminal monograph
+  Schafer, J.L. (1997) Analysis of Incomplete Multivariate Data, Chapman &
+  Hall, London. [@schaffer1997analysis]
 
+  
  Came with 4 S-PLUS "packages" called  NORM, CAT, MIX, PAN}
  --> http://sites.stat.psu.edu/~jls/misoftwa.html
+
  Versions of all four of these are available on CRAN:
 ```{r}
 sapply(c("norm", "cat", "mix", "pan"), packageDescription)
@@ -74,6 +83,24 @@ paper, Hastie et al. (1999).
 #### Amelia
 
 #### Mad (Data) Scientist
+
+## Notes from 2015-10-15 meeting
+
+- Focus on either continuous or mixed case
+- Find data sets that are historically relevant:
+    * See in the packages if there is a common package
+    * Use the data sets in the appendix of [@schafer1997analysis]
+    * Use the synthetic bivariate set of [@schafer2002missing]
+    * Data sets: titanic, iris, mtcars.
+- Concentrate on the modern methods for next meeting [@troyanskaya2001missing]
+  and [@hastie1999imputing].
+- Keep up with reading.
+- Notation should be consistent, if possible with either [@schafer1997analysis]
+  or [@little2002statistical].
+- Next meeting 2015-11-02 at 3pm.
+
+
+# Bibliography
 
 [//]: Definitions of References --- all this is **not** visible on final doc!
 

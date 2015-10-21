@@ -63,20 +63,24 @@ img {
 
 <div id="missing-data-imputation-etc" class="section level1">
 <h1>Missing Data — Imputation etc</h1>
+</div>
+<div id="notes-from-2015-10-03" class="section level1">
+<h1>Notes from 2015-10-03</h1>
 <ul>
 <li>Netflix Challenge –&gt; becomes “fashion”</li>
 <li>aka “Matrix completion”</li>
 </ul>
 <div id="literature" class="section level2">
 <h2>Literature</h2>
-<div id="books" class="section level3">
-<h3>Books</h3>
+<div id="books-and-papers" class="section level3">
+<h3>Books and Papers</h3>
 <ul>
-<li><p>Roderick J.A. Little and Donald B. Rubin Statistical Analysis with Missing Data (Wiley; 2nd ed., 2002) Freely available (chapter wise) via <a href="http://www.library.ethz.ch/primo_library/libweb/action/search.do?cs=frb&amp;ct=frb&amp;frbg=123779766&amp;fctN=facet_frbrgroupid&amp;fctV=123779766&amp;doc=ebi01_prod010259824&amp;lastPag=&amp;lastPagIndx=1&amp;rfnGrp=frbr&amp;frbrSrt=date&amp;dscnt=0&amp;vl%28611274651UI1%29=all_items&amp;vl%28134576197UI0%29=any&amp;frbg=&amp;scp.scps=scope%3A%28ELENDING%29%2Cscope%3A%28%22ARCHIVDATENBANK%22%29%2Cscope%3A%28data_archive%29%2Cscope%3A%28ebi01_prod%29%2Cscope%3A%28EPICS%29%2Cscope%3A%28replay%29%2Cscope%3A%28retroseals%29%2Cscope%3A%28cmistar%29&amp;tab=default_tab&amp;dstmp=1442558558993&amp;srt=rank&amp;ct=search&amp;mode=Basic&amp;&amp;dum=true&amp;indx=1&amp;tb=t&amp;vl%281UIStartWith0%29=contains&amp;vl%28freeText0%29=Little%20Rubin%20%22missing%20data%22&amp;vid=DADS&amp;fn=search">ETH Library</a></p></li>
-<li><p><a href="http://sites.stat.psu.edu/~jls/">Joseph L. Schafer</a> seminal monograph Schafer, J.L. (1997) Analysis of Incomplete Multivariate Data, Chapman &amp; Hall, London.</p></li>
-<li><p><a href="http://www.nyu.edu/classes/shrout/G89-2247/Schafer&amp;Graham2002.pdf">Schafer &amp; Graham</a> Missing Data: Our View of the State of the Art, American Psychological Assoction.</p></li>
+<li><p><a href="http://www.nyu.edu/classes/shrout/G89-2247/Schafer&amp;Graham2002.pdf">Schafer &amp; Graham</a> Missing Data: Our View of the State of the Art, American Psychological Association. <span class="citation">(Schafer and Graham 2002)</span></p></li>
+<li><p><span class="citation">(Little and Rubin 2002)</span> Roderick J.A. Little and Donald B. Rubin Statistical Analysis with Missing Data (Wiley; 2nd ed., 2002) Freely available (chapter wise) via <a href="http://www.library.ethz.ch/primo_library/libweb/action/search.do?cs=frb&amp;ct=frb&amp;frbg=123779766&amp;fctN=facet_frbrgroupid&amp;fctV=123779766&amp;doc=ebi01_prod010259824&amp;lastPag=&amp;lastPagIndx=1&amp;rfnGrp=frbr&amp;frbrSrt=date&amp;dscnt=0&amp;vl%28611274651UI1%29=all_items&amp;vl%28134576197UI0%29=any&amp;frbg=&amp;scp.scps=scope%3A%28ELENDING%29%2Cscope%3A%28%22ARCHIVDATENBANK%22%29%2Cscope%3A%28data_archive%29%2Cscope%3A%28ebi01_prod%29%2Cscope%3A%28EPICS%29%2Cscope%3A%28replay%29%2Cscope%3A%28retroseals%29%2Cscope%3A%28cmistar%29&amp;tab=default_tab&amp;dstmp=1442558558993&amp;srt=rank&amp;ct=search&amp;mode=Basic&amp;&amp;dum=true&amp;indx=1&amp;tb=t&amp;vl%281UIStartWith0%29=contains&amp;vl%28freeText0%29=Little%20Rubin%20%22missing%20data%22&amp;vid=DADS&amp;fn=search">ETH Library</a></p></li>
+<li><p><a href="http://sites.stat.psu.edu/~jls/">Joseph L. Schafer</a> seminal monograph Schafer, J.L. (1997) Analysis of Incomplete Multivariate Data, Chapman &amp; Hall, London. <span class="citation">(<span class="citeproc-not-found" data-reference-id="schaffer1997analysis"><strong>???</strong></span>)</span></p></li>
 </ul>
-<p>Came with 4 S-PLUS “packages” called NORM, CAT, MIX, PAN} –&gt; <a href="http://sites.stat.psu.edu/~jls/misoftwa.html" class="uri">http://sites.stat.psu.edu/~jls/misoftwa.html</a> Versions of all four of these are available on CRAN:</p>
+<p>Came with 4 S-PLUS “packages” called NORM, CAT, MIX, PAN} –&gt; <a href="http://sites.stat.psu.edu/~jls/misoftwa.html" class="uri">http://sites.stat.psu.edu/~jls/misoftwa.html</a></p>
+<p>Versions of all four of these are available on CRAN:</p>
 <pre class="r"><code>sapply(c(&quot;norm&quot;, &quot;cat&quot;, &quot;mix&quot;, &quot;pan&quot;), packageDescription)</code></pre>
 <pre><code>## $norm
 ## Package: norm
@@ -226,6 +230,31 @@ Author: Trevor Hastie and Rahul Mazumder</code></pre>
 <div id="mad-data-scientist" class="section level4">
 <h4>Mad (Data) Scientist</h4>
 </div>
+</div>
+</div>
+<div id="notes-from-2015-10-15-meeting" class="section level2">
+<h2>Notes from 2015-10-15 meeting</h2>
+<ul>
+<li>Focus on either continuous or mixed case</li>
+<li>Find data sets that are historically relevant:
+<ul>
+<li>See in the packages if there is a common package</li>
+<li>Use the data sets in the appendix of <span class="citation">(Schafer 1997)</span></li>
+<li>Use the synthetic bivariate set of <span class="citation">(Schafer and Graham 2002)</span></li>
+<li>Data sets: titanic, iris, mtcars.</li>
+</ul></li>
+<li>Concentrate on the modern methods for next meeting <span class="citation">(Troyanskaya et al. 2001)</span> and <span class="citation">(Hastie et al. 1999)</span>.</li>
+<li>Keep up with reading.</li>
+<li>Notation should be consistent, if possible with either <span class="citation">(Schafer 1997)</span> or <span class="citation">(Little and Rubin 2002)</span>.</li>
+<li>Next meeting 2015-11-02 at 3pm.</li>
+</ul>
+<div class="references">
+<h1>Bibliography</h1>
+<p>Hastie, Trevor, Robert Tibshirani, Gavin Sherlock, Michael Eisen, Patrick Brown, and David Botstein. 1999. “Imputing Missing Data for Gene Expression Arrays.”</p>
+<p>Little, RJA, and DB Rubin. 2002. “Statistical Analysis with Missing Data.” Wiley.</p>
+<p>Schafer, Joseph L. 1997. <em>Analysis of Incomplete Multivariate Data</em>. CRC press.</p>
+<p>Schafer, Joseph L, and John W Graham. 2002. “Missing Data: Our View of the State of the Art.” <em>Psychological Methods</em> 7 (2). American Psychological Association: 147.</p>
+<p>Troyanskaya, Olga, Michael Cantor, Gavin Sherlock, Pat Brown, Trevor Hastie, Robert Tibshirani, David Botstein, and Russ B Altman. 2001. “Missing Value Estimation Methods for DNA Microarrays.” <em>Bioinformatics</em> 17 (6). Oxford Univ Press: 520–25.</p>
 </div>
 </div>
 </div>

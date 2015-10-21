@@ -102,7 +102,7 @@ P(Y=s \vert D=t, M=i)
   & = \frac{P(Y=s, D=t, M=i)}{P(D=t,M=i)} \\
   & = \frac{P(Y=s, D=t) P(M=i \vert Y=s, D=t)}{P(D=t,M=i)} \\
   & = \frac{P(Y=s \vert D=t)P(D=t)P(M=i \vert D=t)}{P(D=t,M=i)} \\
-  & = P(Y=s \vert t).
+  & = P(Y=s \vert D=t).
 \end{align*}
 
 Hence if we are interested in the relationship between $Y$ and $D$, that is the
@@ -134,7 +134,7 @@ variable representing missingnes, then MAR (also called ignorable nonresponse)
 is defined as
 
 \begin{align*}
-P(R \vert Y_{com}) = P(R \vert Y_{ob}),
+P(R \vert Y_{com}) = P(R \vert Y_{obs}),
 \end{align*}
 
 and MCAR 
@@ -276,9 +276,9 @@ the arithmetic mean. Standard errors should reflect missing-data uncertainty
 and finte-sample variation.
 
 An advantage of MI is the number of need imputation: the efficiency based on
-$B$ samples relative o an infinite number is $(1 + \lambda/B)^{-1}$, where
+$m$ samples relative o an infinite number is $(1 + \lambda/m)^{-1}$, where
 $\lambda$ is the rate of missing information, which measures the increase in
-the large-sample variance of a paramter estimate due to missing values. $B=20$
+the large-sample variance of a paramter estimate due to missing values. $m=20$
 is often good in practice.
 
 #### Combining standard errors
@@ -286,25 +286,25 @@ is often good in practice.
 In the one-dimensional case, if the sample is large enough so that the
 estimator $Q$ follows a gaussian distribution, then the estimate $\hat Q$ and
 the standard error $T$ can be computed from the estimates of $(Q^j,
-U^j)_{j=1}^B$, $Q^j$, respectively, $U^j$ being the fitted value of $Q$,
+U^j)_{j=1}^m$, $Q^j$, respectively, $U^j$ being the fitted value of $Q$,
 respectively the standard error, for data sets $j$
 
 \begin{align*}
-\hat Q & = B^{-1} \sum_{j=1}^B Q^j, \\
-\hat U & = B^{-1} \sum_{j=1}^B U^j, \\
-M & = (B-1)^{-1}\sum_{j=1}^B(Q^j - \hat Q)^2, \\
-T & = \hat U + (1 + B^{-1}) M.
+\hat Q & = m^{-1} \sum_{j=1}^m Q^j, \\
+\hat U & = m^{-1} \sum_{j=1}^m U^j, \\
+B & = (m-1)^{-1}\sum_{j=1}^m(Q^j - \hat Q)^2, \\
+T & = \hat U + (1 + m^{-1}) B.
 \end{align*}
 
 For confidence interval, the Student's $t$ approximation can be used with the
 degree of freedom given by
 
 \begin{align*}
-\nu = (B-1)\Big[1 + \frac{\hat U}{(1 + B^{-1})M} \Big]^2.
+\nu = (m-1)\Big[1 + \frac{\hat U}{(1 + m^{-1})B} \Big]^2.
 \end{align*}
 
 The estimated rate of missing information for $Q$ is approximately
-$\tau/(\tau+1)$ where $\tau = (1 + B^{-1})M/\hat U$, the relative increase in
+$\tau/(\tau+1)$ where $\tau = (1 + m^{-1})B/\hat U$, the relative increase in
 variance du to nonresponse. See [schafer1997@multivariate] for more cases.
 
 This model still use the MAR asusmption. 
@@ -315,7 +315,16 @@ in contrast with ML. The danger from MI is the ability ot use different models f
 
 # Data analysis using regression and multilevel/hierarchical models [@gelman2006data]
 
-Chapter 25 of contains information about missing values.
+#### Imputation of several missing data
+
+One could use start with multivariate regression with multivariate
+responses. The weakness of this method is the computational costs. However, one
+could use an iterative and cycling regression (like in GAM fitting) to assess
+the missing values.
+
+A weakness of the iterative process is to make sure that all regression
+coefficent are consistent with each other.
+
 
 # Statistical analysis with missing data [@little2002statistical]
 
@@ -326,4 +335,4 @@ missingness come in several type (_mi_, _mice_, _Amelia_ in R packages).
 
 [//3]: # (TODO: use simulation study for testing like in [@schafer2002missing])
 [//4]: # (TODO: Understand the EM algorithm)
-[//5]: # (TODO: add schafer1997@multivariate)
+[//5]: # (TODO: Rubin Wang 2000 about when the MI estimators fail)
