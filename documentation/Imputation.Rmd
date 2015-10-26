@@ -91,7 +91,8 @@ paper, Hastie et al. (1999).
     * See in the packages if there is a common package
     * Use the data sets in the appendix of [@schafer1997analysis]
     * Use the synthetic bivariate set of [@schafer2002missing]
-    * Data sets: titanic, iris, mtcars, yeast [@lichman2013yeast]
+    * Data sets: titanic, iris, mtcars, yeast [@lichman2013yeast], (noisy) time
+      series data?
 - Concentrate on the modern methods for next meeting [@troyanskaya2001missing]
   and [@hastie1999imputing].
 - Keep up with reading.

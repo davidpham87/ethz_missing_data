@@ -364,13 +364,12 @@ provided by
 \hat X^c_J = U_JD_JV_J^T,
 \end{align}
 
-where $D_J \in \mathbb{R}^{\min(N, p) \times \min(N, p)}$ is a diagnoal matrix
-containing the leading $J < \min(N, p)$ singular values of $X^c$ and $V_J \in
-\mathbb{R}^{p \times \min(N, p)}$ and $U_J \in \mathbb{R}^{N \times \min(N,
-p)}$, the corresponding orthogonal matrix of $J$ right and left singular
-vectors. $\hat X^c$ is the nearest matrix of $X^c$ among matrices with rank $J$
-with respect to the sum of squares norm $\vert \vert A \vert \vert ^2 =
-tr(AA^T)$.
+where $D_J \in \mathbb{R}^{N \times p}$ is a diagnoal matrix containing the
+leading $J < p)$ singular values of $X^c$ and $V_J \in \mathbb{R}^{p \times p}$
+and $U_J \in \mathbb{R}^{N \times N}$, the corresponding orthogonal matrix of
+$J$ right and left singular vectors. $\hat X^c$ is the nearest matrix of $X^c$
+among matrices with rank $J$ with respect to the sum of squares norm $\vert
+\vert A \vert \vert ^2 = tr(AA^T)$.
 
 #### Regression interpretation
 
@@ -470,10 +469,61 @@ This iterative algorithm iteratively impute the missing values of each column,
 by making a regression against all the other columns (with imputed values). The
 method iterates until convergence of the filled values. 
 
+The number of iteration to convergence is typically materialy, constituting a
+legible drawback.
+
 It differenciates itself to the SVD by making the regression directly on the
 data matrix. The author claim that CARTs can replaced the regression and avoid
 avoid iteration.
 
+# Missing value estimation methods for DNA microarrays [@troyanskaya2001missing]
+
+This should be a more elaborated papers than the previous paper.
+
+1. SVD based method (SVNimpute)
+2. Weighted K-nearest neighbors (KNNimpute).
+3. Row average.
+
+KNNimpute provides suprass SVDimpute in simulation with missing rate between $1-20%$.
+
+In microarray studies, rows are genes expression and columns are different
+experimental conditions. Missing data are common, and there are no obvious
+causes for this missingness. Row average is does not take correlation into
+account. 
+
+Non-response issues in sample surveys and missing data in experiments
+[@little2002statistical].
+
+Three types of data are studied: noisy time series, time series and non-time series. Each data sets is cleaned to yield _complete_ matrices.
+
+A missing rate $p$ is set between $0.01$ and $0.2$ and deleted at random for
+each data sets, from which each recovoring methods is used to fill the missing
+values. The fitted values are then compared to the original values using the
+normalized root mean squared (normalized RMS).
+
+#### KNNImpute
+
+The imputed value is provided by weighted value of the $K$ most similar
+neighboor. The Euclidian distance measure was the often the most accurate of
+measure similarity. The normalized weights are proportial to the inverse of the
+distance. Transforming the data provides additional robustness.
+
+At least four columns are necessary to have a decent performance.  Complexity
+is $O(N^2p)$
+
+
+
+#### SVDImpute
+
+The methods is the same as the one describe in [@hastie1999imputing] Complexity
+is $O(Np^2i)$, where $i$ is the number of iteration for the convergence of the
+SVD algorithm (5 to 6).
+
+#### Conclusion
+
+
+KNN is better suited than SVD for non-time series or noisy data and is more
+robust to the increasing missing rates.
 
 
 # Bibliography
@@ -481,3 +531,4 @@ avoid iteration.
 [//3]: # (TODO: use simulation study for testing like in [@schafer2002missing])
 [//4]: # (TODO: Understand the EM algorithm)
 [//5]: # (TODO: Rubin Wang 2000 about when the MI estimators fail)
+[//6]: # (TODO: Test of robustness of common algorithm with missing data)
