@@ -1,6 +1,7 @@
 ---
 title: Missing Data - Introductory notes
 author: David Pham
+bibliography: ../biblio.bib
 papersize: a4paper
 numbersections: true
 documentclass: article
@@ -14,6 +15,7 @@ header-includes:
   - \usepackage{helvet}
 toc: true
 toc-depth: 1
+output: pdf_document
 
 ---
 
@@ -330,6 +332,149 @@ coefficent are consistent with each other.
 
 The monograph  describes mechanisms underlying the
 missingness come in several type (_mi_, _mice_, _Amelia_ in R packages).
+
+# Imputing Missing Data for Gene Expression Array [@hastie1999imputing]
+
+Technical report reporting statistical methods for data imputation applied to
+human tumor data and subset of a subset yeast data [@lichman2013yeast].
+
+## SVD
+
+* Learn a set of basis functions (_eigen-genes_) from the complete-case
+  analysis.
+* Impute the missing cells for a gene by regressing its non-missing entries on
+  the eigen-genes, and use the regression function to predict the expression
+  values at the missing locations.
+* The number of eigen-gene should be quite a bit smaller than the number of
+  non-missing observations.
+
+
+The data consists of $X \in \mathbb{R}^{N \times p}$, $N=6830, p=64$. $X^c$ is
+the subset of complete genes (2069) and $X^m$ the remainder.  
+
+### SVD imputation using a clean training set
+
+#### Singular value decomposition
+
+Remind that singular values of a matrix $X$ are the square root of the
+non-negative eigenvalues of $X^TX$. Singular value decomposition (SVD)is
+provided by
+
+\begin{align}\label{eq:svd}
+\hat X^c_J = U_JD_JV_J^T,
+\end{align}
+
+where $D_J \in \mathbb{R}^{\min(N, p) \times \min(N, p)}$ is a diagnoal matrix
+containing the leading $J < \min(N, p)$ singular values of $X^c$ and $V_J \in
+\mathbb{R}^{p \times \min(N, p)}$ and $U_J \in \mathbb{R}^{N \times \min(N,
+p)}$, the corresponding orthogonal matrix of $J$ right and left singular
+vectors. $\hat X^c$ is the nearest matrix of $X^c$ among matrices with rank $J$
+with respect to the sum of squares norm $\vert \vert A \vert \vert ^2 =
+tr(AA^T)$.
+
+#### Regression interpretation
+
+If x$ is any row of $X^c$, consider the regression of the $p$ values in
+$x=(x_1, \dots, x_p)^T$ on the _eigen-gens_ $v_1, \dots, v_J$, each $p$
+dimensional vectors. The regression solves 
+
+\begin{align}\label{eq:compleeccaseSvd}
+\min_{\beta} \vert\vert x - V_j\beta \vert\vert^2 = 
+  \min_{\beta} \sum_{l=1}^p \big(x_l - \sum_j=1^J v_{lj}\beta_j \big)^2
+\end{align}
+
+with solution $\hat \beta = (V_J^T V_J)^{-1} V_J^T x = V_J^T x$ (since $V_J$ is
+orthogonal) and orthogonal values $\hat x_l = V_l\hat\beta, l \in \{1, \dots, J
+\}$. Thus, according to Equation $\ref{eq:svd}$, $X^cV_J = U_JD_j$ gives all
+the (transposed) regression coefficients for all the rows and $\hat X^c =
+U_JD_JV_J^T$ all the fitted values. Hence, once the matrix $V_J$ is computed,
+SVD approximate each row of $X^c$ by its fitted vector obtained by regression
+(or projection) on $V_J$. This suggest for a row of $X^m$ with some missing
+components, they could possibly be imputated from
+
+\begin{align*}
+a\min_{\beta} \sum_{l=1}^p 1(M_l=0) \big(x_l - \sum_j=1^J v_{lj}\beta_j \big)^2
+\end{align*}
+where $M_l$ is the missingness indicator of $x_l$
+
+The imputation procedure is described as the following.
+
+1. Compute the SVD of $X^c$ and keep $V_J$. 
+2. For a row $x^*$ with missing element, compute 
+
+\begin{align*}
+\hat\beta* = $({V_J^{*}}^{T} V_J^*)^{-1} {V_J^*}^{T} x^*a
+\end{align*}
+
+where $V_j^*$ is the _shortned_ version of $V_J$ with the appriorate rows
+removed (corresponding the missing elements of $x^*$). Note $V_J^{*}$ no longer
+has orthogonal columns.
+
+3. The predictions of the missing elements are $V_J^{(*)}\hat\beta^*$ where
+$V_J^{(*)}$ is the complement in $V_J$ of $V_J^{*}$.
+
+Usually, the data matrix is centered before SVD, however, for missing data, an
+intercept has to be fitted and a method based simulation is provided afterwards.
+
+### SVD imputation using all data
+
+The previous methods usually discards a great number of data, particularly when
+$p \geq\geq N$. In contrast, the next iterative procedure circumvent the
+problem at the cost of more computation. 
+
+
+1. Set $X^*$ as $X$ with all missing values filled by the mean of their row.
+
+2. Solve the problem
+
+\begin{align} \label{eq:completesvd}
+\min_{V_J, D_J, U_J} \vert \vert X^* - m 1^T - U_J D_J V_J^T \vert \vert^*
+\end{align}
+
+where $\vert\vert \dot \vert\vert^*$ is the sum of squares of all non-missing
+elements and $m \in \mathbb{R}^N$ is the row means of $X*$. 
+
+3. Predict the missing values of $X$ with the fitted values.
+
+4. Reset $X^*$ as $X$ with the missing values replaced by the result of
+previous step.
+
+5. Repeat step 2-5, until the size of the relative update of the missing values
+become negligible.
+
+The paper states that only 6 iterations is necessary. An interesting point is
+the solution of Equation \eqref{eq:completesvd} is a fixed point, i.e. if
+missing values are filled, and the SVD algorithm is executed on the "complete"
+matrix, the solution remain the same. Additionally, if the _eign-genes_
+obtained from Equation \eqref{eq:completesvd}, and imput the missing value
+using the regression apporach in \eqref{eq:compleeccaseSvd}, the imputations
+are identical to those obtained from \eqref{eq:completesvd}.
+
+## K-nearest neighbor averaging imputation
+
+The paper described the other end of the spectrum in term of data usage
+_K-nearest neighbor averaging_. The algorithm is described as following.
+
+1. Computed the Euclidian distance between $x*$ and all the genes in $X^c$,
+using only those co-ordinates not missing in $x*$. Identify the $K$ closest.
+
+2. Impute the missing coordinates of $x^*$ by averaging the corresponding
+coordinates of the $K$ closest.
+
+The authors then found that $K$ between $5$ to $10$ was a good choice for their
+data set.
+
+## Repeated regression
+
+This iterative algorithm iteratively impute the missing values of each column,
+by making a regression against all the other columns (with imputed values). The
+method iterates until convergence of the filled values. 
+
+It differenciates itself to the SVD by making the regression directly on the
+data matrix. The author claim that CARTs can replaced the regression and avoid
+avoid iteration.
+
+
 
 # Bibliography
 
