@@ -132,7 +132,7 @@ factor of $P(M=0 \vert Y=s)/P(M=0)$.
 
 Let $Y_{com}$ denote the complete data, and denote its partitions with
 observed and missing data $Y_{com} = (Y_{obs}, Y_{mis})$. If $R$ is the random
-variable representing missingnes, then MAR (also called ignorable nonresponse)
+variable representing missingness, then MAR (also called ignorable non-response)
 is defined as
 
 \begin{align*}
@@ -145,7 +145,7 @@ and MCAR
 P(R \vert Y_{com}) = P(R).
 \end{align*}
 
-Missing not at random (MNAR) or nonignorable nonresponse, is the situation when
+Missing not at random (MNAR) or non-ignorable non-response, is the situation when
 MAR is violated. Issue with MAR is, it is often unverifiable, however, only
 little deviation of estimates and standard errors are observed in practice.
 
@@ -189,22 +189,23 @@ monotone missing patterns.
 
 It replaces the missing value with the mean of the observation. This introduce
 bias and underestimate the standard errors. The new value is an artifact of a
-specific data sets and disturbes the scale of the variables. If MI is not feasible, then averagin is a
-reasonable choice if
+specific data sets and disturbs the scale of the variables. If MI is not
+feasible, then averaging is a reasonable choice if
 
-> reliability is high ($\alpha > 0.7$) and each group of items to e averaged
+> reliability is high ($\alpha > 0.7$) and each group of items to be averaged
   seems to form a single, well, defined domain
 
 ## Single imputation
 
 Imputation is the process of predicting the missing value conditional on the
-other values. It has the advantages of sharing the same dataset to all
-researcher working on a common project. See [@little2002statistical] for shortcomings of single imputation.
+other values. It has the advantages of sharing the same data set to all
+researcher working on a common project. See [@little2002statistical] for
+shortcomings of single imputation.
 
 #### Imputing unconditional means
 
 Mean substitution consists of replacing the missing value of a variable with
-the average accross all the other non-missing observations. Weakness are that
+the average across all the other non-missing observations. Weakness are that
 confidence intervals $\bar{y} \pm z_\alpha \sqrt{S^2/N}$ are narrowed by
 overstating the number of observation $N$ and the downward bias into
 $S^2$. Under MCAR the coverage is only $2\Phi(z_\alpha r) - 1$ where $r$ is the
@@ -212,15 +213,16 @@ rate of missingness.
 
 #### Imputing from unconditional distributions
 
-Hot deck imputation fills in nonrespondents' data with values from actual
-respondents, that is we replace with a random draw from the observed values. This methods still distort correlation and standard errors.
+Hot deck imputation fills in non-respondents' data with values from actual
+respondents, that is we replace with a random draw from the observed
+values. This methods still distort correlation and standard errors.
 
 #### Imputing conditional means
 
 In the univariate situation (where only one value is of interest), one can fill
 with a prediction from the other variable using regression methods. 
 
-> This is nearly ptimal for a limited class of estimations problem if special
+> This is nearly optimal for a limited class of estimations problem if special
   correction are made to standard errors.
 
 However, it overstates the correlation and covariance as $R^2$ for imputed value is $1.00$.
@@ -228,7 +230,7 @@ However, it overstates the correlation and covariance as $R^2$ for imputed value
 #### Imputing from conditional distribution
 
 Under MAR assumption, the weaknesses from the previous methods are overcome by
-drawing an obesrvation from the fitted regression distribution of $Y$ given
+drawing an observation from the fitted regression distribution of $Y$ given
 $X$. In general, one has to sample from 
 
 \begin{align*} 
@@ -236,13 +238,13 @@ P(Y_{mis} \vert Y_{obs}, \theta),
 \end{align*} 
 
 where, in practice, we replace $\theta$ with its estimated value $\hat\theta$
-from $Y_{obs}$. With monotone patterns, one can set a seqence of regression for
+from $Y_{obs}$. With monotone patterns, one can set a sequence of regression for
 $Y_j$ given $Y_1, \dots, Y_{j-1}$, for $j\in {1, \dots, p}$.
 
-#### Undercoverage and reasonnable application
+#### Undercoverage and reasonable application
 
-In a simulation exerices, one can deduce that the actual coverae is much loewr
-thatn $95\%$. Compared to CC, if the missing rate is low, single imputation
+In a simulation exercise, one can deduce that the actual coverage is much lower
+than $95\%$. Compared to CC, if the missing rate is low, single imputation
 might still be a valid method. For example, if $p=25$ and the missing rate
 $r=0.03$, then CC would delete $1-(1-r)^p=0.53$ of the cases, whereas
 conditional distribution would allow to use all the participants.
@@ -268,28 +270,28 @@ algorithm. ML still has the problem of undercoverage.
 
 Sample size has to be large enough for the ML estimates be approximately
 unbiased and normally distributed and with missing data, the sample might be
-larger than usual. Thenlikelihood functions comes from an asusmed parametric
+larger than usual. Then likelihood functions comes from an assumed parametric
 model for complete data $P(Y_{obs}, Y_{mis}; \theta)$, hence departure from
 model assumptions might effect inference. MAR is still assumed.
 
 ### Multiple imputation
 
 Multiple imputation (MI) solves the problem of understating uncertainty. MI is
-similar to bootstrapping methods: one make artifical $B$ samples and
+similar to bootstrapping methods: one make artificial $B$ samples and
 complete-case analysis. The final estimates (except standard errors) are then
 the arithmetic mean. Standard errors should reflect missing-data uncertainty
-and finte-sample variation.
+and finite-sample variation.
 
 An advantage of MI is the number of need imputation: the efficiency based on
 $m$ samples relative o an infinite number is $(1 + \lambda/m)^{-1}$, where
 $\lambda$ is the rate of missing information, which measures the increase in
-the large-sample variance of a paramter estimate due to missing values. $m=20$
+the large-sample variance of a parameter estimate due to missing values. $m=20$
 is often good in practice.
 
 #### Combining standard errors
 
 In the one-dimensional case, if the sample is large enough so that the
-estimator $Q$ follows a gaussian distribution, then the estimate $\hat Q$ and
+estimator $Q$ follows a Gaussian distribution, then the estimate $\hat Q$ and
 the standard error $T$ can be computed from the estimates of $(Q^j,
 U^j)_{j=1}^m$, $Q^j$, respectively, $U^j$ being the fitted value of $Q$,
 respectively the standard error, for data sets $j$
@@ -310,9 +312,9 @@ degree of freedom given by
 
 The estimated rate of missing information for $Q$ is approximately
 $\tau/(\tau+1)$ where $\tau = (1 + m^{-1})B/\hat U$, the relative increase in
-variance du to nonresponse. See [schafer1997@multivariate] for more cases.
+variance due to non-response. See [schafer1997@multivariate] for more cases.
 
-This model still use the MAR asusmption. 
+This model still use the MAR assumption. 
 
 Obviously, the missing values problem is dealt before the analysis with MI, in
 contrast with ML. The danger from MI is the ability ot use different models for
@@ -329,7 +331,7 @@ could use an iterative and cycling regression (like in GAM fitting) to assess
 the missing values.
 
 A weakness of the iterative process is to make sure that all regression
-coefficent are consistent with each other.
+coefficient are consistent with each other.
 
 
 # Statistical analysis with missing data [@little2002statistical]
@@ -368,7 +370,7 @@ provided by
 \hat X^c_J = U_JD_JV_J^T,
 \end{align}
 
-where $D_J \in \mathbb{R}^{N \times p}$ is a diagnoal matrix containing the
+where $D_J \in \mathbb{R}^{N \times p}$ is a diagonal matrix containing the
 leading $J < p)$ singular values of $X^c$ and $V_J \in \mathbb{R}^{p \times p}$
 and $U_J \in \mathbb{R}^{N \times N}$, the corresponding orthogonal matrix of
 $J$ right and left singular vectors. $\hat X^c$ is the nearest matrix of $X^c$
@@ -393,7 +395,7 @@ the (transposed) regression coefficients for all the rows and $\hat X^c =
 U_JD_JV_J^T$ all the fitted values. Hence, once the matrix $V_J$ is computed,
 SVD approximate each row of $X^c$ by its fitted vector obtained by regression
 (or projection) on $V_J$. This suggest for a row of $X^m$ with some missing
-components, they could possibly be imputated from
+components, they could possibly be imputed from
 
 \begin{align*}
 a\min_{\beta} \sum_{l=1}^p 1(M_l=0) \big(x_l - \sum_j=1^J v_{lj}\beta_j \big)^2
@@ -409,7 +411,7 @@ The imputation procedure is described as the following.
 \hat\beta* = ({V_J^{*}}^{T} V_J^*)^{-1} {V_J^*}^{T} x^*a
 \end{align*}
 
-where $V_j^*$ is the _shortned_ version of $V_J$ with the appriorate rows
+where $V_j^*$ is the _shortened_ version of $V_J$ with the appropriate rows
 removed (corresponding the missing elements of $x^*$). Note $V_J^{*}$ no longer
 has orthogonal columns.
 
@@ -448,9 +450,9 @@ become negligible.
 The paper states that only 6 iterations is necessary. An interesting point is
 the solution of Equation \eqref{eq:completesvd} is a fixed point, i.e. if
 missing values are filled, and the SVD algorithm is executed on the "complete"
-matrix, the solution remain the same. Additionally, if the _eign-genes_
-obtained from Equation \eqref{eq:completesvd}, and imput the missing value
-using the regression apporach in \eqref{eq:compleeccaseSvd}, the imputations
+matrix, the solution remain the same. Additionally, if the _eigen-genes_
+obtained from Equation \eqref{eq:completesvd}, and impute the missing value
+using the regression approach in \eqref{eq:compleeccaseSvd}, the imputations
 are identical to those obtained from \eqref{eq:completesvd}.
 
 ## K-nearest neighbor averaging imputation
@@ -458,7 +460,7 @@ are identical to those obtained from \eqref{eq:completesvd}.
 The paper described the other end of the spectrum in term of data usage
 _K-nearest neighbor averaging_. The algorithm is described as following.
 
-1. Computed the Euclidian distance between $x*$ and all the genes in $X^c$,
+1. Computed the Euclidean distance between $x*$ and all the genes in $X^c$,
 using only those co-ordinates not missing in $x*$. Identify the $K$ closest.
 
 2. Impute the missing coordinates of $x^*$ by averaging the corresponding
@@ -469,14 +471,14 @@ data set.
 
 ## Repeated regression
 
-This iterative algorithm iteratively impute the missing values of each column,
+This algorithm iteratively impute the missing values of each column,
 by making a regression against all the other columns (with imputed values). The
 method iterates until convergence of the filled values. 
 
-The number of iteration to convergence is typically materialy, constituting a
+The number of iteration to convergence is typically materially, constituting a
 legible drawback.
 
-It differenciates itself to the SVD by making the regression directly on the
+It differentiates itself to the SVD by making the regression directly on the
 data matrix. The author claim that CARTs can replaced the regression and avoid
 avoid iteration.
 
@@ -490,6 +492,7 @@ This should be a more elaborated papers than the previous paper.
 
 KNNimpute provides suprass SVDimpute in simulation with missing rate between $1-20\%$.
 
+
 In microarray studies, rows are genes expression and columns are different
 experimental conditions. Missing data are common, and there are no obvious
 causes for this missingness. Row average is does not take correlation into
@@ -498,23 +501,23 @@ account.
 Non-response issues in sample surveys and missing data in experiments
 [@little2002statistical].
 
-Three types of data are studied: noisy time series, time series and non-time series. Each data sets is cleaned to yield _complete_ matrices.
+Three types of data are studied: noisy time series, time series and non-time
+series. Each data sets is cleaned to yield _complete_ matrices.
 
 A missing rate $p$ is set between $0.01$ and $0.2$ and deleted at random for
-each data sets, from which each recovoring methods is used to fill the missing
+each data sets, from which each recovering methods is used to fill the missing
 values. The fitted values are then compared to the original values using the
 normalized root mean squared (normalized RMS).
 
 #### KNNImpute
 
 The imputed value is provided by weighted value of the $K$ most similar
-neighboor. The Euclidian distance measure was the often the most accurate of
-measure similarity. The normalized weights are proportial to the inverse of the
+neighbor. The Euclidean distance measure was the often the most accurate of
+measure similarity. The normalized weights are proportional to the inverse of the
 distance. Transforming the data provides additional robustness.
 
 At least four columns are necessary to have a decent performance.  Complexity
 is $O(N^2p)$
-
 
 #### SVDImpute
 
@@ -523,7 +526,6 @@ is $O(Np^2i)$, where $i$ is the number of iteration for the convergence of the
 SVD algorithm (5 to 6).
 
 #### Conclusion
-
 
 KNN is better suited than SVD for non-time series or noisy data and is more
 robust to the increasing missing rates.
