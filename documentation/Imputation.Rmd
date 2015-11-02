@@ -105,6 +105,7 @@ paper, Hastie et al. (1999).
 
 ## Note from 2015-11-02 meeting
 
+
 - [vim package](https://cran.r-project.org/src/contrib/Archive/miP/). See
   article. It allows to display the pattern of missingness.
 - Start playing with mice, mix and pan packages.
