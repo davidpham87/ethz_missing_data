@@ -89,10 +89,13 @@ paper, Hastie et al. (1999).
 - Focus on either continuous or mixed case
 - Find data sets that are historically relevant:
     * See in the packages if there is a common package
-    * Use the data sets in the appendix of [@schafer1997analysis]
-    * Use the synthetic bivariate set of [@schafer2002missing]
+    * Use the data sets in the appendix of [@schafer1997analysis], FLAS inside
+      the `miP`
+      [package](http://finzi.psych.upenn.edu/library/miP/html/FLAS.html).
+    * Use the synthetic bivariate set of [@schafer2002missing], (normal and
+      cluster).
     * Data sets: titanic, iris, mtcars, yeast [@lichman2013yeast], (noisy) time
-      series data?
+      series data?      
 - Concentrate on the modern methods for next meeting [@troyanskaya2001missing]
   and [@hastie1999imputing].
 - Keep up with reading.
@@ -100,6 +103,24 @@ paper, Hastie et al. (1999).
   or [@little2002statistical].
 - Next meeting 2015-11-02 at 3pm.
 
+## Note from 2015-11-02 meeting
+
+- [vim package](https://cran.r-project.org/src/contrib/Archive/miP/). See
+  article. It allows to display the pattern of missingness.
+- Start playing with mice, mix and pan packages.
+- KNN: The weights in KNN are usually $w(d) = 1/d$, however nothing prevent us
+  of having $w(d) = K(d)$ where $K$ is any valid Kernel.
+- Euclidian distance:
+    + On which observations do we perform the comparison?
+    + What type of standardization?
+- MCAR, MAR and MNAR are an univariate properties: columns in a data matrix
+  might have different assumptions on their missingness mechanism.
+- 2014: Find paper on Weighted KNN ofr missing data.
+- MICE used chained equations, AMELIA is clearly bayesian.
+- Health and NHANES data sets are used widely.
+- Use 20 imputation for the FLAS data sets to complete the missing variables
+  and use it as the reference data set.
+- Next meeting 2015-11-16 at 11am.
 
 # Bibliography
 

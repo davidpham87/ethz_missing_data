@@ -176,7 +176,8 @@ of AC are that the standard errors or other measures of uncertainty are
 difficult to assess as the parameters are computed from different sets of
 units.
 
-CC analysis only works with MCAR but even if it holds, MCAR can be inefficient (e.g. with large data matrix with mild rates of missing values.
+CC analysis only works with MCAR but even if it holds, MCAR can be inefficient
+(e.g. with large data matrix with mild rates of missing values.
 
 #### Reweighting 
 
@@ -235,7 +236,8 @@ P(Y_{mis} \vert Y_{obs}, \theta),
 \end{align*} 
 
 where, in practice, we replace $\theta$ with its estimated value $\hat\theta$
-from $Y_{obs}$. With monotone patterns, one can set a seqence of regression for $Y_j$ given $Y_1, \dots, Y_{j-1}$, for $j\in {1, \dots, p}$.
+from $Y_{obs}$. With monotone patterns, one can set a seqence of regression for
+$Y_j$ given $Y_1, \dots, Y_{j-1}$, for $j\in {1, \dots, p}$.
 
 #### Undercoverage and reasonnable application
 
@@ -248,7 +250,8 @@ conditional distribution would allow to use all the participants.
 ### Maximum likelihood estimation
 
 One of the advantage of using the MLE $\hat\theta$ is hypothesis testing. If
-$\tilde\theta$ is the MLE for the null hypothesis, one could use likelihood-ratio tests and thus compare
+$\tilde\theta$ is the MLE for the null hypothesis, one could use
+likelihood-ratio tests and thus compare
 
 \begin{align*}
 2 [l(\hat\theta; Y_{obs}) - l(\tilde \theta; Y_{obs})],
@@ -311,8 +314,9 @@ variance du to nonresponse. See [schafer1997@multivariate] for more cases.
 
 This model still use the MAR asusmption. 
 
-Obviously, the missing values problem is dealt before the analysis with MI,
-in contrast with ML. The danger from MI is the ability ot use different models for imputation and analysis.
+Obviously, the missing values problem is dealt before the analysis with MI, in
+contrast with ML. The danger from MI is the ability ot use different models for
+imputation and analysis.
 
 
 # Data analysis using regression and multilevel/hierarchical models [@gelman2006data]
@@ -402,7 +406,7 @@ The imputation procedure is described as the following.
 2. For a row $x^*$ with missing element, compute 
 
 \begin{align*}
-\hat\beta* = $({V_J^{*}}^{T} V_J^*)^{-1} {V_J^*}^{T} x^*a
+\hat\beta* = ({V_J^{*}}^{T} V_J^*)^{-1} {V_J^*}^{T} x^*a
 \end{align*}
 
 where $V_j^*$ is the _shortned_ version of $V_J$ with the appriorate rows
@@ -484,7 +488,7 @@ This should be a more elaborated papers than the previous paper.
 2. Weighted K-nearest neighbors (KNNimpute).
 3. Row average.
 
-KNNimpute provides suprass SVDimpute in simulation with missing rate between $1-20%$.
+KNNimpute provides suprass SVDimpute in simulation with missing rate between $1-20\%$.
 
 In microarray studies, rows are genes expression and columns are different
 experimental conditions. Missing data are common, and there are no obvious
@@ -512,7 +516,6 @@ At least four columns are necessary to have a decent performance.  Complexity
 is $O(N^2p)$
 
 
-
 #### SVDImpute
 
 The methods is the same as the one describe in [@hastie1999imputing] Complexity
@@ -526,6 +529,15 @@ KNN is better suited than SVD for non-time series or noisy data and is more
 robust to the increasing missing rates.
 
 
+# Datasets
+
+* Use the data sets in the appendix of [@schafer1997analysis], FLAS inside the
+`miP` [package](http://finzi.psych.upenn.edu/library/miP/html/FLAS.html).
+* Use the synthetic bivariate set of [@schafer2002missing], (normal and
+cluster).
+* Data sets: titanic, iris, mtcars, yeast [@lichman2013yeast], (noisy) time
+series data?
+      
 # Bibliography
 
 [//3]: # (TODO: use simulation study for testing like in [@schafer2002missing])
