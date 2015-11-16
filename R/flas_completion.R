@@ -21,9 +21,12 @@ names(FLAS)  #show variable names
 md.pattern(FLAS) #show patterns for missing data in 1st 4 vars
 na.pattern(FLAS) #show patterns for missing data in 1st 4 vars
 
-imp <- mice(FLAS) #do multiple imputation (default is 5 realizations)
-for (iSet in 1:5) {  #show results for the 5 imputation datasets
-  fit<- glm(hired ~ FLASy + gender + natamer,
-            data=complete(imp, iSet), family=binomial)  #fit to iSet-th realization
-  print(summary(fit))
-}
+## TODO set the methods for imputations
+imp <- mice(FLAS, 5) #do multiple imputation (default is 5 realizations)
+
+stripplot(imp)
+## for (iSet in 1:5) {  #show results for the 5 imputation datasets
+##   fit<- glm(hired ~ FLASy + gender + natamer,
+##             data=complete(imp, iSet), family=binomial)  #fit to iSet-th realization
+##   print(summary(fit))
+## }

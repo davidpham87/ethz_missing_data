@@ -539,6 +539,18 @@ robust to the increasing missing rates.
 cluster).
 * Data sets: titanic, iris, mtcars, yeast [@lichman2013yeast], (noisy) time
 series data?
+
+# Chained Equations 
+
+The goal is to use gibbs sampling to generate observations by making $p$
+samping, using $Y_j \vert Y_{-j}, \theta$. 
+
+#### Predictive mean matching
+
+[Statistical horizon](http://statisticalhorizons.com/predictive-mean-matching)
+explains how predctive mean matching (pmm) works. It is similar to nearest
+neighboor in the sense that predictions from linear regression is used as the
+metric and the imputed value is randomly chosen by the sets of neighbour.
       
 # Bibliography
 
@@ -546,3 +558,4 @@ series data?
 [//4]: # (TODO: Understand the EM algorithm)
 [//5]: # (TODO: Rubin Wang 2000 about when the MI estimators fail)
 [//6]: # (TODO: Test of robustness of common algorithm with missing data)
+[//7]: # (TODO: Chained equations)
