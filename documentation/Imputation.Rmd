@@ -123,6 +123,14 @@ paper, Hastie et al. (1999).
   and use it as the reference data set.
 - Next meeting 2015-11-16 at 11am.
 
+## Note from 2015-11-02
+
+- Using the FLAS data set, we should average the imputation with several
+  packages.
+- Use data frequency of the missing pattern to create artificial missingness.
+- MCAR as well.
+- Next meeting 2015-11-23 at 11am.
+
 # Bibliography
 
 [//]: Definitions of References --- all this is **not** visible on final doc!
