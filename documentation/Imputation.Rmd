@@ -1,5 +1,6 @@
 ---
 bibliography: ../biblio.bib
+output: pdf_document
 
 ---
 

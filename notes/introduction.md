@@ -550,7 +550,15 @@ samping, using $Y_j \vert Y_{-j}, \theta$.
 [Statistical horizon](http://statisticalhorizons.com/predictive-mean-matching)
 explains how predctive mean matching (pmm) works. It is similar to nearest
 neighboor in the sense that predictions from linear regression is used as the
-metric and the imputed value is randomly chosen by the sets of neighbour.
+metric and the imputed value is randomly chosen by the sets of neighbor. This
+is quite practical as the imputed observations always belong to the set of
+non-missing data.
+
+# FLAS Completion
+
+The mi data package provide imputed continuous data, with decimals
+(e.g. 102.3435), whereas the set of observed data is clearly the integers.
+
       
 # Bibliography
 
