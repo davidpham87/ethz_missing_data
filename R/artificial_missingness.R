@@ -25,10 +25,13 @@ idx <- is.na(data.missing)
 ldf.mcar  <- imputeData(data.missing, column.type.mi=column.type.mi)
 df <- ldf.mcar[[1]]
 
-cols.na <- lapply(data.mcar, is.na)
-### write comparison methods depending on the type of the column
-### Write function deviation
+cols.na <- lapply(data.missing, is.na)
 dataset - df[[1]]
+
+### TODO
+###   * write comparison methods depending on the type of the column
+###   * Write function deviation
+
 
 data.missing <- MARFrequency(dataset, mt)
 idx <- is.na(data.missing)
