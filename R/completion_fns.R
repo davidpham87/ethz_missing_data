@@ -24,7 +24,6 @@ averagingColumn <- function(dfx, idx){
   apply(df, 1, avg.fn)
 }
 
-
 ##' Create a "average" data set from several imputations
 ##'
 ##' The method use mean and majority vote to select the variable that where missing.
@@ -130,5 +129,49 @@ MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset)){
   for (i in 1:nrow(res)){
     res[i, cx] <- ifelse(rbinom(n, 1, p), NA, dataset[i, cx])
   }
+  res
+}
+
+##' Column MSE
+##'
+##' Provide the mse, taking care of knowing if the value is a factor or a
+##' numeric value
+##' @title MSE of a single column
+##' @param dfx, a list of data frame
+##' @param idx, single integer defining which column is being compared
+##' @param na.idx, row index where the data is missing for column idx
+##' @param dataset.complete
+##' @return
+##' @author David Pham
+mseImputationColumn <- function(dfx, idx, na.idx, dataset.complete){
+
+
+  mseNum <- function(x, y) mean(sqrt(sum((x-y)^2)))
+  mseFac <- function(x, y) mean(x!=y)
+
+  df <- as.data.frame(lapply(dfx, '[', idx))
+  df <- df[na.idx, ] # keep imputed values only # na.idx <- cols.na[[idx]]
+  nc <- ncol(df)
+
+  values.true <- dataset.complete[na.idx, idx] # keep only missing value
+
+  if (!length(values.true)){
+    return(NA)
+  }
+
+  is.factor.value <- any(c("factor", "string") %in% class(values.true[1]))
+  values.true <- matrix(rep(values.true, times=nc), ncol=nc) # transform for comparing
+  err.fn <- if (is.factor.value) mseFac else mseNum
+  res <- err.fn(df, values.true)
+  res
+}
+
+
+##' @param dfx, a list of data frame
+mseImputation <- function(dfx, data.missing, data.complete){
+  cols.na <- lapply(data.missing, is.na)
+  f <- function(i) mseImputationColumn(dfx, i, cols.na[[i]], data.complete)
+  res <- vapply(1:ncol(data.complete), f, 0)
+  names(res) <- colnames(data.complete)
   res
 }

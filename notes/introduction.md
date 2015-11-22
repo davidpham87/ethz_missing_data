@@ -559,6 +559,11 @@ non-missing data.
 The mi data package provide imputed continuous data, with decimals
 (e.g. 102.3435), whereas the set of observed data is clearly the integers.
 
+## MI 
+
+MI has problem of convergence when using correlated data example with grades
+and grades_complete.
+
       
 # Bibliography
 
