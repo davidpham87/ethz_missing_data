@@ -74,7 +74,7 @@ imputeData <- function(dataset, n=5, column.type.mi=NULL){
     mdf <- change(mdf, y=k, what="type", to=column.type.mi[[k]])
   }
 
-  imputations <- mi(mdf, n.iter=50, n.chains=4)
+  imputations <- mi(mdf, n.iter=30, n.chains=4)
   data.mi <-  mi::complete(imputations, n) # creates 20 different versions of imputations
 
   ## mi append columns providing the stating the missingnes, so we have to delete them
