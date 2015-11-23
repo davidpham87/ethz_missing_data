@@ -1,3 +1,5 @@
+# Functions to impute dataset and create artificial missingness.
+
 ##' Find the Mode of a vector
 ##'
 ##' Used for majority vote
@@ -8,6 +10,7 @@
 Mode <- function(x){
   sample(names(which.max(table(x))), 1)
 }
+
 
 ##' Averaging observation of a column across data.frame
 ##'
@@ -24,6 +27,7 @@ averagingColumn <- function(dfx, idx){
   apply(df, 1, avg.fn)
 }
 
+
 ##' Create a "average" data set from several imputations
 ##'
 ##' The method use mean and majority vote to select the variable that where missing.
@@ -39,19 +43,32 @@ averagingImputations <- function(imputations){
   return(res)
 }
 
-##' Imputation dataset from mice and mi
-##'
-##' Given a data set containing missing, the function produces
-##' simulated data.frames using the mice and the mi packages.
-##' @title Impute Data from a data.frame containing missing data
-##' @param dataset, the data set
-##' @param n, the number of imputed dataset
-##' @param column.type.mi, type of column for the mi implemation
-##' @return a list of list containing data.frames of complete data.
-##' @author David Pham
-imputeData <- function(dataset, n=5, column.type.mi=NULL){
 
-  ## mi implementation
+##' Impute data with mice
+##'
+##'
+##' @title Imputing data with Mice
+##' @param dataset, a data.frame containing missing values.
+##' @param n, the number fo imputation to generate
+##' @return list of imputed data.frame
+##' @author David Pham
+imputeDataMice <- function(dataset, n){
+  imputations <- mice(dataset, n) # do multiple imputation (default is 5 realizations)
+  data.mice <- lapply(1:n, function(i) mice::complete(imputations, i)) # mice and mi conflicts here
+  return(data.mice)
+}
+
+
+##' Impute data with mice
+##'
+##'
+##' @title Data imputation with mice
+##' @param dataset, a data.frame containing missing values.
+##' @param n, the number fo imputation to generate
+##' @param column.type.mi, override of column type for the mi.
+##' @return list of imputed data.frame
+##' @author David Pham
+imputeDataMi <- function(dataset, n, column.type.mi=NULL){
   valid.column.type <- c("unordered-categorical", "ordered-categorical",
                          "binary", "interval", "continuous", "count",
                          "irrelevant")
@@ -63,11 +80,6 @@ imputeData <- function(dataset, n=5, column.type.mi=NULL){
     column.type.mi <- list()
   }
 
-
-  imp.mice <- mice(dataset, n) # do multiple imputation (default is 5 realizations)
-  data.mice <- lapply(1:n, function(i) mice::complete(imp.mice, i)) # mice and mi conflicts here
-
-  #mi implemtnaation
   mdf <- missing_data.frame(dataset) # missing data.frame
 
   for (k in names(column.type.mi)){
@@ -79,7 +91,23 @@ imputeData <- function(dataset, n=5, column.type.mi=NULL){
 
   ## mi append columns providing the stating the missingnes, so we have to delete them
   data.mi <- lapply(data.mi,  function(df) df[, 1:ncol(dataset)]) # restrict the number of columns
+  return(data.mi)
+}
 
+
+##' Imputation dataset from mice and mi
+##'
+##' Given a data set containing missing, the function produces
+##' simulated data.frames using the mice and the mi packages.
+##' @title Impute Data from a data.frame containing missing data
+##' @param dataset, the data set
+##' @param n, the number of imputed dataset
+##' @param column.type.mi, type of column for the mi implemation
+##' @return a list of list containing data.frames of complete data.
+##' @author David Pham
+imputeData <- function(dataset, n=5, column.type.mi=NULL){
+  data.mice <- imputeDataMice(dataset, n)
+  data.mi <- imputeDataMi(dataset, n, column.type.mi)
   return(list(mice=data.mice, mi=data.mi))
 }
 
