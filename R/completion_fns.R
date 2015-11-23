@@ -203,3 +203,45 @@ mseImputation <- function(dfx, data.missing, data.complete){
   names(res) <- colnames(data.complete)
   res
 }
+
+
+
+##' Run imputation simulation
+##'
+##'
+##' @title Error of imputation through simultation
+##' @param data.complete, a complete dataframe
+##' @param n.sample, the number of sample per imputation
+##' @param column.type.mi
+##' @param missing.mechasnism, a function accepting data.complete and returns an incomplete data.frame
+##' @param ..., argument to missing.mechanism
+##' @return a named numeric vector containing the mse of columns by the simulation type
+##' @author David Pham
+imputationSimulation <- function(data.complete, n.sample,
+                                 missing.mechasnism=MCAR,
+                                 column.type.mi=NULL,
+                                 ...){
+  data.missing <- missing.mechasnism(data.complete, ...)
+  ldf.imp  <- imputeData(data.missing, n=n.sample,
+                         column.type.mi=column.type.mi)
+  imp.diff <-
+    lapply(ldf.imp,
+           function(dfx) mseImputation(dfx, data.missing, data.complete))
+  ul(imp.diff) # flatten for simsalapar
+}
+
+##' Taking from a simulation vector
+##' @param x, a vector with names containing a dot "." used to split them
+##' @param col.names, a 3 dimension character vector, containing the name of
+##'   the resulting data.frame
+vector2df <- function(x, col.names){
+  stopifnot(length(col.names) == 3)
+  nx <- strsplit(names(x), "\\.")
+  df <- mapply(function(name, value) {
+   type <- paste0(name[-1], collapse='')
+   res <- list(name[1], type, value)
+   names(res) <- col.names
+   res
+  }, name=nx, value=x)
+  as.data.frame(t(df))
+}
