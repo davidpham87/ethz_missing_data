@@ -95,7 +95,26 @@ imputeDataMi <- function(dataset, n, column.type.mi=NULL){
 }
 
 
+##' TODO: change the function to accept strings as imputation methods and use a
+##' list with function and for argument. This faciliates the simulation as
+##' arguments will be strings.
+##' TODO: Refactor imputeData* to accept "..." arguments
+imputeData <- function(dataset, n=5, methods=c('mice', 'mi'), args=list()){
+
+  imputationMethods <-
+    list(mice=imputeDataMice,  mi=imputeDataMi)
+
+  res <- lapply(methods, function(m){
+    impute.fn <- imputationMethods[[m]]
+    do.call(impute.fn, c(dataset, n, args[[m]]))
+  })
+
+  names(res) <- methods
+  return(res)
+}
+
 ##' Imputation dataset from mice and mi
+##'
 ##'
 ##' Given a data set containing missing, the function produces
 ##' simulated data.frames using the mice and the mi packages.
@@ -106,6 +125,10 @@ imputeDataMi <- function(dataset, n, column.type.mi=NULL){
 ##' @return a list of list containing data.frames of complete data.
 ##' @author David Pham
 imputeData <- function(dataset, n=5, column.type.mi=NULL){
+
+  imputationMethods <-
+    list(mice=imputeDataMice,  mi=imputeDataMi)
+
   data.mice <- imputeDataMice(dataset, n)
   data.mi <- imputeDataMi(dataset, n, column.type.mi)
   return(list(mice=data.mice, mi=data.mi))
