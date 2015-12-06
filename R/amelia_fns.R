@@ -2,8 +2,6 @@ library(Amelia)
 source('completion_fns.R')
 
 FLAS <- readRDS('../data/FLAS_clean.rds')
-FLAS_COMPLETE <- readRDS('../data/FLAS_complete_average.rds')
-
 dataset <- FLAS[-12]
 amelia.args <- list(noms=c("lang", "age", "priC", "sex"), ords="grade_complete")
 
@@ -16,4 +14,4 @@ imputeDataAmelia <- function(dataset, n, ...){
 
 ## Test
 res <- do.call(imputeDataAmelia, c(list(dataset, 20), amelia.args))
-stopifnot(sum(is.na(res))==0)
+stopifnot(sum(is.na(res[[1]]))==0)

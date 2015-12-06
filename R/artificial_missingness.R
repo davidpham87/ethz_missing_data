@@ -1,12 +1,7 @@
-library(Amelia)
-library(mice)
-library(mi)
-library(softImpute)
-library(Hmisc)  #package for na.pattern() and impute()
-library(data.table)
-library(parallel)
-library(ggplot2)
-library(simsalapar)
+pckgs <- c("Amelia", "mice", "mi", "softImpute", "impute", "Hmisc",
+           "data.table", "parallel", "ggplot2", "simsalapar")
+loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
+
 
 source('completion_fns.R')
 options(mc.cores=4)
@@ -40,16 +35,16 @@ doOne <- function(missing.mechanism, imputation.method, p, n.imputation,
   miss.args <- missing.args[[missing.mechanism]]
   imp.args <- c(list(n=n.imputation), imputation.args[[imputation.method]])
   res <- imputationSimulation(data.complete,
-                       missing.mechanism,
-                       imputation.method,
-                       p,
-                       miss.args,
-                       imp.args)
+                              missing.mechanism,
+                              imputation.method,
+                              p,
+                              miss.args,
+                              imp.args)
   res
 }
 
 # sfile="imputation_lapply.rds"
-# res <- doLapply(varList, doOne=doOne, monitor=interactive())
+## res <- doLapply(varList, doOne=doOne, monitor=interactive())
 
 cl <- makeCluster(4, type="PSOCK")
 clusterEvalQ(cl, {
@@ -57,6 +52,7 @@ clusterEvalQ(cl, {
   library(mice)
   library(mi)
   library(Amelia)
+  library(softImpute)
   library(Hmisc)  #package for na.pattern() and impute()
   library(parallel)
   0

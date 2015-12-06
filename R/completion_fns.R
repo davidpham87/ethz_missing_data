@@ -94,6 +94,7 @@ imputeDataMi <- function(dataset, n, column.type.mi=NULL){
   return(data.mi)
 }
 
+
 ##' Impute Data using Amelia
 ##'
 ##' Simple wrapper arounde amliea to provide a list of imputed data.frame
@@ -110,6 +111,48 @@ imputeDataAmelia <- function(dataset, n, ...){
 }
 
 
+
+##' Complete the numerical value with softImpute
+##'
+##' Extract the numerical value of a dataset and complete them with softImpute
+##' @title SoftImpute and Impute knn
+##' @param dataset, an incomplete dataset
+##' @param n, simple place holder, for not breaking previous code
+##' @param ..., argument for sotfImpute
+##' @return a list with n times the same elements which is the completed
+##'   data.frame (only numerical variable)
+##' @author David Pham
+imputeDataSoftImpute <- function(dataset, n=5, ...){
+
+  args <- list(...)
+
+  to.keep <- sapply(1:ncol(dataset), function(jdx)
+    !any(c("factor", "string") %in% class(dataset[1, jdx])))
+
+  data.numerical <- dataset[, to.keep]
+  x <- as.matrix(data.numerical)
+  fit <- do.call(softImpute::softImpute, c(list(x), args))
+  dataset[, to.keep] <- softImpute::complete(x, fit)
+
+  lapply(1:2, function(i) dataset)
+}
+
+
+imputeDataImpute <- function(dataset, n=NULL, ...){
+  args <- list(...)
+
+  to.keep <- sapply(1:ncol(dataset), function(jdx)
+    !any(c("factor", "string") %in% class(dataset[1, jdx])))
+
+  data.numerical <- dataset[, to.keep]
+  x <- as.matrix(data.numerical)
+  fit <- do.call(impute::impute.knn, c(list(x), args))
+  dataset[, to.keep] <- fit$data
+  list(dataset, dataset)
+}
+
+
+
 ##' TODO: change the function to accept strings as imputation methods and use a
 ##' list with function and for argument. This faciliates the simulation as
 ##' arguments will be strings.
@@ -120,7 +163,8 @@ imputeDataSimulation <- function(dataset, method='mice', ...){
   args <- list(...)
 
   imputationMethods <-
-    list(mice=imputeDataMice,  mi=imputeDataMi, amelia=imputeDataAmelia)
+    list(mice=imputeDataMice,  mi=imputeDataMi, amelia=imputeDataAmelia,
+         softImpute=imputeDataSoftImpute)
 
   impute.fn <- imputationMethods[[method]]
   res <- list(do.call(impute.fn, c(list(dataset), args)))

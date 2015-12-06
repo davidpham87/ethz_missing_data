@@ -15,7 +15,7 @@ varListTest <- function() {
 
       ## imputation names
       imputation.method=list(type="grid", expr = quote(Imputation~method),
-                             value = c("amelia", "mice")),
+                             value = c("softImpute", "mice")),
 
       ## Probability of missingness # Test only value
       p=list(type="frozen", value=c(0.15)),
@@ -30,7 +30,8 @@ varListTest <- function() {
              value=list("mice"=list(),
                         "mi"=list(column.type.mi=list(grade_complete="ordered-categorical")),
                         "amelia"=list(noms=c("lang", "age", "priC", "sex"),
-                                      ords="grade_complete"))),
+                                      ords="grade_complete"),
+                        "softImpute"=list())),
 
       ## additional arguments for the missing mechanism functions
       missing.args=list(type="frozen",
