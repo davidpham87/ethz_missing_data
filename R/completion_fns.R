@@ -170,7 +170,7 @@ MARFrequency <- function(dataset, p=0.03,  missing.table){
 ##'   data with the probility given by the user.
 ##' @author David Pham
 MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset)){
-  if (p==0) return dataset
+  if (p==0) return(dataset)
   res <- data.frame(dataset)
   cx <- columns
   n <- length(cx)
@@ -183,7 +183,8 @@ MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset)){
 ##' Column MSE
 ##'
 ##' Provide the mse, taking care of knowing if the value is a factor or a
-##' numeric value
+##' numeric value. The MSE for numerical value is given by
+##' 1/N \sum{_i=1}^{N} (\hat x_ij - x_ij)^2/x_{\dot j}^2
 ##' @title MSE of a single column
 ##' @param dfx, a list of data frame
 ##' @param idx, single integer defining which column is being compared
@@ -193,8 +194,10 @@ MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset)){
 ##' @author David Pham
 mseImputationColumn <- function(dfx, idx, na.idx, dataset.complete){
 
-
-  mseNum <- function(x, y) mean(sqrt(sum((x-y)^2)))
+  is.factor.value <- any(c("factor", "string")
+                         %in% class(dataset.complete[1, idx]))
+  col.mean.data.complete <- if(is.factor.value) 1 else mean(dataset.complete[ , idx])
+  mseNum <- function(x, y) mean((((x-y)/col.mean.data.complete)^2))
   mseFac <- function(x, y) mean(x!=y)
 
   df <- as.data.frame(lapply(dfx, '[', idx))
@@ -207,7 +210,6 @@ mseImputationColumn <- function(dfx, idx, na.idx, dataset.complete){
     return(NA)
   }
 
-  is.factor.value <- any(c("factor", "string") %in% class(values.true[1]))
   values.true <- matrix(rep(values.true, times=nc), ncol=nc) # transform for comparing
   err.fn <- if (is.factor.value) mseFac else mseNum
   res <- err.fn(df, values.true)
@@ -263,5 +265,5 @@ vector2df <- function(x, col.names){
    names(res) <- col.names
    res
   }, name=nx, value=x)
-  as.data.frame(t(df))
+  data.frame(lapply(as.data.frame(t(df)), unlist)) # transform into data.frame
 }

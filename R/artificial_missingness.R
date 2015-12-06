@@ -26,9 +26,10 @@ n <- 5
 diff <- imputationSimulation(data.complete, n, MCAR, column.type.mi, p=0.20)
 vector2df(diff, c('method', 'type', 'value'))
 
-diff <- imputationSimulation(data.complete, n, MARFrequency, column.type.mi, mt)
+diff <- imputationSimulation(data.complete, n, MARFrequency, column.type.mi, mt, p=0.05)
 vector2df(diff, c('method', 'type', 'value'))
 
 ## TODO: Write Simulation and do plots
 ## TODO: Check for more imputations packages
 ## TODO: Run simulations with replicate and simulation.
+## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
