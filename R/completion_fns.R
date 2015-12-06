@@ -53,7 +53,7 @@ averagingImputations <- function(imputations){
 ##' @return list of imputed data.frame
 ##' @author David Pham
 imputeDataMice <- function(dataset, n){
-  imputations <- mice(dataset, n) # do multiple imputation (default is 5 realizations)
+  imputations <- mice::mice(dataset, n) # do multiple imputation (default is 5 realizations)
   data.mice <- lapply(1:n, function(i) mice::complete(imputations, i)) # mice and mi conflicts here
   return(data.mice)
 }
@@ -94,6 +94,21 @@ imputeDataMi <- function(dataset, n, column.type.mi=NULL){
   return(data.mi)
 }
 
+##' Impute Data using Amelia
+##'
+##' Simple wrapper arounde amliea to provide a list of imputed data.frame
+##' @title Data imputation with Amelia
+##' @param dataset
+##' @param n, the number of imput
+##' @param ..., additional argument to the amelia function
+##' @return a list imputed data.frame
+##' @author David Pham
+imputeDataAmelia <- function(dataset, n, ...){
+  args <- list(...)
+  a.out <- do.call(amelia, c(list(dataset, m=n), args))
+  lapply(a.out$imputations, as.data.frame)
+}
+
 
 ##' TODO: change the function to accept strings as imputation methods and use a
 ##' list with function and for argument. This faciliates the simulation as
@@ -103,8 +118,9 @@ imputeDataMi <- function(dataset, n, column.type.mi=NULL){
 imputeDataSimulation <- function(dataset, method='mice', ...){
 
   args <- list(...)
+
   imputationMethods <-
-    list(mice=imputeDataMice,  mi=imputeDataMi)
+    list(mice=imputeDataMice,  mi=imputeDataMi, amelia=imputeDataAmelia)
 
   impute.fn <- imputationMethods[[method]]
   res <- list(do.call(impute.fn, c(list(dataset), args)))
@@ -266,7 +282,7 @@ mseImputation <- function(dfx, data.missing, data.complete){
 
 ##' Run imputation simulation
 ##'
-##'
+##' TODO: simplify the function
 ##' @title Error of imputation through simultation
 ##' @param data.complete, a complete dataframe
 ##' @param n.sample, the number of sample per imputation
@@ -297,6 +313,7 @@ imputationSimulation <- function(data.complete,
   imp.diff <-
     lapply(ldf.imp,
            function(dfx) mseImputation(dfx, data.missing, data.complete))
+
   imp.diff[[1]]
   ## ul() # flatten for simsalapar
 }

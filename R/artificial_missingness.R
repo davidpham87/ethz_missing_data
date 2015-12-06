@@ -1,5 +1,7 @@
+library(Amelia)
 library(mice)
 library(mi)
+library(softImpute)
 library(Hmisc)  #package for na.pattern() and impute()
 library(data.table)
 library(parallel)
@@ -25,37 +27,9 @@ n <- 5
 
 
 ## Follow simsalapar
-require("simsalapar")
-
-varList <- # *User provided* list of variables
-  varlist( # constructor for an object of class 'varlist'
-    ## replications
-    n.sim=list(type="N", expr=quote(N[sim]), value = 5),
-
-    ## Missingness mechanism
-    missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
-
-    ## imputation names
-    imputation.method=list(type="grid", expr = quote(Imputation~method),
-                            value = c("mice", "mi")),
-
-    ## Probability of missingness # Test only value
-    p=list(type="grid", value=c(0.05, .15)),
-
-    ## Number of imputation
-    n.imputation=list(type="grid", expr=quote(Number~of~imputation),
-                      value = c(5, 20)),
-
-    ## Additional arguments for the imputation methods
-    imputation.args=list(type="frozen",
-                         value=list("mice"=list(),
-                                    "mi"=list(column.type.mi=column.type.mi))),
-
-    ## additional arguments for the missing mechanism functions
-    missing.args=list(type="frozen",
-                      value=list("MCAR"=list(random.seed=1),
-                                 "MARFrequency"=list(random.seed=1, missing.table=mt))))
-
+source("varlist_fns.R")
+varList <- varListTest()
+# varList <- varListProd()
 ## toLatex(varList)
 ## pGrid <- mkGrid(varList)
 
@@ -75,21 +49,21 @@ doOne <- function(missing.mechanism, imputation.method, p, n.imputation,
 }
 
 # sfile="imputation_lapply.rds"
-## res <- doLapply(varList, doOne=doOne, monitor=interactive())
+# res <- doLapply(varList, doOne=doOne, monitor=interactive())
 
 cl <- makeCluster(4, type="PSOCK")
 clusterEvalQ(cl, {
   source('completion_fns.R')
   library(mice)
   library(mi)
+  library(Amelia)
   library(Hmisc)  #package for na.pattern() and impute()
-  library(data.table)
   library(parallel)
-  library(simsalapar)
+  0
 })
 clusterExport(cl, "data.complete")
 
-res <- doClusterApply(varList, cluster=cl, sfile="imputation_clusterapply.rds",
+res <- doClusterApply(varList, cluster=cl, # sfile="imputation_clusterapply.rds",
                       doOne=doOne, monitor=interactive())
 
 vals <- getArray(res)
@@ -97,19 +71,15 @@ names(dimnames(vals))[1] <- "measures"
 err <- getArray(res, "error")
 df.res <- array2df(vals)
 
-
 rv <- c("imputation.method")
 cv <- c("missing.mechanism")
 ftable(100*err, row.vars=rv, col.vars=cv)
 
-
-ggplot(na.omit(df.res), aes(missing.mechanism, value, color=imputation.method)) +
-  geom_boxplot() + facet_grid(p~measures)
-
-## mayplot(vals[, , , ,n.imputation="20",], varList,
-##         row.vars="imputation.method", col.vars="missing.mechanism", xvar="p") # uses default
-
-## TODO: Write Simulation and do plots
-## TODO: Check for more imputations packages
-## TODO: Run simulations with replicate and simulation.
+### Plots
+## ggplot(na.omit(df.res), aes(missing.mechanism, value, color=imputation.method)) +
+##   geom_boxplot() + facet_grid(p~measures)
 ## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
+
+## TODO: check how one can use extra variable as varLists
+## mayplot(vals, varList,
+##         row.vars="imputation.method", col.vars="missing.mechanism", xvar="measures") # uses default
