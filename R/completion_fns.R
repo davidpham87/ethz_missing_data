@@ -99,17 +99,16 @@ imputeDataMi <- function(dataset, n, column.type.mi=NULL){
 ##' list with function and for argument. This faciliates the simulation as
 ##' arguments will be strings.
 ##' TODO: Refactor imputeData* to accept "..." arguments
-imputeData <- function(dataset, n=5, methods=c('mice', 'mi'), args=list()){
+##' This is bad polymorphism
+imputeDataSimulation <- function(dataset, method='mice', ...){
 
+  args <- list(...)
   imputationMethods <-
     list(mice=imputeDataMice,  mi=imputeDataMi)
 
-  res <- lapply(methods, function(m){
-    impute.fn <- imputationMethods[[m]]
-    do.call(impute.fn, c(dataset, n, args[[m]]))
-  })
-
-  names(res) <- methods
+  impute.fn <- imputationMethods[[method]]
+  res <- list(do.call(impute.fn, c(list(dataset), args)))
+  names(res) <- method
   return(res)
 }
 
@@ -150,8 +149,15 @@ imputeData <- function(dataset, n=5, column.type.mi=NULL){
 ##' @return a data.frame of the same dimension of dataset with missingnes
 ##'   pattern sampled from the missing table
 ##' @author David Pham
-MARFrequency <- function(dataset, p=0.03,  missing.table){
+MARFrequency <- function(dataset, p=0.03,  missing.table=NULL, random.seed=NULL){
   if (p==0) return(dataset)
+  stopifnot(!is.null(missing.table))
+
+  random.seed <- if (!is.null(random.seed)) 1 else random.seed
+  old <- .Random.seed
+  on.exit({ .Random.seed <<- old })
+  set.seed(random.seed)
+
   mt <- missing.table
   ## missingnes matrix => columns provies pattern, value of the i^{th} row is 1
   ## if the ith column in the original dataset is missing.
@@ -172,9 +178,9 @@ MARFrequency <- function(dataset, p=0.03,  missing.table){
   missingness.matrix <- mm[, mp][, 1:(max(1, n.pattern.missing.artificial))]
 
   res <- data.frame(dataset)
-  rows.new <- sample(1:nrow(dataset), nrow(missingness.matrix))
+  rows.new <- sample(1:nrow(dataset), ncol(missingness.matrix))
   ## Could be improved with a apply
-  for (i in 1:nrow(missingness.matrix)){
+  for (i in 1:ncol(missingness.matrix)){
     idx <- rows.new[i]
     res[idx, ] <- ifelse(missingness.matrix[, i]==1, NA, dataset[idx, ])
   }
@@ -192,8 +198,15 @@ MARFrequency <- function(dataset, p=0.03,  missing.table){
 ##' @return a data.frame of the same dimension as dataset containing missing
 ##'   data with the probility given by the user.
 ##' @author David Pham
-MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset)){
+MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset), random.seed=NULL){
+
   if (p==0) return(dataset)
+
+  random.seed <- if (!is.null(random.seed)) 1 else random.seed
+  old <- .Random.seed
+  on.exit({ .Random.seed <<- old })
+  set.seed(random.seed)
+
   res <- data.frame(dataset)
   cx <- columns
   n <- length(cx)
@@ -262,17 +275,30 @@ mseImputation <- function(dfx, data.missing, data.complete){
 ##' @param ..., argument to missing.mechanism
 ##' @return a named numeric vector containing the mse of columns by the simulation type
 ##' @author David Pham
-imputationSimulation <- function(data.complete, n.sample,
-                                 missing.mechasnism=MCAR,
-                                 column.type.mi=NULL,
-                                 ...){
-  data.missing <- missing.mechasnism(data.complete, ...)
-  ldf.imp  <- imputeData(data.missing, n=n.sample,
-                         column.type.mi=column.type.mi)
+imputationSimulation <- function(data.complete,
+                                 missing.mechanism='MCAR',
+                                 imputation.method='mice',
+                                 p=0.05,
+                                 missing.mechanism.args=list(),
+                                 imputation.args=list()){
+
+  missing.mechanism.fns <- list(MCAR=MCAR, MARFrequency=MARFrequency)
+  stopifnot(missing.mechanism %in% names(missing.mechanism.fns))
+  missing.mechanism.fn <- missing.mechanism.fns[[missing.mechanism]]
+
+  data.missing <-
+    do.call(missing.mechanism.fn,
+            c(list(dataset=data.complete, p=p), missing.mechanism.args))
+
+  ldf.imp  <-
+    do.call(imputeDataSimulation,
+            c(list(dataset=data.missing, method=imputation.method),
+                   imputation.args))
   imp.diff <-
     lapply(ldf.imp,
            function(dfx) mseImputation(dfx, data.missing, data.complete))
-  ul(imp.diff) # flatten for simsalapar
+  imp.diff[[1]]
+  ## ul() # flatten for simsalapar
 }
 
 ##' Taking from a simulation vector
