@@ -132,6 +132,15 @@ paper, Hastie et al. (1999).
 - MCAR as well.
 - Next meeting 2015-11-23 at 11am.
 
+## Note from 2015-11-30
+
+- MAR fashion set the percentage of missingness by counting the number of NA
+  data.
+- Use $(\hat x_{ij} - x_{ij})/x_{\dot j}$ to compute the MSE and the 0-1 loss
+  for category.
+- SoftImpute, impute and try to set tuning for mi, Amelia.
+- 20 imputes and pool for imputations methods.
+
 # Bibliography
 
 [//]: Definitions of References --- all this is **not** visible on final doc!

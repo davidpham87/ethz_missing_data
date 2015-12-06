@@ -121,20 +121,39 @@ imputeData <- function(dataset, n=5, column.type.mi=NULL){
 ##' complete data with the sampled missingnes patterns.
 ##' @title MAR Sample through missingnes frequency
 ##' @param dataset, the data.frame to simulate the missingnes
+##' @param p, the probability that one single observation is missing
 ##' @param missing.table, a vector containing the frequency of
 ##'   missingness. Result of na.pattern from Hmisc::na.pattern
 ##' @return a data.frame of the same dimension of dataset with missingnes
 ##'   pattern sampled from the missing table
 ##' @author David Pham
-MARFrequency <- function(dataset, missing.table){
+MARFrequency <- function(dataset, p=0.03,  missing.table){
+  if (p==0) return(dataset)
   mt <- missing.table
-  ## missingnes matrix
+  ## missingnes matrix => columns provies pattern, value of the i^{th} row is 1
+  ## if the ith column in the original dataset is missing.
   mm <- sapply(names(mt), function(s) as.numeric(strsplit(s, split='')[[1]]))
+  cols.keep <- which(apply(mm, 2, function(x) any(as.logical(x)))) # exclude complete case
+  mt <- mt[cols.keep]
+  mm <- mm[, cols.keep]
+
+  n.missing.max <- floor(p*prod(dim(dataset))) + 1
+  ## retry concept because it is possible that the sample does not provide
+  ## enough missing data
+
   ## select missingnes pattern
   mp <- sample(1:ncol(mm), nrow(dataset), replace=TRUE, prob=mt)
+  missing.cumulative <- cumsum(colSums(mm[, mp]))
+  n.pattern.missing.artificial <-
+    length(Filter(function(x) x <= n.missing.max, missing.cumulative)) + 1
+  missingness.matrix <- mm[, mp][, 1:(max(1, n.pattern.missing.artificial))]
+
   res <- data.frame(dataset)
-  for (i in 1:nrow(dataset)){
-    res[i, ] <- ifelse(mm[, mp[i]]==1, NA, dataset[i,])
+  rows.new <- sample(1:nrow(dataset), nrow(missingness.matrix))
+  ## Could be improved with a apply
+  for (i in 1:nrow(missingness.matrix)){
+    idx <- rows.new[i]
+    res[idx, ] <- ifelse(missingness.matrix[, i]==1, NA, dataset[idx, ])
   }
   res
 }
@@ -151,6 +170,7 @@ MARFrequency <- function(dataset, missing.table){
 ##'   data with the probility given by the user.
 ##' @author David Pham
 MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset)){
+  if (p==0) return dataset
   res <- data.frame(dataset)
   cx <- columns
   n <- length(cx)
