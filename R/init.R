@@ -1,6 +1,6 @@
 pckgs <- c('mi', 'mice', 'Amelia', # most modern multiple imput packages
            "norm", "cat", "mix", "pan", # the last four are from Schafer
-           "VIM", "softImpute")
+           "VIM", "softImpute", "simsalapar")
 install.packages(pckgs)
 
 pckgs.bio <- c("impute")

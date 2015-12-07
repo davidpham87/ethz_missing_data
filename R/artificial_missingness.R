@@ -63,7 +63,7 @@ clusterEvalQ(cl, {
   loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
   0
 })
-res <- doClusterApply(varList, cluster=cl, sfile="imputation_clusterapply.rds",
+res <- doClusterApply(varList, cluster=cl, sfile="imputation_clusterapply_2.rds",
                       doOne=doOne, monitor=interactive())
 
 vals <- getArray(res)
@@ -76,12 +76,13 @@ cv <- c("missing.mechanism")
 ftable(100*err, row.vars=rv, col.vars=cv)
 
 ### Plots
-gg <- ggplot(na.omit(df.res), aes(missing.mechanism, value, color=imputation.method)) +
-  geom_boxplot() + facet_grid(p~measures) + coord_cartesian(ylim = c(0, 1)) +
+df.plot <- na.omit(subset(df.res, imputation.method!="softImpute"))
+gg <- ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
+  geom_boxplot() + facet_grid(measures~p, scales="free_y") +
   scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
   ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
 
-pdf("test_plot.pdf", height=6.5, width=18)
+pdf("test_plot.pdf", height=12, width=10)
 print(gg)
 dev.off()
 ## library('tikzDevice')
