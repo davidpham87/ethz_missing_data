@@ -30,7 +30,7 @@ varList <- varListTest()
 ## pGrid <- mkGrid(varList)
 
 ## Have to redefine the impuationSimulation function the varList can only take
-## grides
+## grids
 doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.imputation,
                   imputation.args, missing.args, missing.random.seed){
 
@@ -55,21 +55,16 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 
 # sfile="imputation_lapply.rds"
 ## res <- doLapply(varList, doOne=doOne, monitor=interactive())
-res <- doMclapply(varList, doOne=doOne, monitor=interactive())
-## cl <- makeCluster(4, type="PSOCK")
-## clusterEvalQ(cl, {
-##   source('completion_fns.R')
-##   library(mice)
-##   library(mi)
-##   library(Amelia)
-##   library(softImpute)
-##   library(Hmisc)  #package for na.pattern() and impute()
-##   library(parallel)
-##   0
-## })
-## clusterExport(cl, "data.complete")
-## res <- doClusterApply(varList, cluster=cl, # sfile="imputation_clusterapply.rds",
-##                       doOne=doOne, monitor=interactive())
+
+cl <- makeCluster(4, type="PSOCK")
+clusterExport(cl, "pckgs")
+clusterEvalQ(cl, {
+  source('completion_fns.R')
+  loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
+  0
+})
+res <- doClusterApply(varList, cluster=cl, sfile="imputation_clusterapply.rds",
+                      doOne=doOne, monitor=interactive())
 
 vals <- getArray(res)
 names(dimnames(vals))[1] <- "measures"
@@ -81,8 +76,20 @@ cv <- c("missing.mechanism")
 ftable(100*err, row.vars=rv, col.vars=cv)
 
 ### Plots
-ggplot(na.omit(df.res), aes(missing.mechanism, value, color=imputation.method)) +
-  geom_boxplot() + facet_grid(~measures)
+gg <- ggplot(na.omit(df.res), aes(missing.mechanism, value, color=imputation.method)) +
+  geom_boxplot() + facet_wrap(~measures) + coord_cartesian(ylim = c(0, 1)) +
+  scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
+  ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
+
+pdf("test_plot.pdf", height=6.5, width=9)
+print(gg)
+dev.off()
+## library('tikzDevice')
+## options(tikzDefaultEngine = 'pdftex')
+## tikz('test_plot.tex', height=6.5, width=9)
+## print(gg)
+## dev.off()
+
 ## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
 
 ## TODO: check how one can use extra variable as varLists

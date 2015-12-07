@@ -266,7 +266,6 @@ MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset), random.seed=NULL){
   old <- .Random.seed
   on.exit({ .Random.seed <<- old })
   set.seed(random.seed)
-  print(random.seed)
 
   res <- data.frame(dataset)
   cx <- columns

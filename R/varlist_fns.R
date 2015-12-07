@@ -12,14 +12,14 @@ varListTest <- function() {
 
       ## replications variable, useful because it also set the seeds for the
       ## missing.mechanism
-      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed), value=1:10),
+      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed), value=1:5),
 
       ## Missingness mechanism
       missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
 
       ## imputation names
       imputation.method=list(type="grid", expr = quote(Imputation~method),
-                             value = c("softImpute", "impute.knn", "mice")),
+                             value = c("softImpute", "impute.knn", "mice", "amelia", "mi")),
 
       ## Probability of missingness # Test only value
       p=list(type="frozen", value=c(0.15)),
@@ -58,7 +58,7 @@ varListProd <- function() {
 
       ## replications variable, useful because it also set the seeds for the
       ## missing.mechanism
-      missing.random.seed=list(type="frozen", expr=quote(Missingness~random~seed), value=1:5),
+      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed), value=1:5),
 
       ## Missingness mechanism
       missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
@@ -68,7 +68,7 @@ varListProd <- function() {
                              value = c("amelia", "mice",  "mi", "softImpute", "impute.knn")),
 
       ## Probability of missingness # Test only value
-      p=list(type="grid", value=c(0.05, 0.15)),
+      p=list(type="grid", value=c(0.15, 0.25)),
 
       ## Number of imputation
       n.imputation=list(type="grid", expr=quote(Number~of~imputation),
