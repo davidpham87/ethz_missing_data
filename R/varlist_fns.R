@@ -1,8 +1,8 @@
 ### Simple config files for testing for the varList in simulation Avoid to copy
 ### paste the type of variable when testing with small number of arguments.
 
-### Caution: one should define previously the mt variable (missing table,
-### typically na.pattern from Hmisc).
+### Caution: one should define previously the data.complete and the mt variable
+### (missing table, typically na.pattern from Hmisc).
 
 varListTest <- function() {
   varList <- # *User provided* list of variables
@@ -10,12 +10,16 @@ varListTest <- function() {
       ## replications
       n.sim=list(type="N", expr=quote(N[sim]), value = 1),
 
+      ## replications variable, useful because it also set the seeds for the
+      ## missing.mechanism
+      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed), value=1:10),
+
       ## Missingness mechanism
       missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
 
       ## imputation names
       imputation.method=list(type="grid", expr = quote(Imputation~method),
-                             value = c("softImpute", "mice")),
+                             value = c("softImpute", "impute.knn", "mice")),
 
       ## Probability of missingness # Test only value
       p=list(type="frozen", value=c(0.15)),
@@ -31,12 +35,17 @@ varListTest <- function() {
                         "mi"=list(column.type.mi=list(grade_complete="ordered-categorical")),
                         "amelia"=list(noms=c("lang", "age", "priC", "sex"),
                                       ords="grade_complete"),
-                        "softImpute"=list())),
+                        "softImpute"=list(),
+                        "impute.knn"=list())),
 
       ## additional arguments for the missing mechanism functions
       missing.args=list(type="frozen",
-                        value=list("MCAR"=list(random.seed=1),
-                                   "MARFrequency"=list(random.seed=1, missing.table=mt))))
+                        value=list("MCAR"=list(),
+                                   "MARFrequency"=list(missing.table=mt))),
+
+      ## the complete dataset
+      data.complete=list(type="frozen", expr=quote(Complete~dataset),
+                         value=data.complete))
   varList
 }
 
@@ -47,12 +56,16 @@ varListProd <- function() {
       ## replications
       n.sim=list(type="N", expr=quote(N[sim]), value = 1),
 
+      ## replications variable, useful because it also set the seeds for the
+      ## missing.mechanism
+      missing.random.seed=list(type="frozen", expr=quote(Missingness~random~seed), value=1:5),
+
       ## Missingness mechanism
       missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
 
       ## imputation names
       imputation.method=list(type="grid", expr = quote(Imputation~method),
-                             value = c("amelia", "mice",  "mi")),
+                             value = c("amelia", "mice",  "mi", "softImpute", "impute.knn")),
 
       ## Probability of missingness # Test only value
       p=list(type="grid", value=c(0.05, 0.15)),
@@ -67,11 +80,16 @@ varListProd <- function() {
              value=list("mice"=list(),
                         "mi"=list(column.type.mi=list(grade_complete="ordered-categorical")),
                         "amelia"=list(noms=c("lang", "age", "priC", "sex"),
-                                      ords="grade_complete"))),
+                                      ords="grade_complete"),
+                        "softImpute"=list(),
+                        "impute.knn"=list())),
 
       ## additional arguments for the missing mechanism functions
       missing.args=list(type="frozen",
-                        value=list("MCAR"=list(random.seed=1),
-                                   "MARFrequency"=list(random.seed=1, missing.table=mt))))
+                        value=list("MCAR"=list(),
+                                   "MARFrequency"=list(missing.table=mt))),
+      ## the complete dataset
+      data.complete=list(type="frozen", expr=quote(Complete~dataset),
+                         value=data.complete))
   varList
 }

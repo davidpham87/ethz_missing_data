@@ -9,7 +9,7 @@ options(mc.cores=4)
 set.seed(1)
 FLAS <- readRDS('../data/FLAS_clean.rds')
 FLAS_COMPLETE <- readRDS('../data/FLAS_complete_average.rds')
-na.pattern(FLAS)
+# na.pattern(FLAS)
 
 dataset <- FLAS_COMPLETE
 mt <- na.pattern(FLAS)
@@ -24,43 +24,52 @@ n <- 5
 ## Follow simsalapar
 source("varlist_fns.R")
 varList <- varListTest()
+
 # varList <- varListProd()
 ## toLatex(varList)
 ## pGrid <- mkGrid(varList)
 
 ## Have to redefine the impuationSimulation function the varList can only take
 ## grides
-doOne <- function(missing.mechanism, imputation.method, p, n.imputation,
-                  imputation.args, missing.args){
-  miss.args <- missing.args[[missing.mechanism]]
-  imp.args <- c(list(n=n.imputation), imputation.args[[imputation.method]])
-  res <- imputationSimulation(data.complete,
-                              missing.mechanism,
-                              imputation.method,
-                              p,
-                              miss.args,
-                              imp.args)
-  res
+doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.imputation,
+                  imputation.args, missing.args, missing.random.seed){
+
+  miss.args <-
+    c(list(random.seed=missing.random.seed), missing.args[[missing.mechanism]])
+
+  ## arguments for the imputeDataFns
+  n.imputation.args <-
+    ifelse(!missing.mechanism %in% c('softImpute', 'impute.knn'),
+           list(n=n.imputation),
+           list())
+
+  if (is.null(imputation.args[[imputation.method]])) {
+    imp.args <- n.imputation.args
+  } else {
+    imp.args <- c(n.imputation.args, imputation.args[[imputation.method]])
+  }
+
+  imputationSimulation(as.data.frame(data.complete), missing.mechanism, imputation.method,
+                       p, miss.args, imp.args)
 }
 
 # sfile="imputation_lapply.rds"
 ## res <- doLapply(varList, doOne=doOne, monitor=interactive())
-
-cl <- makeCluster(4, type="PSOCK")
-clusterEvalQ(cl, {
-  source('completion_fns.R')
-  library(mice)
-  library(mi)
-  library(Amelia)
-  library(softImpute)
-  library(Hmisc)  #package for na.pattern() and impute()
-  library(parallel)
-  0
-})
-clusterExport(cl, "data.complete")
-
-res <- doClusterApply(varList, cluster=cl, # sfile="imputation_clusterapply.rds",
-                      doOne=doOne, monitor=interactive())
+res <- doMclapply(varList, doOne=doOne, monitor=interactive())
+## cl <- makeCluster(4, type="PSOCK")
+## clusterEvalQ(cl, {
+##   source('completion_fns.R')
+##   library(mice)
+##   library(mi)
+##   library(Amelia)
+##   library(softImpute)
+##   library(Hmisc)  #package for na.pattern() and impute()
+##   library(parallel)
+##   0
+## })
+## clusterExport(cl, "data.complete")
+## res <- doClusterApply(varList, cluster=cl, # sfile="imputation_clusterapply.rds",
+##                       doOne=doOne, monitor=interactive())
 
 vals <- getArray(res)
 names(dimnames(vals))[1] <- "measures"
@@ -72,8 +81,8 @@ cv <- c("missing.mechanism")
 ftable(100*err, row.vars=rv, col.vars=cv)
 
 ### Plots
-## ggplot(na.omit(df.res), aes(missing.mechanism, value, color=imputation.method)) +
-##   geom_boxplot() + facet_grid(p~measures)
+ggplot(na.omit(df.res), aes(missing.mechanism, value, color=imputation.method)) +
+  geom_boxplot() + facet_grid(~measures)
 ## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
 
 ## TODO: check how one can use extra variable as varLists
