@@ -117,12 +117,11 @@ imputeDataAmelia <- function(dataset, n, ...){
 ##' Extract the numerical value of a dataset and complete them with softImpute
 ##' @title SoftImpute and Impute knn
 ##' @param dataset, an incomplete dataset
-##' @param n, simple place holder, for not breaking previous code
 ##' @param ..., argument for sotfImpute
 ##' @return a list with n times the same elements which is the completed
 ##'   data.frame (only numerical variable)
 ##' @author David Pham
-imputeDataSoftImpute <- function(dataset, n=5, ...){
+imputeDataSoftImpute <- function(dataset, ...){
 
   args <- list(...)
 
@@ -134,11 +133,11 @@ imputeDataSoftImpute <- function(dataset, n=5, ...){
   fit <- do.call(softImpute::softImpute, c(list(x), args))
   dataset[, to.keep] <- softImpute::complete(x, fit)
 
-  lapply(1:2, function(i) dataset)
+  list(dataset, dataset) # return a list with two copy for the "averaging"
 }
 
 
-imputeDataImpute <- function(dataset, n=NULL, ...){
+imputeDataImputeKnn <- function(dataset, ...){
   args <- list(...)
 
   to.keep <- sapply(1:ncol(dataset), function(jdx)
@@ -148,7 +147,7 @@ imputeDataImpute <- function(dataset, n=NULL, ...){
   x <- as.matrix(data.numerical)
   fit <- do.call(impute::impute.knn, c(list(x), args))
   dataset[, to.keep] <- fit$data
-  list(dataset, dataset)
+  list(dataset, dataset) # return a list with two copy for the "averaging"
 }
 
 
@@ -164,7 +163,8 @@ imputeDataSimulation <- function(dataset, method='mice', ...){
 
   imputationMethods <-
     list(mice=imputeDataMice,  mi=imputeDataMi, amelia=imputeDataAmelia,
-         softImpute=imputeDataSoftImpute)
+         softImpute=imputeDataSoftImpute,
+         impute.knn=imputeDataImputeKnn)
 
   impute.fn <- imputationMethods[[method]]
   res <- list(do.call(impute.fn, c(list(dataset), args)))
@@ -213,7 +213,7 @@ MARFrequency <- function(dataset, p=0.03,  missing.table=NULL, random.seed=NULL)
   if (p==0) return(dataset)
   stopifnot(!is.null(missing.table))
 
-  random.seed <- if (!is.null(random.seed)) 1 else random.seed
+  random.seed <- if (is.null(random.seed)) 1 else random.seed
   old <- .Random.seed
   on.exit({ .Random.seed <<- old })
   set.seed(random.seed)
@@ -262,10 +262,11 @@ MCAR <- function(dataset, p=0.03, columns=1:ncol(dataset), random.seed=NULL){
 
   if (p==0) return(dataset)
 
-  random.seed <- if (!is.null(random.seed)) 1 else random.seed
+  random.seed <- if (is.null(random.seed)) 1 else random.seed
   old <- .Random.seed
   on.exit({ .Random.seed <<- old })
   set.seed(random.seed)
+  print(random.seed)
 
   res <- data.frame(dataset)
   cx <- columns
@@ -359,7 +360,6 @@ imputationSimulation <- function(data.complete,
            function(dfx) mseImputation(dfx, data.missing, data.complete))
 
   imp.diff[[1]]
-  ## ul() # flatten for simsalapar
 }
 
 ##' Taking from a simulation vector
