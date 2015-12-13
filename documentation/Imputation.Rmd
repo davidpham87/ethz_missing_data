@@ -141,6 +141,13 @@ paper, Hastie et al. (1999).
 - SoftImpute, impute and try to set tuning for mi, Amelia.
 - 20 imputes and pool for imputations methods.
 
+## Notes from 2015-12-07
+
+- Round factors using the cut functions for continuous methods.
+- Show more on the probability.
+- Compare softimpute.
+- increase *n* if possible.
+
 # Bibliography
 
 [//]: Definitions of References --- all this is **not** visible on final doc!

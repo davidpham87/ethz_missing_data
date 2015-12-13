@@ -124,30 +124,45 @@ imputeDataAmelia <- function(dataset, n, ...){
 imputeDataSoftImpute <- function(dataset, ...){
 
   args <- list(...)
+  ## boolean vectors stating factors columns
+  fctrs <- sapply(1:ncol(dataset), function(jdx)
+    any(c("factor", "string") %in% class(dataset[1, jdx])))
+  lvls <- lapply(dataset[, fctrs], levels)
 
-  to.keep <- sapply(1:ncol(dataset), function(jdx)
-    !any(c("factor", "string") %in% class(dataset[1, jdx])))
-
-  data.numerical <- dataset[, to.keep]
-  x <- as.matrix(data.numerical)
+  dataset[, fctrs] <- lapply(dataset[, fctrs], as.numeric)
+  x <- as.matrix(dataset)
   fit <- do.call(softImpute::softImpute, c(list(x), args))
-  dataset[, to.keep] <- softImpute::complete(x, fit)
+  dataset <- as.data.frame(softImpute::complete(x, fit))
 
-  list(dataset, dataset) # return a list with two copy for the "averaging"
+  ## Correct the factors
+  f <- function(s) {
+    cut(round(dataset[, s]), c(0, seq_along(lvls[[s]])),
+        labels=lvls[[s]], include.lowest=TRUE)
+  }
+  dataset[, fctrs] <- lapply(names(lvls), f)
+  list(dataset, dataset)
 }
 
 
 imputeDataImputeKnn <- function(dataset, ...){
+
   args <- list(...)
+  ## boolean vectors stating factors columns
+  fctrs <- sapply(1:ncol(dataset), function(jdx)
+    any(c("factor", "string") %in% class(dataset[1, jdx])))
+  lvls <- lapply(dataset[, fctrs], levels)
 
-  to.keep <- sapply(1:ncol(dataset), function(jdx)
-    !any(c("factor", "string") %in% class(dataset[1, jdx])))
+  dataset[, fctrs] <- lapply(dataset[, fctrs], as.numeric)
+  fit <- do.call(impute::impute.knn, c(list(as.matrix(dataset)), args))
+  dataset <- as.data.frame(fit$data)
 
-  data.numerical <- dataset[, to.keep]
-  x <- as.matrix(data.numerical)
-  fit <- do.call(impute::impute.knn, c(list(x), args))
-  dataset[, to.keep] <- fit$data
-  list(dataset, dataset) # return a list with two copy for the "averaging"
+  ## Correct the factors
+  f <- function(s) {
+    cut(round(dataset[, s]), c(0, seq_along(lvls[[s]])),
+        labels=lvls[[s]], include.lowest=TRUE)
+  }
+  dataset[, fctrs] <- lapply(names(lvls), f)
+  list(dataset, dataset)
 }
 
 

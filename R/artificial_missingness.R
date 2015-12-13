@@ -23,7 +23,8 @@ n <- 5
 
 ## Follow simsalapar
 source("varlist_fns.R")
-varList <- varListProd()
+# varList <- varListProd()
+varList <- varListTest()
 
 # varList <- varListProd()
 ## toLatex(varList)
@@ -63,7 +64,9 @@ clusterEvalQ(cl, {
   loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
   0
 })
-res <- doClusterApply(varList, cluster=cl, sfile="imputation_clusterapply_2.rds",
+
+res <- doClusterApply(varList, cluster=cl,
+                      sfile="../simulation_rds/imputation_clusterapply.rds",
                       doOne=doOne, monitor=interactive())
 
 vals <- getArray(res)
@@ -76,13 +79,13 @@ cv <- c("missing.mechanism")
 ftable(100*err, row.vars=rv, col.vars=cv)
 
 ### Plots
-df.plot <- na.omit(subset(df.res, imputation.method!="softImpute"))
+df.plot <- na.omit(df.res) # subset(df.res, imputation.method!="softImpute"))
 gg <- ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
-  geom_boxplot() + facet_grid(measures~p, scales="free_y") +
+  geom_boxplot() + facet_grid(measures~p., scales="free_y") +
   scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
   ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
 
-pdf("test_plot.pdf", height=12, width=10)
+pdf("../plot/test_plot.pdf", height=12, width=10)
 print(gg)
 dev.off()
 ## library('tikzDevice')

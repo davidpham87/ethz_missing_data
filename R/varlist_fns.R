@@ -19,7 +19,7 @@ varListTest <- function() {
 
       ## imputation names
       imputation.method=list(type="grid", expr = quote(Imputation~method),
-                             value = c("softImpute", "impute.knn", "mice", "amelia", "mi")),
+                             value = c("softImpute", "impute.knn", "mice", "amelia")),
 
       ## Probability of missingness # Test only value
       p=list(type="frozen", value=c(0.15)),
