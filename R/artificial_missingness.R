@@ -22,8 +22,7 @@ n <- 5
 
 ## Follow simsalapar
 source("varlist_fns.R")
-# varList <- varListProd()
-varList <- varListTest()
+varList <- varListProd()
 
 # varList <- varListProd()
 ## toLatex(varList)
