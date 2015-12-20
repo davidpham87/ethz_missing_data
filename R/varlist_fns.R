@@ -51,9 +51,9 @@ varListTest <- function() {
 
 
 varListProd <- function(imputation.methods=c("amelia", "mice", "mi",
-  "softImpute", "impute.knn")) { 
+  "softImpute", "impute.knn")) {
 
-  varList <- # *User provided* list of variables 
+  varList <- # *User provided* list of variables
     varlist( # constructor for an object of class 'varlist'
       ## replications
       n.sim=list(type="N", expr=quote(N[sim]), value = 1),

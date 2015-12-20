@@ -38,13 +38,13 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 res <- doLapply(varList,
                       sfile="../simulation_rds/imputation_clusterapply.rds",
                       doOne=doOne, monitor=interactive())
+
 vals <- getArray(res)
 names(dimnames(vals))[1] <- "measures"
 err <- getArray(res, "error")
 df.res <- array2df(vals)
 dt.res <- as.data.table(df.res)
 setkeyv(dt.res, c('p'))
-
 
 dt.err <- as.data.table(array2df(err))
 dt.err[value==TRUE][missing.mechanism=="MCAR"]

@@ -22,10 +22,9 @@ n <- 5
 
 ## Follow simsalapar
 source("varlist_fns.R")
-# imputation.methods <- c("softImpute", "impute.knn")
-imputation.methods <- c("mice", "softImpute")
+imputation.methods <- c("softImpute", "impute.knn")
+# imputation.methods <- c("mice", "softImpute")
 varList <- varListProd(imputation.methods)
-
 
 # varList <- varListProd()
 ## toLatex(varList)
@@ -66,7 +65,7 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 # sfile="imputation_lapply.rds"
 ## res <- doLapply(varList, doOne=doOne, monitor=interactive())
 
-cl <- makeCluster(12, type="PSOCK")
+cl <- makeCluster(4, type="PSOCK")
 clusterExport(cl, "pckgs")
 clusterEvalQ(cl, {
   source('completion_fns.R')
@@ -75,7 +74,7 @@ clusterEvalQ(cl, {
 })
 
 sfile.path <- paste0("../simulation_rds/imputation_mc_",
-                     "2015120_2102_",
+                     "2015120_2202_",
                      paste0(imputation.methods, collapse='_'))
 
 res <- doClusterApply(varList, cl,
