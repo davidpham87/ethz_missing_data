@@ -140,7 +140,7 @@ imputeDataSoftImpute <- function(dataset, ...){
         labels=lvls[[s]], include.lowest=TRUE)
   }
   dataset[, fctrs] <- lapply(names(lvls), f)
-  list(dataset, dataset)
+  list(dataset)
 }
 
 
@@ -162,7 +162,7 @@ imputeDataImputeKnn <- function(dataset, ...){
         labels=lvls[[s]], include.lowest=TRUE)
   }
   dataset[, fctrs] <- lapply(names(lvls), f)
-  list(dataset, dataset)
+  list(dataset)
 }
 
 
@@ -313,7 +313,7 @@ mseImputationColumn <- function(dfx, idx, na.idx, dataset.complete){
 
   df <- as.data.frame(lapply(dfx, '[', idx))
   df <- df[na.idx, ] # keep imputed values only # na.idx <- cols.na[[idx]]
-  nc <- ncol(df)
+  nc <- if(is.null(ncol(df))) 1 else ncol(df)
 
   values.true <- dataset.complete[na.idx, idx] # keep only missing value
 

@@ -20,7 +20,6 @@ data.complete <- FLAS_COMPLETE[, -12] # Avoid problem of convergence with mi
 mt <- na.pattern(FLAS[, -12])
 n <- 5
 
-
 ## Follow simsalapar
 source("varlist_fns.R")
 # varList <- varListProd()
@@ -65,8 +64,9 @@ clusterEvalQ(cl, {
   0
 })
 
+
 res <- doClusterApply(varList, cluster=cl,
-                      sfile="../simulation_rds/imputation_clusterapply.rds",
+                      sfile="../simulation_rds/imputation_clusterapply_test_2.rds",
                       doOne=doOne, monitor=interactive())
 
 vals <- getArray(res)
@@ -80,20 +80,22 @@ ftable(100*err, row.vars=rv, col.vars=cv)
 
 ### Plots
 df.plot <- na.omit(df.res) # subset(df.res, imputation.method!="softImpute"))
-gg <- ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
-  geom_boxplot() + facet_grid(measures~p., scales="free_y") +
+gg <- # ggplot(df.plot, aes(imputation.method, value)) +
+  ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
+  geom_boxplot() + facet_grid(measures~p, scales="free_y") +
   scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
   ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
 
 pdf("../plot/test_plot.pdf", height=12, width=10)
 print(gg)
 dev.off()
+
 ## library('tikzDevice')
 ## options(tikzDefaultEngine = 'pdftex')
 ## tikz('test_plot.tex', height=6.5, width=9)
 ## print(gg)
 ## dev.off()
-
+g
 ## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
 
 ## TODO: check how one can use extra variable as varLists
