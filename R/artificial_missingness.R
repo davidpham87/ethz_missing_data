@@ -4,7 +4,7 @@ loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
 
 
 source('completion_fns.R')
-options(mc.cores=4)
+options(mc.cores=1)
 
 set.seed(1)
 FLAS <- readRDS('../data/FLAS_clean.rds')
@@ -22,7 +22,10 @@ n <- 5
 
 ## Follow simsalapar
 source("varlist_fns.R")
-varList <- varListProd()
+# imputation.methods <- c("softImpute", "impute.knn")
+imputation.methods <- c("mice", "softImpute")
+varList <- varListProd(imputation.methods)
+
 
 # varList <- varListProd()
 ## toLatex(varList)
@@ -32,6 +35,14 @@ varList <- varListProd()
 ## grids
 doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.imputation,
                   imputation.args, missing.args, missing.random.seed){
+
+  # Stopping mechanism from MARFrequency
+  if (missing.mechanism == 'MARFrequency' & p > 0.3){
+    measures <- colnames(data.complete)
+    res <- rep(-1, length(measures))
+    names(res) <- measures
+    return(res)
+  }
 
   miss.args <-
     c(list(random.seed=missing.random.seed), missing.args[[missing.mechanism]])
@@ -55,7 +66,7 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 # sfile="imputation_lapply.rds"
 ## res <- doLapply(varList, doOne=doOne, monitor=interactive())
 
-cl <- makeCluster(4, type="PSOCK")
+cl <- makeCluster(12, type="PSOCK")
 clusterExport(cl, "pckgs")
 clusterEvalQ(cl, {
   source('completion_fns.R')
@@ -63,38 +74,41 @@ clusterEvalQ(cl, {
   0
 })
 
+sfile.path <- paste0("../simulation_rds/imputation_mc_",
+                     "2015120_2102_",
+                     paste0(imputation.methods, collapse='_'))
 
-res <- doClusterApply(varList, cluster=cl,
-                      sfile="../simulation_rds/imputation_clusterapply_test_2.rds",
-                      doOne=doOne, monitor=interactive())
+res <- doClusterApply(varList, cl,
+                      sfile=sfile.path,
+                      doOne=doOne)
 
-vals <- getArray(res)
-names(dimnames(vals))[1] <- "measures"
-err <- getArray(res, "error")
-df.res <- array2df(vals)
+## vals <- getArray(res)
+## names(dimnames(vals))[1] <- "measures"
+## err <- getArray(res, "error")
+## df.res <- array2df(vals)
 
-rv <- c("imputation.method")
-cv <- c("missing.mechanism")
-ftable(100*err, row.vars=rv, col.vars=cv)
+## rv <- c("imputation.method")
+## cv <- c("missing.mechanism")
+## ftable(100*err, row.vars=rv, col.vars=cv)
 
 ### Plots
-df.plot <- na.omit(df.res) # subset(df.res, imputation.method!="softImpute"))
-gg <- # ggplot(df.plot, aes(imputation.method, value)) +
-  ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
-  geom_boxplot() + facet_grid(measures~p, scales="free_y") +
-  scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
-  ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
+## df.plot <- na.omit(df.res) # subset(df.res, imputation.method!="softImpute"))
+## gg <- # ggplot(df.plot, aes(imputation.method, value)) +
+##   ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
+##   geom_boxplot() + facet_grid(measures~p, scales="free_y") +
+##   scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
+##   ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
 
-pdf("../plot/test_plot.pdf", height=12, width=10)
-print(gg)
-dev.off()
+## pdf("../plot/test_plot.pdf", height=12, width=10)
+## print(gg)
+## dev.off()
 
 ## library('tikzDevice')
 ## options(tikzDefaultEngine = 'pdftex')
 ## tikz('test_plot.tex', height=6.5, width=9)
 ## print(gg)
 ## dev.off()
-g
+
 ## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
 
 ## TODO: check how one can use extra variable as varLists

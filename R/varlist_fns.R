@@ -50,8 +50,10 @@ varListTest <- function() {
 }
 
 
-varListProd <- function() {
-  varList <- # *User provided* list of variables
+varListProd <- function(imputation.methods=c("amelia", "mice", "mi",
+  "softImpute", "impute.knn")) { 
+
+  varList <- # *User provided* list of variables 
     varlist( # constructor for an object of class 'varlist'
       ## replications
       n.sim=list(type="N", expr=quote(N[sim]), value = 1),
@@ -65,7 +67,7 @@ varListProd <- function() {
 
       ## imputation names
       imputation.method=list(type="grid", expr = quote(Imputation~method),
-                             value = c("amelia", "mice",  "mi", "softImpute", "impute.knn")),
+                             value = imputation.methods),
 
       ## Probability of missingness # Test only value
       p=list(type="grid", value=seq(5, 85, by=5)/100),
