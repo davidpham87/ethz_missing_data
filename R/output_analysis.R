@@ -4,6 +4,7 @@ loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
 
 
 source('completion_fns.R')
+source("varlist_fns.R")
 options(mc.cores=1)
 
 set.seed(1)
@@ -11,54 +12,16 @@ FLAS <- readRDS('../data/FLAS_clean.rds')
 FLAS_COMPLETE <- readRDS('../data/FLAS_complete_average.rds')
 # na.pattern(FLAS)
 
-dataset <- FLAS_COMPLETE
-mt <- na.pattern(FLAS)
-column.type.mi <- list(grade_complete="ordered-categorical")
-
 ## MCAR simulation data
 data.complete <- FLAS_COMPLETE[, -12] # Avoid problem of convergence with mi
 mt <- na.pattern(FLAS[, -12])
 n <- 5
 
 ## Follow simsalapar
-source("varlist_fns.R")
-imputation.methods <- c("softImpute", "impute.knn")
-varList <- varListProd(imputation.methods)
-
-doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.imputation,
-                  imputation.args, missing.args, missing.random.seed){
-
-  # Stopping mechanism from MARFrequency
-  if (missing.mechanism == 'MARFrequency' & p > 0.3){
-    measures <- colnames(data.complete)
-    res <- rep(-1, length(measures))
-    names(res) <- measures
-    return(res)
-  }
-
-  miss.args <-
-    c(list(random.seed=missing.random.seed), missing.args[[missing.mechanism]])
-
-  ## arguments for the imputeDataFns
-  n.imputation.args <-
-    ifelse(!missing.mechanism %in% c('softImpute', 'impute.knn'),
-           list(n=n.imputation),
-           list())
-
-  if (is.null(imputation.args[[imputation.method]])) {
-    imp.args <- n.imputation.args
-  } else {
-    imp.args <- c(n.imputation.args, imputation.args[[imputation.method]])
-  }
-
-  imputationSimulation(as.data.frame(data.complete), missing.mechanism, imputation.method,
-                       p, miss.args, imp.args)
-}
-
 
 getDataSimulation <- function(imputation.methods){
   ## varList <- varListProd(imputation.methods)
-  sfile.path <- paste0("../simulation_rds/imputation_mc_",
+  sfile.path <- paste0("../simulation_rds/imputation_",
                        "2015120_2202_",
                        paste0(imputation.methods, collapse='_'),
                        ".rds")
@@ -66,7 +29,7 @@ getDataSimulation <- function(imputation.methods){
   res
 }
 
-m <- list(c("softImpute", "impute.knn"), c("mice", "softImpute"))
+m <- list(c("softImpute", "impute.knn"), c("mi", "mice"))
 res <- lapply(m, getDataSimulation)
 
 vals <- getArray(res)
@@ -79,8 +42,7 @@ setkeyv(dt.res, c('p'))
 dt.err <- as.data.table(array2df(err))
 dt.err[value==TRUE][missing.mechanism=="MCAR"]
 
-si <- res[[1]]
-
+si <- res[[1]]n
 
 # Because of MARFrequency one has to filter for positive mse
 isValidSimulation <- function(l){
@@ -96,5 +58,41 @@ getArrayElement <- function(l, s){
   a <- getArray(l, s)
   dt <- as.data.table(array2df(a))
   dt[!(missing.mechanism == 'MARFrequency' &
-           as.numeric(levels(p)[p]) > 0.3)][, sum(value), by="missing.mechanism,imputation.method,p"]
+           as.numeric(levels(p)[p]) > 0.3)]
+  # [, sum(value), by="missing.mechanism,imputation.method,p"]
 }
+
+
+
+## vals <- getArray(res)
+## names(dimnames(vals))[1] <- "measures"
+err <- lapply(res, getArrayElement, s="error")
+## df.res <- array2df(vals)
+
+## rv <- c("imputation.method")
+## cv <- c("missing.mechanism")
+## ftable(100*err, row.vars=rv, col.vars=cv)
+
+### Plots
+## df.plot <- na.omit(df.res) # subset(df.res, imputation.method!="softImpute"))
+## gg <- # ggplot(df.plot, aes(imputation.method, value)) +
+##   ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
+##   geom_boxplot() + facet_grid(measures~p, scales="free_y") +
+##   scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
+##   ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
+
+## pdf("../plot/test_plot.pdf", height=12, width=10)
+## print(gg)
+## dev.off()
+
+## library('tikzDevice')
+## options(tikzDefaultEngine = 'pdftex')
+## tikz('test_plot.tex', height=6.5, width=9)
+## print(gg)
+## dev.off()
+
+## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
+
+## TODO: check how one can use extra variable as varLists
+## mayplot(vals, varList,
+##         row.vars="imputation.method", col.vars="missing.mechanism", xvar="measures") # uses default

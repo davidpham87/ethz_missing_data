@@ -148,6 +148,16 @@ paper, Hastie et al. (1999).
 - Compare softimpute.
 - increase *n* if possible.
 
+## Notes from 2015-12-21
+
+- Make minimal scripts for bugs (segmentation fault for impute.knn, and
+  inversion amelia)
+- Notes: mi does not complete with mc.cores > 1.
+- Find a subset for comparing amelia and mice
+- Ranking the values
+- sessionInfo() for computations.
+- Start writing paper.
+
 # Bibliography
 
 [//]: Definitions of References --- all this is **not** visible on final doc!
