@@ -22,8 +22,8 @@ n <- 5
 
 ## Follow simsalapar
 source("varlist_fns.R")
-imputation.methods <- c("softImpute", "impute.knn")
-# imputation.methods <- c("mice", "softImpute")
+# imputation.methods <- c("softImpute", "impute.knn")
+imputation.methods <- c("amelia", "softImpute")
 varList <- varListProd(imputation.methods)
 
 # varList <- varListProd()
