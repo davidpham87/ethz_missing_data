@@ -224,3 +224,40 @@ The following object is masked from ‘package:sfsmisc’:
   5   3  lang  age  priC  sex  FLAS  MLAT  vSAT  mSAT  eng  HGPA  CGPA  grade_complete
   5   4  lang  age  priC  sex  FLAS  MLAT  vSAT  mSAT  eng  HGPA  CGPA  grade_complete
   5   5  lang  age  priC  sex  FLAS  MLAT  vSAT  mSAT  eng  HGPA  CGPA  grade_complete
+> 
+> ## vals <- getArray(res)
+> ## names(dimnames(vals))[1] <- "measures"
+> ## err <- getArray(res, "error")
+> ## df.res <- array2df(vals)
+> 
+> ## rv <- c("imputation.method")
+> ## cv <- c("missing.mechanism")
+> ## ftable(100*err, row.vars=rv, col.vars=cv)
+> 
+> ### Plots
+> ## df.plot <- na.omit(df.res) # subset(df.res, imputation.method!="softImpute"))
+> ## gg <- # ggplot(df.plot, aes(imputation.method, value)) +
+> ##   ggplot(df.plot, aes(missing.mechanism, value, color=imputation.method)) +
+> ##   geom_boxplot() + facet_grid(measures~p, scales="free_y") +
+> ##   scale_x_discrete(labels=c("MCAR"="MCAR", "MARFrequency"="MAR")) + theme_bw() +
+> ##   ylab("MSE") + xlab("Missing Mechanism") + ggtitle("Missing simulation on FLAS")
+> 
+> ## pdf("../plot/test_plot.pdf", height=12, width=10)
+> ## print(gg)
+> ## dev.off()
+> 
+> ## library('tikzDevice')
+> ## options(tikzDefaultEngine = 'pdftex')
+> ## tikz('test_plot.tex', height=6.5, width=9)
+> ## print(gg)
+> ## dev.off()
+> 
+> ## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
+> 
+> ## TODO: check how one can use extra variable as varLists
+> ## mayplot(vals, varList,
+> ##         row.vars="imputation.method", col.vars="missing.mechanism", xvar="measures") # uses default
+> 
+> proc.time()
+    user   system  elapsed 
+  81.558   15.924 6404.601 
