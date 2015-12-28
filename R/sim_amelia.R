@@ -10,7 +10,7 @@ source('simulation_fns.R')
 ################################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("amelia")
-sfile.path <- paste0("../simulation_rds/imputation_", "20151225_1400_",
+sfile.path <- paste0("../simulation_rds/imputation_", "20151228_1100_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
 ################################################################################

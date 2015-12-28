@@ -24,7 +24,8 @@ loadFLASData <- function() {
 ### Arguments for imputation methods for the flas dataset
 imputationArgsFLAS <- function(){
   list("mice"=list(),
-       "mi"=list(column.type.mi=list(grade_complete="ordered-categorical")),
+       "mi"=list(column.type.mi=list(grade_complete="ordered-categorical",
+                                     verbose=FALSE, parallel=TRUE)),
        "amelia"=list(noms=c("lang", "age", "priC", "sex"),
                      ords="grade_complete", p2s=0), # p2s -> print to screen
        "softImpute"=list(),
@@ -62,7 +63,7 @@ varListTest <- function(data.complete, missing.table.frequency,
       missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
 
       ## imputation names
-      imputation.method=list(type="grid", expr = quote(Imputation~method),
+      imputation.method=list(type="frozen", expr = quote(Imputation~method),
                              value=imputation.methods),
 
       ## Probability of missingness # Test only value
@@ -179,8 +180,16 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 # Print argument to screen
 doOneDebug <- function(...){
   args <- list(...)
-  print(args)
-  do.call(doOne, args)
+  cat(paste0(rep("#", 80), collapse=''))
+  cat('\n')
+
+  for (e in c("missing.mechanism", "imputation.method", 
+              "p", "n.imputation", "missing.random.seed")) {
+    print(paste(e, args[[e]]))
+  }
+  
+  cat('\n')  
+  do.call(doOne, args)  
 }
 
 ### Simple wrapper to export the packages and the function

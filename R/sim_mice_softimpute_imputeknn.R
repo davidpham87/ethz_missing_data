@@ -4,13 +4,13 @@ source('simulation_fns.R')
 ################################################################################
 ### General simulation arguments
 
-cl <- makeSimCluster(16) # change here for the number of cluster
-options(mc.cores=1) # mi wnats to eats your cores :-)
+cl <- makeSimCluster(21) # change here for the number of cluster
+options(mc.cores=1) # mi wants to eats your cores :-)
 
 ################################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("mice", "impute.knn", "softImpute")
-sfile.path <- paste0("../simulation_rds/imputation_", "20151227_2200_",
+sfile.path <- paste0("../simulation_rds/imputation_", "20151228_1100_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
 ################################################################################
@@ -30,8 +30,7 @@ varList <- varListProd(flas.li$data, flas.li$missing.table,
 ### Start of simulations
 
 set.seed(1)
-# res <- doClusterApply(varList, cl, sfile=sfile.path, doOne=doOne)
-res <- doMclapply(varList, 24, sfile=sfile.path, doOne=doOne)
+res <- doClusterApply(varList, cl, sfile=sfile.path, doOne=doOne)
 
 ################################################################################
 ### Reproducibility
