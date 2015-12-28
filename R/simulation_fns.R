@@ -45,6 +45,9 @@ varListTest <- function(data.complete, missing.table.frequency,
     names(imputation.methods.args) <- imputation.methods
   }
 
+  imputation.varlist.type <- 
+    if (length(imputation.methods) == 1) 'frozen' else 'grid'
+  
   mt <- missing.table.frequency
   varList <- # *User provided* list of variables
     varlist( # constructor for an object of class 'varlist'
@@ -96,6 +99,9 @@ varListProd <- function(data.complete, missing.table.frequency,
     names(imputation.methods.args) <- imputation.methods
   }
 
+  imputation.varlist.type <- 
+    if (length(imputation.methods) == 1) 'frozen' else 'grid'
+
   mt <- missing.table.frequency
   varList <- # *User provided* list of variables
     varlist( # constructor for an object of class 'varlist'
@@ -104,13 +110,15 @@ varListProd <- function(data.complete, missing.table.frequency,
 
       ## replications variable, useful because it also set the seeds for the
       ## missing.mechanism
-      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed), value=1:100),
+      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed), 
+                               value=1:100),
 
       ## Missingness mechanism
       missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
 
-      ## imputation names
-      imputation.method=list(type="grid", expr = quote(Imputation~method),
+      ## imputation names     
+      imputation.method=list(type=imputation.varlist.type, 
+                             expr = quote(Imputation~method), 
                              value = imputation.methods),
 
       ## Probability of missingness # Test only value

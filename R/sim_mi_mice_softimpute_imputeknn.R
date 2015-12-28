@@ -4,13 +4,13 @@ source('simulation_fns.R')
 ################################################################################
 ### General simulation arguments
 
-cl <- makeSimCluster(4) # change here for the number of cluster
-option(mc.cores=1) # mi wnats to eats your cores :-)
+cl <- makeSimCluster(16) # change here for the number of cluster
+options(mc.cores=1) # mi wnats to eats your cores :-)
 
 ################################################################################
 ### Simulation Args for FLAS
-imputation.methods <- c("mice", "mi", "impute.knn", "softImpute")
-sfile.path <- paste0("../simulation_rds/imputation_", "20151221_1800_",
+imputation.methods <- c("mice", "impute.knn", "softImpute")
+sfile.path <- paste0("../simulation_rds/imputation_", "20151225_1400_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
 ################################################################################
