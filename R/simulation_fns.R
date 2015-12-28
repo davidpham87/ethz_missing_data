@@ -26,7 +26,7 @@ imputationArgsFLAS <- function(){
   list("mice"=list(),
        "mi"=list(column.type.mi=list(grade_complete="ordered-categorical")),
        "amelia"=list(noms=c("lang", "age", "priC", "sex"),
-                     ords="grade_complete"),
+                     ords="grade_complete", p2s=0), # p2s -> print to screen
        "softImpute"=list(),
        "impute.knn"=list())
 }
@@ -45,9 +45,9 @@ varListTest <- function(data.complete, missing.table.frequency,
     names(imputation.methods.args) <- imputation.methods
   }
 
-  imputation.varlist.type <- 
+  imputation.varlist.type <-
     if (length(imputation.methods) == 1) 'frozen' else 'grid'
-  
+
   mt <- missing.table.frequency
   varList <- # *User provided* list of variables
     varlist( # constructor for an object of class 'varlist'
@@ -99,7 +99,7 @@ varListProd <- function(data.complete, missing.table.frequency,
     names(imputation.methods.args) <- imputation.methods
   }
 
-  imputation.varlist.type <- 
+  imputation.varlist.type <-
     if (length(imputation.methods) == 1) 'frozen' else 'grid'
 
   mt <- missing.table.frequency
@@ -110,15 +110,15 @@ varListProd <- function(data.complete, missing.table.frequency,
 
       ## replications variable, useful because it also set the seeds for the
       ## missing.mechanism
-      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed), 
+      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed),
                                value=1:100),
 
       ## Missingness mechanism
       missing.mechanism=list(type="grid", value=c("MCAR", "MARFrequency")),
 
-      ## imputation names     
-      imputation.method=list(type=imputation.varlist.type, 
-                             expr = quote(Imputation~method), 
+      ## imputation names
+      imputation.method=list(type=imputation.varlist.type,
+                             expr = quote(Imputation~method),
                              value = imputation.methods),
 
       ## Probability of missingness # Test only value
@@ -174,6 +174,13 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 
   imputationSimulation(as.data.frame(data.complete), missing.mechanism, imputation.method,
                        p, miss.args, imp.args)
+}
+
+# Print argument to screen
+doOneDebug <- function(...){
+  args <- list(...)
+  print(args)
+  do.call(doOne, args)
 }
 
 ### Simple wrapper to export the packages and the function

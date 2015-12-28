@@ -30,7 +30,7 @@ varList <- varListProd(flas.li$data, flas.li$missing.table,
 ### Start of simulations
 
 set.seed(1)
-res <- doLapply(varList, sfile=sfile.path, doOne=doOne)
+res <- doLapply(varList, sfile=sfile.path, doOne=doOneDebug)
 
 ################################################################################
 ### Reproducibility
