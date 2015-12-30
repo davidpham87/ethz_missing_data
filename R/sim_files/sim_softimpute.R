@@ -1,4 +1,5 @@
 ### Functions for runing the simulation
+setwd('../')
 source('simulation_fns.R')
 
 ################################################################################
@@ -9,7 +10,7 @@ source('simulation_fns.R')
 ################################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("softImpute")
-sfile.path <- paste0("../simulation_rds/imputation_", "20151229_2130_",
+sfile.path <- paste0("simulation_rds/imputation_", "20151229_2130_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
 ################################################################################
@@ -24,6 +25,7 @@ varList <- varListProd(flas.li$data, flas.li$missing.table,
 ### Start of simulations
 
 set.seed(1)
-res <- doLapply(varList, sfile=sfile.path, doOne=doOneDebug)
+# res <- doLapply(varList, sfile=sfile.path, doOne=doOneDebug)
+res <- doLapply(varList, doOne=doOneDebug)
 
 toLatex(sessionInfo(), locale=FALSE)

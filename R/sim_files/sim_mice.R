@@ -1,6 +1,6 @@
 ### Functions for runing the simulation
+set('../')
 source('simulation_fns.R')
-
 ################################################################################
 ### General simulation arguments
 
@@ -9,8 +9,8 @@ source('simulation_fns.R')
 
 ################################################################################
 ### Simulation Args for FLAS
-imputation.methods <- c("mi")
-sfile.path <- paste0("../simulation_rds/imputation_", "20151228_1130_",
+imputation.methods <- c("mice")
+sfile.path <- paste0("simulation_rds/imputation_", "20151229_2130_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
 ################################################################################
