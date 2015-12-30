@@ -121,9 +121,11 @@ imputeDataAmelia <- function(dataset, n, ...){
 ##' @return a list with n times the same elements which is the completed
 ##'   data.frame (only numerical variable)
 ##' @author David Pham
-imputeDataSoftImpute <- function(dataset, ...){
+imputeDataSoftImpute <- function(dataset, ...){  
 
   args <- list(...)
+  is.null.args <- length(args) == 1 & is.null(args[[1]])
+
   ## boolean vectors stating factors columns
   fctrs <- sapply(1:ncol(dataset), function(jdx)
     any(c("factor", "string") %in% class(dataset[1, jdx])))
@@ -131,7 +133,13 @@ imputeDataSoftImpute <- function(dataset, ...){
 
   dataset[, fctrs] <- lapply(dataset[, fctrs], as.numeric)
   x <- as.matrix(dataset)
-  fit <- do.call(softImpute::softImpute, c(list(x), args))
+  
+  fit <- if (is.null.args){   
+    do.call(softImpute::softImpute, c(list(x)))
+  } else {
+    do.call(softImpute::softImpute, c(list(x), args))
+  }
+  
   dataset <- as.data.frame(softImpute::complete(x, fit))
 
   ## Correct the factors
@@ -147,13 +155,22 @@ imputeDataSoftImpute <- function(dataset, ...){
 imputeDataImputeKnn <- function(dataset, ...){
 
   args <- list(...)
+  is.null.args <- length(args) == 1 & is.null(args[[1]])
+                                              
   ## boolean vectors stating factors columns
   fctrs <- sapply(1:ncol(dataset), function(jdx)
     any(c("factor", "string") %in% class(dataset[1, jdx])))
   lvls <- lapply(dataset[, fctrs], levels)
 
   dataset[, fctrs] <- lapply(dataset[, fctrs], as.numeric)
-  fit <- do.call(impute::impute.knn, c(list(as.matrix(dataset)), args))
+  x <- as.matrix(dataset)
+
+  fit <- if (is.null.args){   
+    do.call(impute::impute.knn, c(list(x)))
+  } else {
+    do.call(impute::impute.knn, c(list(x), args))
+  }
+    
   dataset <- as.data.frame(fit$data)
 
   ## Correct the factors
@@ -164,7 +181,6 @@ imputeDataImputeKnn <- function(dataset, ...){
   dataset[, fctrs] <- lapply(names(lvls), f)
   list(dataset)
 }
-
 
 
 ##' TODO: change the function to accept strings as imputation methods and use a
@@ -360,7 +376,7 @@ imputationSimulation <- function(data.complete,
   missing.mechanism.fns <- list(MCAR=MCAR, MARFrequency=MARFrequency)
   stopifnot(missing.mechanism %in% names(missing.mechanism.fns))
   missing.mechanism.fn <- missing.mechanism.fns[[missing.mechanism]]
-
+  
   data.missing <-
     do.call(missing.mechanism.fn,
             c(list(dataset=data.complete, p=p), missing.mechanism.args))

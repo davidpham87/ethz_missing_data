@@ -1,17 +1,24 @@
 ### Functions for runing the simulation
+
+## Bug appears when p=0.05, n.imptuation = 100, n.random.seed=3
+## The call:
+## do.call(impute::impute.knn, c(list(as.matrix(dataset)), list(NULL)) 
+## Creates a memory dump.
+
+
+
 setwd('../')
 source('simulation_fns.R')
-
 
 ################################################################################
 ### General simulation arguments
 
-# cl <- makeSimCluster(24) # change here for the number of cluster
+### cl <- makeSimCluster(24) # change here for the number of cluster
 
 ################################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("impute.knn")
-sfile.path <- paste0("simulation_rds/imputation_", "20151230_1400_",
+sfile.path <- paste0("simulation_rds/imputation_", "20151230_1430_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
 ################################################################################
@@ -19,37 +26,23 @@ sfile.path <- paste0("simulation_rds/imputation_", "20151230_1400_",
 
 flas.li <- loadFLASData()
 flas.imputation.args <- imputationArgsFLAS()
-varList <- varListProd(flas.li$data, flas.li$missing.table,
-                       imputation.methods,
-                       imputation.methods.args=flas.imputation.args)
-
-################################################################################
-### Start of simulations
 
 set.seed(1)
-res <- doLapply(varList, sfile=sfile.path, doOne=doOneDebug)
+dataset <- MCAR(flas.li$data, 0.10, random.seed=1)
 
-toLatex(sessionInfo(), locale=FALSE)
+## Transfrom factors to integers
+## boolean vectors stating factors columns
+fctrs <- sapply(1:ncol(dataset), function(jdx)
+    any(c("factor", "string") %in% class(dataset[1, jdx])))
+lvls <- lapply(dataset[, fctrs], levels)
 
+dataset[, fctrs] <- lapply(dataset[, fctrs], as.numeric)
+x <- as.matrix(dataset)
 
-## ################################################################################
-## Output from sim_imputeknn.Rout
-## ################################################################################
-## [1] "missing.mechanism MARFrequency"
-## [1] "imputation.method impute.knn"
-## [1] "p 0.85"
-## [1] "n.imputation 5"
-## [1] "missing.random.seed 100"
-## ################################################################################
-## [1] "missing.mechanism MCAR"
-## [1] "imputation.method impute.knn"
-## [1] "p 0.05"
-## [1] "n.imputation 20"
-## [1] "missing.random.seed 1"
-## ################################################################################
-## [1] "missing.mechanism MCAR"
-## [1] "imputation.method impute.knn"
-## [1] "p 0.05"
-## [1] "n.imputation 20"
-## [1] "missing.random.seed 2"
-## ################################################################################
+### Core dump
+replicate(10, {    
+  do.call(impute::impute.knn, c(list(x), list(NULL)))
+})
+                                              
+
+    
