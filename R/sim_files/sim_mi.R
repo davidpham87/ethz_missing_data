@@ -1,5 +1,5 @@
 ### Functions for runing the simulation
-set('../')
+setwd('../')
 source('simulation_fns.R')
 ################################################################################
 ### General simulation arguments

@@ -183,14 +183,14 @@ doOneDebug <- function(...){
   cat('\n')
   cat(paste0(rep("#", 80), collapse=''))
   cat('\n')
-  
-  for (e in c("missing.mechanism", "imputation.method", 
+
+  for (e in c("missing.mechanism", "imputation.method",
               "p", "n.imputation", "missing.random.seed")) {
     print(paste(e, args[[e]]))
   }
-  
-  cat('\n')  
-  do.call(doOne, args)  
+
+  cat('\n')
+  do.call(doOne, args)
 }
 
 ### Simple wrapper to export the packages and the function
