@@ -25,6 +25,6 @@ varList <- varListProd(flas.li$data, flas.li$missing.table,
 ### Start of simulations
 
 set.seed(1)
-res <- doClusterApply(varList, cl, sfile=sfile.path, doOne=doOneDebug)
+res <- doClusterApply(varList, cl, sfile=sfile.path, doOne=doOne)
 
 toLatex(sessionInfo(), locale=FALSE)

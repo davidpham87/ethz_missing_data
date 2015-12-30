@@ -11,7 +11,7 @@ source('simulation_fns.R')
 ################################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("amelia")
-sfile.path <- paste0("simulation_rds/imputation_", "20151228_1100_",
+sfile.path <- paste0("simulation_rds/imputation_", "20151230_2000_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
 ################################################################################
@@ -25,6 +25,7 @@ flas.imputation.args <- imputationArgsFLAS()
 
 varList <- varListProd(flas.li$data, flas.li$missing.table,
                        imputation.methods,
+                       missing.probs=seq(5, 30, by=5)/100,
                        imputation.methods.args=flas.imputation.args)
 
 ################################################################################

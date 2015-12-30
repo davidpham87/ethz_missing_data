@@ -2,12 +2,15 @@
 setwd('../')
 source('simulation_fns.R')
 
+## At p=0.75
+## *** caught segfault ***
+## address 0x2d860448, cause 'memory not mapped'
 
 ################################################################################
 ### General simulation arguments
 
-cl <- makeSimCluster(12) # change here for the number of cluster
-
+# cl <- makeSimCluster(12) # change here for the number of cluster
+options(mc.cores=12)
 ################################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("impute.knn")
@@ -21,11 +24,14 @@ flas.li <- loadFLASData()
 flas.imputation.args <- imputationArgsFLAS()
 varList <- varListProd(flas.li$data, flas.li$missing.table,
                        imputation.methods,
+                       missing.probs=seq(5, 70, by=5)/100,
                        imputation.methods.args=flas.imputation.args)
+
 ################################################################################
 ### Start of simulations
 
 set.seed(1)
-res <- doClusterApply(varList, cl, sfile=sfile.path, doOne=doOne)
+res <- doLapply(varList, sfile=sfile.path, doOne=doOneDebug)
 
 toLatex(sessionInfo(), locale=FALSE)
+
