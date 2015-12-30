@@ -23,7 +23,7 @@ loadFLASData <- function() {
 
 ### Arguments for imputation methods for the flas dataset
 imputationArgsFLAS <- function(){
-  list("mice"=list(),
+  list("mice"=list(printFlag=FALSE),
        "mi"=list(column.type.mi=list(grade_complete="ordered-categorical",
                                      verbose=FALSE, parallel=TRUE)),
        "amelia"=list(noms=c("lang", "age", "priC", "sex"),
@@ -180,9 +180,10 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 # Print argument to screen
 doOneDebug <- function(...){
   args <- list(...)
+  cat('\n')
   cat(paste0(rep("#", 80), collapse=''))
   cat('\n')
-
+  
   for (e in c("missing.mechanism", "imputation.method", 
               "p", "n.imputation", "missing.random.seed")) {
     print(paste(e, args[[e]]))
@@ -197,7 +198,8 @@ makeSimCluster <- function(n=8){
   cl <- makeCluster(n, type="PSOCK")
   clusterExport(cl, "loadPackages")
   clusterEvalQ(cl, {
-    source('completion_fns.R')
+      source('completion_fns.R')
+      source('simulation_fns.R')
     loadPackages()
   })
   cl
