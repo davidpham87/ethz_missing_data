@@ -163,7 +163,7 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
 
   ## arguments for the imputeDataFns
   n.imputation.args <-
-    ifelse(!missing.mechanism %in% c('softImpute', 'impute.knn'),
+    ifelse(!imputation.methods %in% c('softImpute', 'impute.knn'),
            list(n=n.imputation),
            list())
 
