@@ -14,8 +14,3 @@ and not from the R folder.
 ```bash
 R CMD BATCH sim_files/sim_mi.R
 ```
-
-
-
-
-
