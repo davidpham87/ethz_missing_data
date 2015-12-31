@@ -52,8 +52,9 @@ averagingImputations <- function(imputations){
 ##' @param n, the number fo imputation to generate
 ##' @return list of imputed data.frame
 ##' @author David Pham
-imputeDataMice <- function(dataset, n){
-  imputations <- mice::mice(dataset, n) # do multiple imputation (default is 5 realizations)
+imputeDataMice <- function(dataset, n, ...){
+  args <- list(...)
+  imputations <- do.call(mice::mice, c(list(dataset, n), args)) # do multiple imputation (default is 5 realizations)
   data.mice <- lapply(1:n, function(i) mice::complete(imputations, i)) # mice and mi conflicts here
   return(data.mice)
 }
@@ -68,7 +69,8 @@ imputeDataMice <- function(dataset, n){
 ##' @param column.type.mi, override of column type for the mi.
 ##' @return list of imputed data.frame
 ##' @author David Pham
-imputeDataMi <- function(dataset, n, column.type.mi=NULL){
+imputeDataMi <- function(dataset, n, column.type.mi=NULL, ...){
+  args <- list(...)
   valid.column.type <- c("unordered-categorical", "ordered-categorical",
                          "binary", "interval", "continuous", "count",
                          "irrelevant")
@@ -86,7 +88,7 @@ imputeDataMi <- function(dataset, n, column.type.mi=NULL){
     mdf <- change(mdf, y=k, what="type", to=column.type.mi[[k]])
   }
 
-  imputations <- mi(mdf, n.iter=30, n.chains=4)
+  imputations <- do.call(mi, c(list(mdf, n.iter=30, n.chains=4), args))
   data.mi <-  mi::complete(imputations, n) # creates 20 different versions of imputations
 
   ## mi append columns providing the stating the missingnes, so we have to delete them

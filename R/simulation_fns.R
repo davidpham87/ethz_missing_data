@@ -24,8 +24,8 @@ loadFLASData <- function() {
 ### Arguments for imputation methods for the flas dataset
 imputationArgsFLAS <- function(){
   list("mice"=list(printFlag=FALSE),
-       "mi"=list(column.type.mi=list(grade_complete="ordered-categorical",
-                                     verbose=FALSE, parallel=TRUE)),
+       "mi"=list(column.type.mi=list(grade_complete="ordered-categorical"),
+                 verbose=FALSE, parallel=TRUE),
        "amelia"=list(noms=c("lang", "age", "priC", "sex"),
                      ords="grade_complete", p2s=0), # p2s -> print to screen
        "softImpute"=list(),
