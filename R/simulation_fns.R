@@ -21,6 +21,13 @@ loadFLASData <- function() {
   list(data=data.complete, missing.table=mt)
 }
 
+loadFLASDataWoLang <- function() {
+  flas.li <- loadFLASData()
+  flas.li$data <- flas.li$data[, -1]
+  flas.li
+}
+
+
 ### Arguments for imputation methods for the flas dataset
 imputationArgsFLAS <- function(){
   list("mice"=list(printFlag=FALSE),
