@@ -1,7 +1,6 @@
 pckgs <- c("data.table", "ggplot2", "simsalapar", "magrittr")
 
 loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
-
 imputation.methods <- c('amelia', 'impute.knn', 'mi', 'mice',
                         'softImpute')
 
@@ -9,7 +8,7 @@ ReadRds <- function(imputation.methods){
   lapply(imputation.methods, function(s) {
     paste0("../simulation_rds/",
            "imputation_fulldataset_20151230_2200_",
-           s, "wo_lang.rds") %>% maybeRead
+           s, ".rds") %>% maybeRead
   })
 }
 
@@ -27,20 +26,6 @@ isValidSimulation <- function(){
 filterPredicates <- function(DT, px) {
   Reduce(function(x, p) x[eval(p)], px, DT)
 }
-
-all.rds <- ReadRds(imputation.methods)
-names(all.rds) <- imputation.methods
-
-sim.stats <- mapply(function(s, op) {
-  f <- function(name) {
-    SummaryBy(all.rds[[name]], s, op=op)[, imputation.method:=name]
-  }
-
-  cols <- c('missing.mechanism', 'n.imputation', 'p', 'imputation.method',
-            'value')
-  names(all.rds) %>% lapply(f) %>% rbindlist %>%
-    setcolorder(cols) %>% setorderv(cols)
-}, c('error', 'time') , c(sum, mean), SIMPLIFY=FALSE)
 
 
 # Provide the by argument for summarizing by all columns but those
@@ -85,11 +70,27 @@ imputationPlot <- function(DT, plot.subtitle=NULL, pdf.file=NULL){
   gg
 }
 
-# Transfrom p into numerical vector
+all.rds <- ReadRds(imputation.methods)
+names(all.rds) <- imputation.methods
+
+sim.stats <- mapply(function(s, op) {
+  f <- function(name) {
+    SummaryBy(all.rds[[name]], s, op=op)[, imputation.method:=name]
+  }
+
+  cols <- c('missing.mechanism', 'n.imputation', 'p', 'imputation.method',
+            'value')
+  names(all.rds) %>% lapply(f) %>% rbindlist %>%
+    setcolorder(cols) %>% setorderv(cols)
+}, c('error', 'time') , c(sum, mean), SIMPLIFY=FALSE)
+
+
+## Transfrom p into numerical vector
 for (DT in sim.stats) DT[, p:=fctr2num(p)]
 
 sim.stats <-
   lapply(sim.stats, function(DT) filterPredicates(DT, isValidSimulation()))
+
 
 
 vals <- lapply(all.rds, getArray)
