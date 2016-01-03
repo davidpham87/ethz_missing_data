@@ -1,77 +1,10 @@
-pckgs <- c("data.table", "ggplot2", "simsalapar", "magrittr")
+source('output_analysis_fns.R')
 
-loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
-imputation.methods <- c('amelia', 'impute.knn', 'mi', 'mice',
-                        'softImpute')
+FILE.PATTERN <- "imputation_fulldataset_20151230_2200"
+IMPUTATION.METHODS <- c('amelia', 'impute.knn', 'mi', 'mice', 'softImpute')
 
-ReadRds <- function(imputation.methods){
-  lapply(imputation.methods, function(s) {
-    paste0("../simulation_rds/",
-           "imputation_fulldataset_20151230_2200_",
-           s, ".rds") %>% maybeRead
-  })
-}
-
-SummaryBy <- function(array.list, s="error", margins=c(2, 3, 4), op=sum){
-  arr <- getArray(array.list, s)
-  apply(arr, margins, op) %>% array2df %>% as.data.table
-}
-
-fctr2num <- function(x) levels(x)[x]
-
-isValidSimulation <- function(){
-  c(quote(!(missing.mechanism=='MARFrequency' & p >= 0.25)))
-}
-
-filterPredicates <- function(DT, px) {
-  Reduce(function(x, p) x[eval(p)], px, DT)
-}
-
-
-# Provide the by argument for summarizing by all columns but those
-# given in p
-byXprWithout <- function(DT, p){
-  Filter(function(x) !(x %in% p),
-                 colnames(DT)) %>% paste0(collapse=',')
-}
-
-savePlot <- function(gg, pdf.file=NULL, height=8, width=12){
-  if (!is.null(pdf.file)){
-    paste0("../../plot/", pdf.file, '.pdf') %>% pdf(height=height, width=width)
-    print(gg)
-    dev.off()
-  }
-}
-
-msePlot <- function(DT, plot.subtitle=NULL, pdf.file=NULL){
-  ttl <- "MSE per column"
-  ttl <-  if(is.null(plot.subtitle)) ttl else  paste0(ttl, '\n', plot.subtitle)
-  ylb <- "MSE" # ylab
-  gg <- # ggplot(df.plot, aes(imputation.method, value)) +
-    ggplot(DT, aes(measures, value, color=imputation.method)) + geom_boxplot() +
-    facet_wrap('p', ncol=3) +
-    theme_bw() + ylab(ylb) + xlab("Feature") + ggtitle(ttl) +
-    coord_cartesian(xlim=c(0, 2)) + coord_flip() + theme(legend.position='bottom')
-  savePlot(gg, pdf.file, height=16)
-  gg
-}
-
-imputationPlot <- function(DT, plot.subtitle=NULL, pdf.file=NULL){
-  ttl <- "MSE per imputation method"
-  ttl <-  if(is.null(plot.subtitle)) ttl else  paste0(ttl, '\n', plot.subtitle)
-  ylb <- "MSE" # ylab
-  gg <- # ggplot(df.plot, aes(imputation.method, value)) +
-    ggplot(DT, aes(p, value, color=imputation.method)) + geom_boxplot() +
-    ## stat_summary(fun.y=median, geom='point') +
-    facet_wrap(c('measures'), ncol=2) +
-    theme_bw() + ylab(ylb) + xlab("Probability of missingness") + ggtitle(ttl) +
-    coord_cartesian(ylim=c(0, 2))  + theme(legend.position='bottom')
-  savePlot(gg, pdf.file, height=16)
-  gg
-}
-
-all.rds <- ReadRds(imputation.methods)
-names(all.rds) <- imputation.methods
+all.rds <- ReadRds(IMPUTATION.METHODS, FILE.PATTERN)
+names(all.rds) <- IMPUTATION.METHODS
 
 sim.stats <- mapply(function(s, op) {
   f <- function(name) {
@@ -84,20 +17,18 @@ sim.stats <- mapply(function(s, op) {
     setcolorder(cols) %>% setorderv(cols)
 }, c('error', 'time') , c(sum, mean), SIMPLIFY=FALSE)
 
-
-## Transfrom p into numerical vector
 for (DT in sim.stats) DT[, p:=fctr2num(p)]
 
 sim.stats <-
   lapply(sim.stats, function(DT) filterPredicates(DT, isValidSimulation()))
 
+## Transfrom p into numerical vector
+
 
 
 vals <- lapply(all.rds, getArray)
-
-cols <- c('missing.mechanism', 'n.imputation', 'p',
-          'measures', 'missing.random.seed', 'imputation.method',
-          'value')
+cols <- c('missing.mechanism', 'n.imputation', 'p', 'measures',
+          'missing.random.seed', 'imputation.method', 'value')
 
 vals.dt <- lapply(names(vals), function(s) {
   v <- vals[[s]]
@@ -117,8 +48,6 @@ by.xpr <- byXprWithout(vals.dt,
                        c('value', 'rank', 'measures', 'ranking'))
 scores.dt <- vals.dt[, .(score=sum(ranking, na.rm=TRUE)), by=eval(by.xpr)]
 
-## MCAR
-
 ### Plots of ranking
 gg <- # ggplot(df.plot, aes(imputation.method, value)) +
   ggplot(scores.dt, aes(imputation.method, score, color=imputation.method)) +
@@ -127,9 +56,7 @@ gg <- # ggplot(df.plot, aes(imputation.method, value)) +
   ylab("Ranking per dataset") + xlab("Missing Mechanism") +
   ggtitle("Quality of imputation by ranks\nper simulation") + coord_flip()
 
-pdf("../../plot/full_ranking_plot.pdf", height=12, width=10)
-print(gg)
-dev.off()
+savePlot(gg, "full_ranking_plot", height=12, width=10)
 
 ### Plots of MSE
 DT <- vals.dt
@@ -158,29 +85,21 @@ gg <- preds.mar[1] %>% {filterPredicates(DT, .)} %>%
 gg <- preds.low %>% {filterPredicates(DT, .)} %>%
   msePlot('Missingness pattern: MCAR, low probability of missingness',
           'full_mcar_measures_prob_low_wo_softimpute')
+
 gg <- preds.high %>% {filterPredicates(DT, .)} %>%
   msePlot('Missingness pattern: MCAR, high probability of missingness',
           'full_mcar_measures_prob_high_wo_softimpute')
 
 gg <- preds.low[c(1, 3)] %>% {filterPredicates(DT, .)} %>%
-  imputationPlot('Missingness pattern: MCAR',
-                 'full_mcar_imputation_wo_softimpute')
+  imputationPlot('Missingness pattern: MCAR')
+gg <- gg + coord_cartesian(ylim=c(0, 1))
+savePlot(gg, 'full_mcar_imputation_wo_softimpute', height=16)
 
 gg <- preds.mar %>% {filterPredicates(DT, .)} %>%
   msePlot('Missingness pattern: MAR Frequency',
           'full_marfrequency_measures_wo_softimpute')
+
 gg <- preds.mar %>% {filterPredicates(DT, .)} %>%
-  imputationPlot('Missingness pattern: MARFrequency',
-                 'full_marfrequency_imputation_wo_softimpute')
-
-## Library('tikzDevice')
-## options(tikzDefaultEngine = 'pdftex')
-## tikz('test_plot.tex', height=6.5, width=9)
-## print(gg)
-## dev.off()
-
-## ggplot(data, aes(type, value, fill=method)) + geom_bar(stat='identity', position=position_dodge()) + scale_y_log10()
-
-## TODO: check how one can use extra variable as varLists
-## mayplot(vals, varList,
-##         row.vars="imputation.method", col.vars="missing.mechanism", xvar="measures") # uses default
+  imputationPlot('Missingness pattern: MARFrequency')
+gg <- gg + coord_cartesian(ylim=c(0, 1))
+savePlot(gg, 'full_marfrequency_imputation_wo_softimpute', height=16)
