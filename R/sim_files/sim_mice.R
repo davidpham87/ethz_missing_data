@@ -4,8 +4,8 @@ source('simulation_fns.R')
 ################################################################################
 ### General simulation arguments
 
-# cl <- makeSimCluster(16) # change here for the number of cluster
-options(mc.cores=12) # mi wants to eats your cores :-)
+cl <- makeSimCluster(24) # change here for the number of cluster
+# options(mc.cores=12) # mi wants to eats your cores :-)
 
 ################################################################################
 ### Simulation Args for FLAS
@@ -30,7 +30,7 @@ varList <- varListProd(flas.li$data, flas.li$missing.table,
 ### Start of simulations
 
 set.seed(1)
-res <- doMclapply(varList, sfile=sfile.path, doOne=doOne)
+res <- doClusterApply(varList, cl, sfile=sfile.path, doOne=doOne)
 
 ################################################################################
 ### Reproducibility

@@ -24,7 +24,7 @@ Loading required package: Rcpp
 ## 
 ## Amelia II: Multiple Imputation
 ## (Version 1.7.4, built: 2015-12-05)
-## Copyright (C) 2005-2015 James Honaker, Gary King and Matthew Blackwell
+## Copyright (C) 2005-2016 James Honaker, Gary King and Matthew Blackwell
 ## Refer to http://gking.harvard.edu/amelia/ for more information
 ## 
 mice 2.25 2015-11-09
@@ -87,8 +87,8 @@ package ‘simsalapar’ was built under R version 3.3.0
 > ################################################################################
 > ### General simulation arguments
 > 
-> # cl <- makeSimCluster(16) # change here for the number of cluster
-> options(mc.cores=12) # mi wants to eats your cores :-)
+> cl <- makeSimCluster(24) # change here for the number of cluster
+> # options(mc.cores=12) # mi wants to eats your cores :-)
 > 
 > ################################################################################
 > ### Simulation Args for FLAS
@@ -113,7 +113,7 @@ package ‘simsalapar’ was built under R version 3.3.0
 > ### Start of simulations
 > 
 > set.seed(1)
-> res <- doMclapply(varList, sfile=sfile.path, doOne=doOne)
+> res <- doClusterApply(varList, cl, sfile=sfile.path, doOne=doOne)
 > 
 > ################################################################################
 > ### Reproducibility
@@ -137,5 +137,5 @@ package ‘simsalapar’ was built under R version 3.3.0
 \end{itemize}
 > 
 > proc.time()
-     user    system   elapsed 
-84876.028  1839.973  4563.981 
+    user   system  elapsed 
+  29.895    6.888 3533.194 
