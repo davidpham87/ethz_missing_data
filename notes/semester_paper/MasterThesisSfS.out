@@ -1,0 +1,18 @@
+\BOOKMARK [0][-]{section*.6}{Notation}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
+\BOOKMARK [0][-]{chapter.2}{First Chapter}{}% 3
+\BOOKMARK [1][-]{section.2.1}{To include a picture}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{To make a proof}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.3}{To include Rcode}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.4}{Other information}{chapter.2}% 7
+\BOOKMARK [0][-]{chapter.3}{Summary}{}% 8
+\BOOKMARK [1][-]{section.3.1}{Future Work}{chapter.3}% 9
+\BOOKMARK [0][-]{section*.8}{Bibliography}{}% 10
+\BOOKMARK [0][-]{appendix.A}{Complementary information}{}% 11
+\BOOKMARK [1][-]{section.A.1}{Including Rcode with verbatim}{appendix.A}% 12
+\BOOKMARK [1][-]{section.A.2}{Including Rcode with the listings package}{appendix.A}% 13
+\BOOKMARK [1][-]{section.A.3}{Using Sweave to include Rcode \(and more\) in your report}{appendix.A}% 14
+\BOOKMARK [0][-]{appendix.B}{Yet another appendix....}{}% 15
+\BOOKMARK [1][-]{section.B.1}{Description}{appendix.B}% 16
+\BOOKMARK [1][-]{section.B.2}{Tables}{appendix.B}% 17
+\BOOKMARK [0][-]{section*.10}{Epilogue}{}% 18

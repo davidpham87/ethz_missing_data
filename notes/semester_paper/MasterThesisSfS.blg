@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: MasterThesisSfS.aux
+The style file: chicago.bst
+A level-1 auxiliary file: Preface.aux
+A level-1 auxiliary file: Abstract.aux
+A level-1 auxiliary file: Notation.aux
+A level-1 auxiliary file: Introduction.aux
+A level-1 auxiliary file: Chapter1.aux
+A level-1 auxiliary file: Summary.aux
+A level-1 auxiliary file: Appendix1.aux
+A level-1 auxiliary file: Appendix2.aux
+A level-1 auxiliary file: Epilogue.aux
+Database file #1: myReferences.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 3 entries,
+            2899 wiz_defined-function locations,
+            655 strings with 5447 characters,
+and the built_in function-call counts, 1377 in all, are:
+= -- 131
+> -- 55
+< -- 0
++ -- 19
+- -- 20
+* -- 127
+:= -- 244
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 22
+chr.to.int$ -- 3
+cite$ -- 3
+duplicate$ -- 42
+empty$ -- 102
+format.name$ -- 22
+if$ -- 259
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 4
+newline$ -- 18
+num.names$ -- 12
+pop$ -- 14
+preamble$ -- 1
+purify$ -- 26
+quote$ -- 0
+skip$ -- 33
+stack$ -- 0
+substring$ -- 121
+swap$ -- 11
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 0
+while$ -- 16
+width$ -- 0
+write$ -- 39
