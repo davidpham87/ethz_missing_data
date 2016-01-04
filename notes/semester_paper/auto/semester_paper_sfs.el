@@ -32,8 +32,7 @@
     "listings")
    (TeX-add-symbols
     '("Bruch" 2)
-    '("aatop" 2)
-    "plim")
+    '("aatop" 2))
    (LaTeX-add-environments
     "definition"
     "lemma"
@@ -41,8 +40,5 @@
     "Coro"
     "example")
    (LaTeX-add-bibliographies
-    "myReferences")
-   (LaTeX-add-color-definecolors
-    "Mygrey"
-    "Cgrey")))
+    "biblio.bib")))
 
