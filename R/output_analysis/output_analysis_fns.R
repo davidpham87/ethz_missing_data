@@ -1,4 +1,4 @@
-pckgs <- c("data.table", "ggplot2", "simsalapar", "magrittr")
+pckgs <- c("data.table", "ggplot2", "simsalapar", "magrittr", "xtable")
 
 loaded.pckgs <- lapply(pckgs, function(x) do.call(library, args=list(x)))
 

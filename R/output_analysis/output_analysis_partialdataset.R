@@ -27,6 +27,9 @@ for (DT in sim.stats) DT[, p:=fctr2num(p)]
 sim.stats <-
   lapply(sim.stats, function(DT) filterPredicates(DT, isValidSimulation()))
 
+print("Number of Errors with the simulation")
+xtable(sim.stats$error[value > 0], auto=TRUE)
+
 vals <- lapply(all.rds, getArray)
 
 cols <- c('missing.mechanism', 'n.imputation', 'p',

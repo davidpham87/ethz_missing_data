@@ -22,6 +22,9 @@ for (DT in sim.stats) DT[, p:=fctr2num(p)]
 sim.stats <-
   lapply(sim.stats, function(DT) filterPredicates(DT, isValidSimulation()))
 
+### Numbers of errors with Mi
+print("Number of Errors with the simulation")
+xtable(sim.stats$error[value > 0], auto=TRUE)
 ## Transfrom p into numerical vector
 
 
