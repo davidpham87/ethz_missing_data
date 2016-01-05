@@ -7,6 +7,7 @@ loadPackages <- function() {
   0
 }
 
+
 loadPackages()
 
 ### Load the FLAS and the missingness frequency table
@@ -21,15 +22,18 @@ loadFLASData <- function() {
   list(data=data.complete, missing.table=mt)
 }
 
+
 loadFLASDataWoLang <- function() {
   flas.li <- loadFLASData()
-  flas.li$data <- flas.li$data[, -1]
+  flas.li$data <- flas.li$data[, -1] # drop first columns
+  s <- names(flas.li$missing.table)
+  names(flas.li$missing.table) <- unlist(Map(function(s) substr(s, 2, nchar(s)), s))
   flas.li
 }
 
 
 ### Arguments for imputation methods for the flas dataset
-imputationArgsFLAS <- function(){
+imputationArgsFLAS <- function() {
   list("mice"=list(printFlag=FALSE),
        "mi"=list(column.type.mi=list(grade_complete="ordered-categorical"),
                  verbose=FALSE, parallel=TRUE),
@@ -37,6 +41,28 @@ imputationArgsFLAS <- function(){
                      ords="grade_complete", p2s=0), # p2s -> print to screen
        "softImpute"=list(),
        "impute.knn"=list())
+}
+
+
+imputationArgsFLASImputeKnn <- function() {
+  kx <- seq(4, 16, by=2)
+  res <- lapply(as.list(kx),
+                function(k) list(impute.knn=list(k=k, rowmax=0.7, colmax=0.9)))
+  names(res) <- as.character(kx)
+  res
+}
+
+
+imputationArgsFLASSoftImpute <- function() {
+  argx <- expand.grid(rank.max=seq(2, 12, 3), type=c('als', 'svd'))
+  ll <- apply(argx, 1, function(x) {
+    res <- as.list(x)
+    res[[1]] <- as.numeric(res[[1]])
+    list(softImpute=res)
+  })
+  nx <- apply(argx, 1, paste0, collapse='_')
+  names(ll) <- nx
+  ll
 }
 
 
@@ -150,6 +176,41 @@ varListProd <- function(data.complete, missing.table.frequency,
                          value=data.complete))
   varList
 }
+
+
+varListSoftImputeKnn <- function(data.complete, missing.table.frequency,
+                        imputation.methods=c("softImpute", "impute.knn"),
+                        missing.probs=seq(5, 85, by=5)/100,
+                        imputation.methods.args=NULL) {
+
+  if (is.null(imputation.methods.args)){
+    imputation.methods.args <- vector(list, length(imputation.methods))
+    names(imputation.methods.args) <- imputation.methods
+  }
+  imputation.varlist.type <-
+    if (length(imputation.methods) == 1) 'frozen' else 'grid'
+  mt <- missing.table.frequency
+  varList <-
+    varlist(
+      n.sim=list(type="N", expr=quote(N[sim]), value = 1),
+      missing.random.seed=list(type="grid", expr=quote(Missingness~random~seed),
+                               value=1:500),
+      missing.mechanism=list(type="frozen", value=c("MCAR")),
+      imputation.method=list(type=imputation.varlist.type,
+                             expr=quote(Imputation~method),
+                             value=imputation.methods),
+      p=list(type="grid", value=missing.probs),
+      n.imputation=list(type="frozen", expr=quote(Number~of~imputation),
+                        value=1),
+      imputation.args=list(type="grid",  value=imputation.methods.args),
+      missing.args=list(type="frozen",
+                        value=list("MCAR"=list(),
+                                   "MARFrequency"=list(missing.table=mt))),
+      data.complete=list(type="frozen", expr=quote(Complete~dataset),
+                         value=data.complete))
+  varList
+}
+
 
 ## Have to redefine the impuationSimulation function the varList can only take
 ## grids
