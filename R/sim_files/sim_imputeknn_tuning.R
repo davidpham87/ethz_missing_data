@@ -31,7 +31,7 @@ varList <- varListSoftImputeKnn(flas.li$data, flas.li$missing.table,
 ### Start of simulations
 
 set.seed(1)
-## res <- doMcLapply(varList, sfile=sfile.path, doOne=doOneDebug)
-res <- doMclapply(varList, doOne=doOne)
+res <- doMclapply(varList, sfile=sfile.path, doOne=doOne)
+
 
 toLatex(sessionInfo(), locale=FALSE)
