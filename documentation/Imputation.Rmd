@@ -1,3 +1,4 @@
+
 ---
 bibliography: ../biblio.bib
 output: pdf_document
@@ -157,6 +158,12 @@ paper, Hastie et al. (1999).
 - Ranking the values
 - sessionInfo() for computations.
 - Start writing paper.
+
+## Notes from 2016-01-04
+
+- Remake simulation with time with options(mc.cores=1) for mi.
+- Tuning constant for softImpute and impute.knn.
+- Read help for softImpute (default, value).
 
 # Bibliography
 

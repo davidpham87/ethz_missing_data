@@ -2,10 +2,8 @@
 
 ## Bug appears when p=0.05, n.imptuation = 100, n.random.seed=3
 ## The call:
-## do.call(impute::impute.knn, c(list(as.matrix(dataset)), list(NULL)) 
+## do.call(impute::impute.knn, c(list(as.matrix(dataset)), list(NULL))
 ## Creates a memory dump.
-
-
 
 setwd('../')
 source('simulation_fns.R')
@@ -40,9 +38,6 @@ dataset[, fctrs] <- lapply(dataset[, fctrs], as.numeric)
 x <- as.matrix(dataset)
 
 ### Core dump
-replicate(10, {    
-  do.call(impute::impute.knn, c(list(x), list(NULL)))
+replicate(10, {
+  impute::impute.knn(x, NULL)
 })
-                                              
-
-    
