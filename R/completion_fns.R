@@ -63,7 +63,7 @@ imputeDataMice <- function(dataset, n, ...){
 ##' Impute data with mice
 ##'
 ##'
-##' @title Data imputation with mice
+##' @title Data imputation with mi
 ##' @param dataset, a data.frame containing missing values.
 ##' @param n, the number fo imputation to generate
 ##' @param column.type.mi, override of column type for the mi.
