@@ -241,9 +241,26 @@ doOne <- function(data.complete, missing.mechanism, imputation.method, p, n.impu
     imp.args <- c(n.imputation.args, imputation.args[[imputation.method]])
   }
 
-  imputationSimulation(as.data.frame(data.complete), missing.mechanism, imputation.method,
-                       p, miss.args, imp.args)
+  imputationSimulation(as.data.frame(data.complete), missing.mechanism,
+                       imputation.method, p, miss.args, imp.args)
 }
+
+##' Used for one imputation methods to see which parameter is optimal
+##' CAUTION: only for with MCAR
+doOneTuning <- function(data.complete, missing.mechanism, imputation.method, p,
+                        n.imputation, imputation.args, missing.args,
+                        missing.random.seed){
+
+  stopifnot(missing.mechanism == 'MCAR')
+  miss.args <-
+    c(list(random.seed=missing.random.seed), missing.args[[missing.mechanism]])
+
+  ## arguments for the imputeDataFns
+  imp.args <- imputation.args[[1]][[1]]
+  imputationSimulation(as.data.frame(data.complete), missing.mechanism,
+                       imputation.method, p, miss.args, imp.args)
+}
+
 
 # Print argument to screen
 doOneDebug <- function(...){

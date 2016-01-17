@@ -10,7 +10,7 @@ source('simulation_fns.R')
 ### General simulation arguments
 
 # cl <- makeSimCluster(12) # change here for the number of cluster
-options(mc.cores=24)
+options(mc.cores=12)
 ################################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("impute.knn")
@@ -24,14 +24,14 @@ flas.li <- loadFLASData()
 flas.imputation.args <- imputationArgsFLASImputeKnn()
 varList <- varListSoftImputeKnn(flas.li$data, flas.li$missing.table,
                        imputation.methods,
-                       missing.probs=seq(5, 70, by=5)/100,
+                       missing.probs=c(10, 40, 70)/100,
                        imputation.methods.args=flas.imputation.args)
 
 ################################################################################
 ### Start of simulations
 
 set.seed(1)
-res <- doMclapply(varList, sfile=sfile.path, doOne=doOne)
+res <- doMcLapply(varList, sfile=sfile.path, doOne=doOneTuning)
 
 
 toLatex(sessionInfo(), locale=FALSE)
