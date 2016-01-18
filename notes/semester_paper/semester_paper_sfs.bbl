@@ -1,21 +1,47 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\citeauthoryear{Author and Author}{Author and
-  Author}{tion}]{Reference}
-Author, F. and S.~Author (year of publication).
-\newblock Title of the article.
-\newblock {\em Journal where the article has been published\/}~{\em volume of
-  the journal\/}(issue number), firstpage--lastpage.
+\bibitem[\protect\citeauthoryear{Gelman and Hill}{Gelman and
+  Hill}{2006}]{gelman2006data}
+Gelman, A. and J.~Hill (2006).
+\newblock {\em Data analysis using regression and multilevel/hierarchical
+  models}.
+\newblock Cambridge University Press.
 
-\bibitem[\protect\citeauthoryear{Hampel}{Hampel}{1985}]{HamF85}
-Hampel, F.~R. (1985).
-\newblock The breakdown points of the mean combined with some rejection rules.
-\newblock {\em Technometrics\/}~{\em 27\/}(2), 95--107.
+\bibitem[\protect\citeauthoryear{Little and Rubin}{Little and
+  Rubin}{2002}]{little2002statistical}
+Little, R. and D.~Rubin (2002).
+\newblock Statistical analysis with missing data.
 
-\bibitem[\protect\citeauthoryear{Stahel and Weisberg}{Stahel and
-  Weisberg}{1991}]{StaWW91}
-Stahel, W. and S.~Weisberg (1991).
-\newblock {\em Directions in Robust Statistics and Diagnostics, 2 vol.}
-\newblock N.~Y.: Springer-Verlag.
+\bibitem[\protect\citeauthoryear{Matloff}{Matloff}{2015}]{matloffblog2015}
+Matloff, N. (2015).
+\newblock New r software/methodology for handling missing data.
+
+\bibitem[\protect\citeauthoryear{Schafer}{Schafer}{1997}]{schafer1997analysis}
+Schafer, J.~L. (1997).
+\newblock {\em Analysis of incomplete multivariate data}.
+\newblock CRC press.
+
+\bibitem[\protect\citeauthoryear{Schafer and Graham}{Schafer and
+  Graham}{2002}]{schafer2002missing}
+Schafer, J.~L. and J.~W. Graham (2002).
+\newblock Missing data: our view of the state of the art.
+\newblock {\em Psychological methods\/}~{\em 7\/}(2), 147.
+
+\bibitem[\protect\citeauthoryear{Troyanskaya, Cantor, Sherlock, Brown, Hastie,
+  Tibshirani, Botstein, and Altman}{Troyanskaya
+  et~al.}{2001}]{troyanskaya2001missing}
+Troyanskaya, O., M.~Cantor, G.~Sherlock, P.~Brown, T.~Hastie, R.~Tibshirani,
+  D.~Botstein, and R.~B. Altman (2001).
+\newblock Missing value estimation methods for dna microarrays.
+\newblock {\em Bioinformatics\/}~{\em 17\/}(6), 520--525.
+
+\bibitem[\protect\citeauthoryear{Van~Buuren}{Van~Buuren}{2012}]{van2012flexible}
+Van~Buuren, S. (2012).
+\newblock {\em Flexible imputation of missing data}.
+\newblock CRC press.
+
+\bibitem[\protect\citeauthoryear{Wikipedia}{Wikipedia}{2015}]{wikipediaImputation2015}
+Wikipedia (2015).
+\newblock Imputation (statistics).
 
 \end{thebibliography}

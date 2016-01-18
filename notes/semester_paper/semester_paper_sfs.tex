@@ -12,7 +12,8 @@
 %or \usepackage{german8}%-- =  german  +  isolatin1
 \usepackage{graphicx}%-- für PostScript-Grafiken (besser als  psfig!)
 %\usepackage[draft]{graphicx} % grafics shown as boxes --> faster compilation
-%
+% \addbibresource{biblio.bib}
+
 \usepackage[longnamesfirst]{natbib}%was {sfsbib}%- Für  Literatur-Referenzen
 %           ^^^^^^^^^^^^^^ 1) "Hampel, Ronchetti, ..,"  2) "Hampel et al"
 % Engineers (and other funny people) want to see [1], [2]
@@ -171,10 +172,10 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 %%% or even better: write in separate files   %%%
 %%% that you just have to include here.       %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{Introduction}
+% \include{Introduction}
 \include{theoretical_background} % Theoretical background
-\include{empirical_results} % Empirical results % Description of data set
-\include{Summary}
+% \include{empirical_results} % Empirical results % Description of data set
+% \include{Summary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Bibliography                              %%%

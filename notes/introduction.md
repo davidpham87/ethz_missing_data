@@ -126,7 +126,7 @@ factor of $P(M=0 \vert Y=s)/P(M=0)$.
 # Missing data [@schafer2002missing]
 
 > With or without missing data, the goal of a statistical procedure should be
-  to make valid and efficient inferences about a population of interest—not to
+  to make valid and efficient inferences about a population of interest-not to
   estimate, predict, or recover missing observations nor to obtain the same
   results that we would have seen with complete data.
 
@@ -320,7 +320,6 @@ Obviously, the missing values problem is dealt before the analysis with MI, in
 contrast with ML. The danger from MI is the ability ot use different models for
 imputation and analysis.
 
-
 # Data analysis using regression and multilevel/hierarchical models [@gelman2006data]
 
 #### Imputation of several missing data
@@ -371,7 +370,7 @@ provided by
 \end{align}
 
 where $D_J \in \mathbb{R}^{N \times p}$ is a diagonal matrix containing the
-leading $J < p)$ singular values of $X^c$ and $V_J \in \mathbb{R}^{p \times p}$
+leading $J < p$ singular values of $X^c$ and $V_J \in \mathbb{R}^{p \times p}$
 and $U_J \in \mathbb{R}^{N \times N}$, the corresponding orthogonal matrix of
 $J$ right and left singular vectors. $\hat X^c$ is the nearest matrix of $X^c$
 among matrices with rank $J$ with respect to the sum of squares norm $\vert
@@ -379,13 +378,13 @@ among matrices with rank $J$ with respect to the sum of squares norm $\vert
 
 #### Regression interpretation
 
-If x$ is any row of $X^c$, consider the regression of the $p$ values in
+If $x$ is any row of $X^c$, consider the regression of the $p$ values in
 $x=(x_1, \dots, x_p)^T$ on the _eigen-gens_ $v_1, \dots, v_J$, each $p$
 dimensional vectors. The regression solves 
 
 \begin{align}\label{eq:compleeccaseSvd}
 \min_{\beta} \vert\vert x - V_j\beta \vert\vert^2 = 
-  \min_{\beta} \sum_{l=1}^p \big(x_l - \sum_j=1^J v_{lj}\beta_j \big)^2
+  \min_{\beta} \sum_{l=1}^p \big(x_l - \sum_{j=1}^J v_{lj}\beta_j \big)^2
 \end{align}
 
 with solution $\hat \beta = (V_J^T V_J)^{-1} V_J^T x = V_J^T x$ (since $V_J$ is
@@ -398,7 +397,7 @@ SVD approximate each row of $X^c$ by its fitted vector obtained by regression
 components, they could possibly be imputed from
 
 \begin{align*}
-a\min_{\beta} \sum_{l=1}^p 1(M_l=0) \big(x_l - \sum_j=1^J v_{lj}\beta_j \big)^2
+a\min_{\beta} \sum_{l=1}^p 1(M_l=0) \big(x_l - \sum_{j=1}^J v_{lj}\beta_j \big)^2
 \end{align*}
 where $M_l$ is the missingness indicator of $x_l$
 
