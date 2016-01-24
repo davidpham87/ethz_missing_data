@@ -43,11 +43,11 @@ observed $R$ whereas we usually do not have $Y_{mis}$.
 
 The data are said to be \emph{MCAR} if
 \begin{align*}
-P(R=0 \vert Y_{obs}, Y_{mis}) = P(R=0),
+P(R=0 \; \vert \;  Y_{obs}, Y_{mis}) = P(R=0),
 \end{align*}
 or equivalently
 \begin{align*}
-P(Y = y \vert R=i) = P(Y=y),\; i \in \{0, 1\},\; y \in \mathbb{R}^{n\times p}.
+P(Y = y \; \vert \;  R=i) = P(Y=y),\; i \in \{0, 1\},\; y \in \mathbb{R}^{n\times p}.
 \end{align*}
 It means the probability of being missing depends does not depends on the
 actual value of $Y$.
@@ -55,7 +55,7 @@ actual value of $Y$.
 \paragraph{MAR} For multiple imputation, one requires only $R \perp Y_{mis}$,
 that is
 \begin{align*}
-  P(R=0 \vert Y_{obs}, Y_{mis}) = P(R=0 \vert Y_{obs}),
+  P(R=0 \; \vert \;  Y_{obs}, Y_{mis}) = P(R=0 \; \vert \;  Y_{obs}),
 \end{align*}
 that is other observed variables impact of the probability of missingness but
 the missing mechanism only depends on the observed variables and not the actual
@@ -64,7 +64,7 @@ missing value. In this case, we say the data $Y$ are \emph{MAR}.
 \paragraph{MNAR}
 The data are MNAR if
 \begin{align*}
-  P(R=0 \vert Y_{obs}, Y_{mis})
+  P(R=0 \; \vert \;  Y_{obs}, Y_{mis})
 \end{align*}
 can not be simplified. It essentially means that the rate of response depends
 on the actual value of the missing observations. The standard example is the

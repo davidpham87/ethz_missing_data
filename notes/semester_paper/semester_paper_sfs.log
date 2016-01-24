@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.5.19)  18 JAN 2016 00:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.12.23)  24 JAN 2016 19:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -31,9 +31,9 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 )
-LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
+LaTeX Font Info:    Try loading font information for T1+aer on input line 105.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
@@ -49,6 +49,8 @@ File: babel.def 2014/09/25 3.9l Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -65,12 +67,12 @@ Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 ifpdf was true... --- PDF
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 137.
+Package color Info: Driver file: pdftex.def on input line 142.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -131,7 +133,7 @@ Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
@@ -238,7 +240,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--39
  []
 
 ))) (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
-Package: amsthm 2009/07/02 v2.20.1
+Package: amsthm 2015/03/04 v2.20.2
 \thm@style=\toks15
 \thm@bodyfont=\toks16
 \thm@headfont=\toks17
@@ -264,7 +266,7 @@ Package: amsthm 2009/07/02 v2.20.1
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2013/08/25 v0.4v Insert pages of external PDF documents (AM)
+Package: pdfpages 2015/06/15 v0.4y Insert pages of external PDF documents (AM)
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
@@ -277,19 +279,19 @@ Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bdimen=\dimen109
 \calc@Askip=\skip57
 \calc@Bskip=\skip58
-LaTeX Info: Redefining \setlength on input line 75.
-LaTeX Info: Redefining \addtolength on input line 76.
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count102
 \calc@Cskip=\skip59
 )
 (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
-Package: eso-pic 2013/10/06 v2.0d eso-pic (RN)
+Package: eso-pic 2015/04/20 v2.0e eso-pic (RN)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
@@ -297,13 +299,24 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 94.
 )
 \Gin@req@height=\dimen110
 \Gin@req@width=\dimen111
 )
+\AM@pagewidth=\dimen112
+\AM@pageheight=\dimen113
+
 (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
-File: pppdftex.def 2013/08/25 v0.4v Pdfpages driver for pdfTeX (AM)
+File: pppdftex.def 2015/06/15 v0.4y Pdfpages driver for pdfTeX (AM)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
 \AM@pagebox=\box28
 \AM@toc@title=\toks21
@@ -316,9 +329,9 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks22
-\ex@=\dimen112
+\ex@=\dimen114
 )
-\pmbraise@=\dimen113
+\pmbraise@=\dimen115
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -347,12 +360,12 @@ Package: relsize 2013/03/29 ver 4.1
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/exscale.sty
 Package: exscale 2014/09/29 v2.1h Standard LaTeX package exscale
-LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 52.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 57.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
-\big@size=\dimen114
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+\big@size=\dimen116
 )
 \Lvneed=\skip62
 \LLongpage=\skip63
@@ -383,7 +396,7 @@ LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box30
 \strutbox@=\box31
-\big@size=\dimen115
+\big@size=\dimen117
 LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count111
@@ -396,12 +409,12 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \column@=\count116
 \maxfields@=\count117
 \andhelp@=\toks24
-\eqnshift@=\dimen116
-\alignsep@=\dimen117
-\tagshift@=\dimen118
-\tagwidth@=\dimen119
-\totwidth@=\dimen120
-\lineht@=\dimen121
+\eqnshift@=\dimen118
+\alignsep@=\dimen119
+\tagshift@=\dimen120
+\tagwidth@=\dimen121
+\totwidth@=\dimen122
+\lineht@=\dimen123
 \@envbody=\toks25
 \multlinegap=\skip69
 \multlinetaggap=\skip70
@@ -418,39 +431,39 @@ Package: enumerate 2014/10/28 v3.00 enumerate extensions (DPC)
 \lst@gtempboxa=\box32
 \lst@token=\toks28
 \lst@length=\count119
-\lst@currlwidth=\dimen122
+\lst@currlwidth=\dimen124
 \lst@column=\count120
 \lst@pos=\count121
-\lst@lostspace=\dimen123
-\lst@width=\dimen124
+\lst@lostspace=\dimen125
+\lst@width=\dimen126
 \lst@newlines=\count122
 \lst@lineno=\count123
-\lst@maxwidth=\dimen125
+\lst@maxwidth=\dimen127
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count124
 \lst@skipnumbers=\count125
 \lst@framebox=\box33
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2014/09/06 1.5e listings configuration
+File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package: listings 2014/09/06 1.5e (Carsten Heinz)
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2014/09/06 1.5e listings language file
+File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2014/09/06 1.5e listings language file
+File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2014/09/06 1.5e listings language file
+File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 \c@definition=\count126
 
 (./semester_paper_sfs.aux (./Abstract.aux) (./Notation.aux)
-(./theoretical_background.aux))
+(./theoretical_background.aux) (./empirical_results.aux))
 \openout1 = `semester_paper_sfs.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
@@ -471,13 +484,13 @@ LaTeX Font Info:    ... okay on input line 103.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count127
-\scratchdimen=\dimen126
+\scratchdimen=\dimen128
 \scratchbox=\box34
 \nofMPsegments=\count128
 \nofMParguments=\count129
 \everyMPshowfont=\toks29
 \MPscratchCnt=\count130
-\MPscratchDim=\dimen127
+\MPscratchDim=\dimen129
 \MPnumerator=\count131
 \makeMPintoPDFobject=\count132
 \everyMPtoPDFconversion=\toks30
@@ -584,14 +597,31 @@ Chapter 1.
 [1
 
 
-] [2] [3]) [4] (./semester_paper_sfs.bbl) [5
+] [2] [3]) [4]
+\openout2 = `empirical_results.aux'.
+
+ (./empirical_results.tex
+Chapter 2.
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <5> on input line 19.
+[5
 
 
-
-] [6
 
 ]
-<confirmation-originality-scan.pdf, id=162, 597.432pt x 845.07718pt>
+LaTeX Font Info:    Try loading font information for T1+aett on input line 58.
+ (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) [6]) [7] [8
+
+
+]
+(./semester_paper_sfs.bbl) [9
+
+] [10
+
+]
+<confirmation-originality-scan.pdf, id=236, 597.432pt x 845.07718pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf>
@@ -605,7 +635,7 @@ Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 2
 24.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 
-<confirmation-originality-scan.pdf, id=165, page=1, 597.432pt x 845.07718pt>
+<confirmation-originality-scan.pdf, id=239, page=1, 597.432pt x 845.07718pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
@@ -636,43 +666,50 @@ File: confirmation-originality-scan.pdf Graphic file (type pdf)
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
  line 224.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
- [7 <./confirmation-originality-scan.pdf, page is rotated 270 degrees>]
+ [11 <./confirmation-originality-scan.pdf, page is rotated 270 degrees>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
  (./semester_paper_sfs.aux
-(./Abstract.aux) (./Notation.aux) (./theoretical_background.aux))
+(./Abstract.aux) (./Notation.aux) (./theoretical_background.aux)
+(./empirical_results.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
 Package rerunfilecheck Info: File `semester_paper_sfs.out' has not changed.
-(rerunfilecheck)             Checksum: C7D4BAA83A2927C836371BFD103303B0;356.
+(rerunfilecheck)             Checksum: 854B0AF8AE3B414E23EECAFD8F0E27B3;903.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
  ) 
 Here is how much of TeX's memory you used:
- 9931 strings out of 493105
- 138243 string characters out of 6137072
- 289387 words of memory out of 5000000
- 13092 multiletter control sequences out of 15000+600000
- 40749 words of font info for 85 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 43i,20n,49p,303b,469s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 10059 strings out of 495000
+ 140015 string characters out of 6181168
+ 283875 words of memory out of 5000000
+ 12927 multiletter control sequences out of 15000+600000
+ 57469 words of font info for 116 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 43i,20n,47p,303b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/linew1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
-.pfb>
-Output written on semester_paper_sfs.pdf (17 pages, 618187 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/latxfont/linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msbm10.pfb>
+Output written on semester_paper_sfs.pdf (21 pages, 698984 bytes).
 PDF statistics:
- 231 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
- 49 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 330 PDF objects out of 1000 (max. 8388607)
+ 278 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 

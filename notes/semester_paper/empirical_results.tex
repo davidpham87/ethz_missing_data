@@ -1,53 +1,148 @@
-\chapter{First Chapter} 
+\chapter{Empirical Comparison of Imputation Methods}
 
-\section{To include a picture}
-\begin{figure}[hbt!]%--- Picture 'H'ere, 'B'ottom or 'T'op; '!' Try to
-                    %impose your will to LaTeX
-  \epsfCfile{.85}{geys-2kern} %<< no file extension
-  %%         --- .85 stands for 85% of text width
-  \caption[Geyser data: binned histogram, Silverman's and another
-  kernel]%<<-- Legend for the list of figures at the beginning of you thesis
-  {Old Faithful Geyser eruption lengths, $n=272$; binned data and two
-    (Gaussian) kernel density estimates ($\times 10$) with $h=h^*= .3348$
-    and $h= .1$ (dotted).}% legend displayed below the graph.
-  \label{fig:geys1}
-\end{figure}
-
-Or also with \texttt{includegraphics}:
-\begin{figure}[hbt!]%--- Picture 'H'ere, 'B'ottom or 'T'op; '!' Try to
-                    %impose your will to LaTeX
-  \centering
-  \includegraphics[width=.5\textwidth]{geys-2kern} %<< no file extension
-  %%         --- .5\textwidth stands for 50% of text width
-  \caption[Geyser data: binned histogram, Silverman's and another
-  kernel]%<<-- Legend for the list of figures at the beginning of you thesis
-  {Old Faithful Geyser eruption lengths, $n=272$; binned data and two
-    (Gaussian) kernel density estimates ($\times 10$) with $h=h^*= .3348$
-    and $h= .1$ (dotted).}% legend displayed below the graph.
-  \label{fig:geys2}
-\end{figure}
-
-\section{To make a proof}
-\begin{proof}
-  $1 + 1 = 2$
-\end{proof}
-
-\section{To include \Rp code}
-See information in Appendix~\ref{app:complement}.
+% Include the sessionInfo
 
 
-\section{Other information}
-Put a text between quotes: make sure to use nice quotes, such as ``quote''.
+\section{Data set and imputation methods}
 
-Cite a document in the bibliography (an example here): \cite{Reference}.
-%%--> in file   myReferences.bib  (same directory)
-Or mention that \citeauthor{HamF85} (a person) or \citeauthor{StaWW91} (two
-persons) have already done quite a bit work.
+\section{Methodology}
+% Check if it is not RMSE
 
-Referencing a different part of your work: please refer to Appendix \ref{app:complement}.
+Let $\mathcal{M}$ denote the set of imputation methods and let
+$Y \in \mathbb{R}^{n\times p}$ be a complete data matrix.
 
+\subsection{Simulation of missingness}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "MasterThesisSfS"
-%%% End: 
+Two types of missing were implemented: \textsc{mcar} and \textsc{mar}. The
+former is quit straightforward to implement: For a given missingness rate
+$p \in (0, 1)$, the response\footnote{Recall that $r_{ij}$ is $0$ if $y_{ij}$
+  is missing and $1$ otherwise.} $r_{ij}$ of the value $Y_{ij}$ follows a
+binomial distribution with probability $p$. Implementation of \textsc{mar}
+usually make assumptions on the underlying multivariate distribution is a
+little more involved. Nevertheless, a mechanism based of the empirical
+distribution of the missingnes pattern can also been used.
+
+The original data set contained pattern of missingness and for a missing rate
+$q$, one could sample the patterns from it with the multinomial distribution
+until the desired rate $q$ is reached. The patterns are then randomly assigned
+to our completed data set. This method has the disadvantage that it can not
+attain any missingness rate $q \in (0, 1)$, as one can only assign one pattern
+per observation.
+
+For our study, it implies that for the \textsc{mar} method, only data set with
+a missingness rate below 30\% were analyzed.
+
+\subsection{Ranking methods}
+
+For a simulated data matrix $Y^l$ with values
+$y_{ij},\, i \in \{1, \dots, n\},\, j \in \{1, \dots, p\}$ and for an
+imputation method $m \in \mathcal{M}$ with predicted values $\hat y_{ij}$ if
+$y_{ij}$ is missing, the scaled mean squared error (SMSE)
+\begin{align*}
+  \textrm{SMSE}^{m}_{l,j} = \Big\{\sum_{i=1}^n 1(r_{ij}=1)\Big\}^{-1} \sum_{i=1}^{n} \frac{(\hat y_{ij} - y_{ij})^2}{\mu_j} \cdot 1(r_{ij}=0),
+\end{align*}
+where $\mu_j = n^{-1}\sum_{i=1}^n Y_{ij}$, is used to assess the quality of
+imputation methods. To aggregate it across the columns of the data matrix,
+for each column, the methods are ranked by SMSE, then thes ranks are summed by
+imputation method. More precisely, the score $s^m_l$ of the imputation methods
+$m$
+\begin{align} \label{eq:score:imputation}
+  s^{m}_{l} = \sum_{j=1}^p \sum_{\nu \in \mathcal{M}} 1(\textrm{SMSE}^{m}_{l,j} \leq \textrm{SMSE}^{\nu}_{l,j})
+\end{align}
+The scores $s^m_l$ are then used to assess the performance of the imputation
+methods.
+
+\section{Implementation constraints}
+
+\paragraph{Nearest neighbors imputation}
+It appears that the \texttt{impute.knn} method from the \texttt{impute} package
+from the \emph{bioconductor} repository causes \emph{segmentation fault} (with
+the underlying \textsc{fortran} code) when the number of neighbors is either to
+high with respect to the available data.
+
+\paragraph{Colinear dimensions}
+
+If the data matrix $Y$ has colinear variables, then some challenges might occur
+when variables are colinear. More precisely, although multiple imputation
+techniques try to estimate
+\begin{align*}
+  Y_j \; |\; Y_{k_1}, \dots, Y_{k_j},
+\end{align*}
+using regression models, their results might be unstable if
+$Y_{k_i},\, i \in \{1, \dots, k_j\}$ are linearly dependent. Said differently, as
+regression parameters depends on the quality of the inversion the data matrix,
+but a matrix with colinear columns has an unstable inverse\footnote{The matrix
+  is so-called \emph{ill conditioned}.}. The \texttt{Amelia}
+package is the most prone to this issue, although \texttt{MICE} and \texttt{mi}
+algorithms fail to converge at some point when $Y_{k_i}$ exhibit high
+colinearity.
+
+\paragraph{Timing}
+Usually, \textsc{cpu} time, i.e. time spent by the processor on the \emph{R}
+process, is measured to evaluate the speed performance. Nonetheless, a trend
+has emerged for packages implement pretty good parallelism, i.e. packages
+implement the parallelism procedures themselves. It leads to underestimated
+human elapsed time as most of the computational burden is performed by
+sub-process.
+
+\paragraph{Tuning parameters}
+For the packages \texttt{softImpute} and \texttt{impute}, some defaults
+parameters for the imputation methods are provided. For the \texttt{impute.knn}
+function, the quality of the inference grows with the number of neighbors. The
+\texttt{softImpute} function unexpectedly has offers good default parameters,
+even if some restrain should be kept when the missing rate is high.
+
+\section{Results}
+\texttt{softImpute} and \texttt{MICE} were the only package able to cope with a
+quite high missing rate ($p \geq 0.7$).
+
+\texttt{impute.knn} from the \texttt{impute} package, when it works, is almost
+always the method with the best score (as defined in
+Equation \eqref{eq:score:imputation}).
+
+\texttt{MICE} offers a good balance between speed, robustness and quality of
+imputations, but the methods depends on the linear dependence of the columns of
+the data matrix.
+
+Although \texttt{softImpute} can cope with almost any type of data matrix, its
+inferences are subpar with the other methods. Some further analysis might be
+needed to confirm this results.
+
+\texttt{Amelia} is the package which is the least able to cope with a random
+impute matrix: routines failed without exception with any missing rate above
+$p \geq 0.3$.
+
+The \texttt{Amelia} and \texttt{mi} packages use by default parallel backends
+to perform their computations. However, they are the slowest methods in terms
+of elapsed time. This might be overcome by setting the number of iteration to a
+lower threshold. Nonetheless, this is not recommended as convergence is not
+guaranteed with data with dimensions having a strong linear dependence.
+
+\section{Open questions}
+
+Heuristically, the quality of models output normally depends on the amount of
+available data. In the missing data framework, precision are needed for this
+notion: Is it the number of complete observations, the number of non-missing
+values, or a mixture of both?  Interactions between the number of observation
+$n$, the number of dimensions $p$ and imputation methods with their optimal
+parameters are left unanswered with this work. In order to answer this
+question, a multivariate sampling mechanism should be devised and tested.
+
+Moreover, are there any reasonable solutions which can be applied to overcome
+colinearity? One could cluster the similar dimension and then pick one randomly
+to create an imputed value. Nevertheless, such solutions were not yet
+implemented.
+
+Additionally, this small simulation study has been applied to certain data set
+and it should be interesting to repeat the experience with other real data.
+
+Finally, the concern of this work has been to apply imputation methods to
+retrieve potential candidate values for inference, it would have been
+interesting to verify the quality of inferences performed with the imputed data
+set, for example multiple imputation against nearest neighbors.
+
+%%% Local Variables: ***
+%%% mode:latex ***
+%%% TeX-master: "semester_paper_sfs.tex"  ***
+%%% End: ***
+%%% reftex-default-bibliography: ("biblio.bib")
