@@ -9,5 +9,12 @@
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "lstinline")
    (LaTeX-add-labels
-    "eq:score:imputation")))
+    "tbl:flas:numeric"
+    "tbl:flas:factor"
+    "eq:smse"
+    "eq:score:imputation"
+    "fig:tuning:param:softimpute:imputeknn"
+    "fig:ranking:imputations"
+    "fig:mse:mcar"
+    "fig:mse:mar")))
 

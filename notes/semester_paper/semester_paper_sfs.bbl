@@ -7,6 +7,43 @@ Gelman, A. and J.~Hill (2006).
   models}.
 \newblock Cambridge University Press.
 
+\bibitem[\protect\citeauthoryear{Gelman and Hill}{Gelman and
+  Hill}{2011}]{gelman2011mi}
+Gelman, A. and J.~Hill (2011).
+\newblock Opening windows to the black box.
+\newblock {\em Journal of Statistical Software\/}~{\em 40}.
+
+\bibitem[\protect\citeauthoryear{Hastie and Mazumder}{Hastie and
+  Mazumder}{2015}]{hastie2015softimpute}
+Hastie, T. and R.~Mazumder (2015).
+\newblock {\em softImpute: Matrix Completion via Iterative Soft-Thresholded
+  SVD}.
+\newblock R package version 1.4.
+
+\bibitem[\protect\citeauthoryear{Hastie, Tibshirani, Narasimhan, and
+  Chu}{Hastie et~al.}{1999}]{hastie1999impute}
+Hastie, T., R.~Tibshirani, B.~Narasimhan, and G.~Chu (1999).
+\newblock {\em impute: impute: Imputation for microarray data}.
+\newblock R package version 1.42.0.
+
+\bibitem[\protect\citeauthoryear{Hastie, Tibshirani, Sherlock, Eisen, Brown,
+  and Botstein}{Hastie et~al.}{1999}]{hastie1999imputing}
+Hastie, T., R.~Tibshirani, G.~Sherlock, M.~Eisen, P.~Brown, and D.~Botstein
+  (1999).
+\newblock Imputing missing data for gene expression arrays.
+
+\bibitem[\protect\citeauthoryear{Hofert and Maechler}{Hofert and
+  Maechler}{2015}]{hofert2015simsalpar}
+Hofert, M. and M.~Maechler (2015).
+\newblock {\em simsalapar: Tools for Simulation Studies in Parallel with R}.
+\newblock R package version 1.0-5.
+
+\bibitem[\protect\citeauthoryear{Honaker, King, and Blackwell}{Honaker
+  et~al.}{2011}]{honaker2011amelia}
+Honaker, J., G.~King, and M.~Blackwell (2011).
+\newblock {Amelia II}: A program for missing data.
+\newblock {\em Journal of Statistical Software\/}~{\em 45\/}(7), 1--47.
+
 \bibitem[\protect\citeauthoryear{Little and Rubin}{Little and
   Rubin}{2002}]{little2002statistical}
 Little, R. and D.~Rubin (2002).
@@ -39,6 +76,12 @@ Troyanskaya, O., M.~Cantor, G.~Sherlock, P.~Brown, T.~Hastie, R.~Tibshirani,
 Van~Buuren, S. (2012).
 \newblock {\em Flexible imputation of missing data}.
 \newblock CRC press.
+
+\bibitem[\protect\citeauthoryear{{van Buuren} and Groothuis-Oudshoorn}{{van
+  Buuren} and Groothuis-Oudshoorn}{2011}]{vanburren2011mice}
+{van Buuren}, S. and K.~Groothuis-Oudshoorn (2011).
+\newblock {mice}: Multivariate imputation by chained equations in r.
+\newblock {\em Journal of Statistical Software\/}~{\em 45\/}(3), 1--67.
 
 \bibitem[\protect\citeauthoryear{Wikipedia}{Wikipedia}{2015}]{wikipediaImputation2015}
 Wikipedia (2015).

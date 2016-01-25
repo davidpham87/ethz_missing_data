@@ -4,10 +4,9 @@ This chapter provides an overview and an intuition on the field of missing
 data. It follows mainly \cite{schafer2002missing},
 \cite{little2002statistical}, \cite{van2012flexible}, with some impute from
 \cite{wikipediaImputation2015}, \cite{matloffblog2015}, \cite{gelman2006data},
-\cite{troyanskaya2001missing}.
-
-This chapter begins with a short description on the nature missingness, then
-describes several procedures in order to handle missing data.
+\cite{troyanskaya2001missing}. This chapter begins with a short description on
+the nature missingness, then describes several procedures in order to handle
+missing data.
 
 \section{Mechanism of missingness}
 \label{sec:source-missingness}
@@ -149,21 +148,104 @@ inconsistency.
 
 \section{Algorithmic completion}
 \label{sec:compl-case}
+For this particular section, the data matrix will be denoted as $X$, in order
+to remain consistent with the literature.
 
-\paragraph{Singular value decomposition}
+\paragraph{Singular value decomposition} Singular values of a matrix $X$ are
+the square root of the non-negative eigenvalues of $X^TX$. Singular value
+decomposition (SVD) is provided by
+\begin{align}\label{eq:svd}
+\hat X^c_J = U_JD_JV_J^T,
+\end{align}
+where $D_J \in \mathbb{R}^{N \times p}$ is a diagonal matrix containing the
+leading $J < p$ singular values of $X^c$ and $V_J \in \mathbb{R}^{p \times p}$
+and $U_J \in \mathbb{R}^{N \times N}$, the corresponding orthogonal matrix of
+$J$ right and left singular vectors. $\hat X^c$ is the nearest matrix of $X^c$
+among matrices with rank $J$ with respect to the sum of squares norm $\vert
+\vert A \vert \vert ^2 = tr(AA^T)$.
 
-\paragraph{Soft-impute completion}
+If $x_i$ is any row of $X^c$, consider the regression of the $p$ values in
+$x_i=(x_{i1}, \dots, x_{ip})^T$ on the eigen-vectors $v_1, \dots, v_J$, each $p$
+dimensional vectors. The regression solves
+\begin{align*}% \label{eq:compleeccaseSvd}
+\min_{\beta} \vert\vert x_{i} - V_j\beta \vert\vert^2 =
+  \min_{\beta} \sum_{l=1}^p \big(x_{il} - \sum_{j=1}^J v_{lj}\beta_j \big)^2,
+\end{align*}
+with solution $\hat \beta = (V_J^T V_J)^{-1} V_J^T x = V_J^T x$ (since $V_J$ is
+orthogonal) and orthogonal values $\hat x_l = V_l\hat\beta, l \in \{1, \dots, J
+\}$. Thus, according to Equation \eqref{eq:svd}, $X^cV_J = U_JD_j$ gives all
+the (transposed) regression coefficients for all the rows and $\hat X^c =
+U_JD_JV_J^T$ all the fitted values. Hence, once the matrix $V_J$ is computed,
+SVD approximate each row of $X^c$ by its fitted vector obtained by regression
+(or projection) on $V_J$. This suggest for a row $x_i$ of $X^m$ with some missing
+components, they could possibly be imputed from
+\begin{align*}
+\min_{\beta} \sum_{l=1}^p 1(R_{il}=1) \big(x_{il} - \sum_{j=1}^J v_{lj}\beta_j \big)^2,
+\end{align*}
+where $R_{il}$ is the response indicator of $x_{il}$.
+
+The imputation procedure is described as the following.
+\begin{enumerate}
+\item Compute the SVD of $X^c$ and keep $V_J$.
+\item For a row $x^*$ with missing element, compute
+  \begin{align*}
+    \hat\beta^* = ({V_J^{*}}^{T} V_J^*)^{-1} {V_J^*}^{T} x^*,
+  \end{align*}
+  where $V_j^*$ is the shortened version of $V_J$ with the appropriate rows
+  removed (corresponding the missing elements of $x^*$). Note $V_J^{*}$ no
+  longer has orthogonal columns.
+
+\item The predictions of the missing elements are $V_J^{(*)}\hat\beta^*$ where
+  $V_J^{(*)}$ is the complement in $V_J$ of $V_J^{*}$.
+\end{enumerate}
+
+Usually, the data matrix is centered before SVD, however, for missing data, an
+intercept has to be fitted and a method based simulation is provided
+afterwards. The previous methods usually discards a great number of data,
+particularly when $p >> N$. In contrast, the next iterative procedure
+circumvent the problem at the cost of more computation.
+
+\begin{enumerate}[(1)]
+\item  Set $X^*$ as $X$ with all missing values filled by the mean of their
+  row.
+\item \label{enumerate:step:svd:begin} Solve the problem
+  \begin{align} \label{eq:completesvd}
+    \min_{V_J, D_J, U_J} \vert \vert X^* - m 1^T - U_J D_J V_J^T \vert \vert^*
+  \end{align}
+  where $\vert\vert \cdot \vert\vert^*$ is the sum of squares of all non-missing
+  elements and $m \in \mathbb{R}^N$ is the row means of $X^*$.
+\item Predict the missing values of $X$ with the fitted values.
+\item Reset $X^*$ as $X$ with the missing values replaced by the result of
+  previous step.
+\item \label{enumerate:step:svd:end} Repeat steps
+  \ref{enumerate:step:svd:begin}-\ref{enumerate:step:svd:end}, until the size
+  of the relative update of the missing values become negligible.
+\end{enumerate}
+
+According to \cite{hastie1999imputing}, only 6 iterations are
+necessary. Interestingly, the solution of Equation \eqref{eq:completesvd} is a
+fixed point, i.e. if missing values are filled, and the SVD algorithm is
+executed on the complete matrix, the solution remains identical.
+
+% \paragraph{Soft-impute completion} TODO
+
+% TODO read
 \paragraph{K-nearest neighbors completion}
 
-Finally, one should not forget why these technique exists:
+\cite{troyanskaya2001missing} presents the other end of the spectrum in term of
+data usage: \emph{K-nearest neighbor averaging}. The algorithm is described as
+following.
+\begin{enumerate}
+  \item Computed the Euclidean distance between $x*$ and all the rows in $X^c$,
+    using only those co-ordinates not missing in $x*$. Identify the $K$ closest
+    observations.
+  \item Impute the missing coordinates of $x^*$ by averaging the corresponding
+    coordinates of the $K$ closest with weights proportional to their distances
+    to $x*$.
+\end{enumerate}
 
-\begin{quote}
-  With or without missing data, the goal of a statistical procedure should be
-  to make valid and efficient inferences about a population of interest -- not to
-  estimate, predict, or recover missing observations nor to obtain the same
-  results that we would have seen with complete data. \cite{schafer2002missing}
-\end{quote}
-
+Empirically, the number of neighbors $K$ between $5$ to $10$ is often a good
+choice for most data set.
 
 %%% Local Variables: ***
 %%% mode:latex ***

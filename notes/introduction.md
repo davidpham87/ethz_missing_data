@@ -362,7 +362,7 @@ the subset of complete genes (2069) and $X^m$ the remainder.
 #### Singular value decomposition
 
 Remind that singular values of a matrix $X$ are the square root of the
-non-negative eigenvalues of $X^TX$. Singular value decomposition (SVD)is
+non-negative eigenvalues of $X^TX$. Singular value decomposition (SVD) is
 provided by
 
 \begin{align}\label{eq:svd}

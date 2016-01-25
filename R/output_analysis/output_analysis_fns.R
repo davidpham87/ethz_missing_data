@@ -40,7 +40,14 @@ byXprWithout <- function(DT, p){
 ################################################################################
 ### Plots
 
-savePlot <- function(gg, pdf.file=NULL, height=8, width=12){
+savePlot <- function(gg, pdf.file=NULL, height=8, width=12, TeX=FALSE){
+  if (TeX){
+    require(tikzDevice)
+    paste0("../../plot/", pdf.file, '.tex') %>% tikz(height=height, width=width, standAlone=TRUE)
+    print(gg)
+    dev.off()
+    return()
+  }
   if (!is.null(pdf.file)){
     paste0("../../plot/", pdf.file, '.pdf') %>% pdf(height=height, width=width)
     print(gg)
@@ -49,17 +56,17 @@ savePlot <- function(gg, pdf.file=NULL, height=8, width=12){
 }
 
 
-msePlot <- function(DT, plot.subtitle=NULL, pdf.file=NULL){
+msePlot <- function(DT, plot.subtitle=NULL, pdf.file=NULL, TeX=FALSE, ncol=3){
   ttl <- "MSE per column"
   ttl <-  if(is.null(plot.subtitle)) ttl else  paste0(ttl, '\n', plot.subtitle)
   ylb <- "MSE" # ylab
   gg <- # ggplot(df.plot, aes(imputation.method, value)) +
-    ggplot(DT, aes(measures, value, color=imputation.method)) + geom_boxplot() +
-    facet_wrap('p', ncol=3) +
+    ggplot(DT, aes(measures, value, color=imputation.method)) + geom_boxplot(notch=TRUE, notchwidth=0.1) +
+    facet_wrap('p', ncol=ncol) +
     theme_bw() + ylab(ylb) + xlab("Feature") + ggtitle(ttl) +
     coord_cartesian(xlim=c(0, 2)) + coord_flip() +
     theme(legend.position='bottom')
-  savePlot(gg, pdf.file, height=16)
+  savePlot(gg, pdf.file, height=16, TeX=TeX)
   gg
 }
 
@@ -69,7 +76,7 @@ imputationPlot <- function(DT, plot.subtitle=NULL, pdf.file=NULL){
   ttl <-  if(is.null(plot.subtitle)) ttl else  paste0(ttl, '\n', plot.subtitle)
   ylb <- "MSE" # ylab
   gg <- # ggplot(df.plot, aes(imputation.method, value)) +
-    ggplot(DT, aes(p, value, color=imputation.method)) + geom_boxplot() +
+    ggplot(DT, aes(p, value, color=imputation.method)) + geom_boxplot(notch=TRUE, notchwidth=0.1) +
     ## stat_summary(fun.y=median, geom='point') +
     facet_wrap(c('measures'), ncol=2) +
     theme_bw() + ylab(ylb) + xlab("Probability of missingness") + ggtitle(ttl) +
@@ -85,4 +92,10 @@ imputationPlot <- function(DT, plot.subtitle=NULL, pdf.file=NULL){
 ### Function returning expression determining valid simulation
 isValidSimulation <- function(){
   c(quote(!(missing.mechanism=='MARFrequency' & p >= 0.25)))
+}
+
+citePackages <- function(){
+ pckgs <- c('mi', 'mice', 'Amelia', # most modern multiple imput packages
+           "softImpute", "simsalapar", "impute")
+ li <- lapply(pckgs, function(x) print(toBibtex(citation(x))))
 }

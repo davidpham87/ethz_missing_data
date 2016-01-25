@@ -45,18 +45,25 @@ vals.dt[, ranking:=rank(value), by=eval(by.xpr)] # ranking: higher is better
 by.xpr <- byXprWithout(vals.dt,
                        c('value', 'rank', 'measures', 'ranking'))
 scores.dt <- vals.dt[, .(score=sum(ranking, na.rm=TRUE)), by=eval(by.xpr)]
+impute.knn.idx <- scores.dt[, imputation.method=='impute.knn']
+scores.dt[impute.knn.idx, imputation.args:= paste('Impute.knn:', imputation.args)]
+scores.dt[!impute.knn.idx, imputation.args:= paste('SoftImpute:', imputation.args)]
 
 ## MCAR
+scores.dt[, imputation.args:= gsub('\\_', '\\\\_', imputation.args)]
 
 ### Plots of ranking
 gg <- # ggplot(df.plot, aes(imputation.method, value)) +
   ggplot(scores.dt, aes(imputation.method, score, color=imputation.args)) +
-  geom_boxplot() +
-  facet_wrap(c('p'), ncol=4) + theme_bw() +
-  ylab("Ranking per dataset") + xlab("Missing Mechanism") +
-  ggtitle("Quality of imputation by ranks\nper simulation") + coord_flip()
+  geom_boxplot(notch=TRUE) +
+  facet_wrap(c('p'), ncol=2) + theme_bw() +
+  ylab("Ranking per dataset") + xlab("Missing Mechanisg") +
+  labs(colour='Tuning parameters') +
+  theme(legend.position=c(0.75, 0.25)) +
+  guides(col = guide_legend(ncol=2)) +
+  ggtitle("Quality of imputation by ranks per simulation") + coord_flip()
 
-savePlot(gg, "tuning_ranking_soft_impute_plot", height=5, width=12)
+savePlot(gg, "tuning_ranking_soft_impute_plot", height=8, width=8, TeX=TRUE)
 
 ### Plots of MSE
 DT <- vals.dt
@@ -66,7 +73,7 @@ DT <- vals.dt
 msePlotTuning <- function(DT){
   dev.new()
   gg <- # ggplot(df.plot, aes(imputation.method, value)) +
-    ggplot(DT, aes(p, value, color=imputation.args)) + geom_boxplot() +
+    ggplot(DT, aes(p, value, color=imputation.args)) + geom_boxplot(notch=TRUE) +
     facet_wrap('measures', ncol=3) +
     theme_bw() + ylab('MSE') + xlab("Feature") + ggtitle('MSE Per Column') +
     coord_cartesian(xlim=c(0, 2)) + coord_flip() +

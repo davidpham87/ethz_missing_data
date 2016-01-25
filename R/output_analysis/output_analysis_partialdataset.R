@@ -62,17 +62,27 @@ gg <- # ggplot(df.plot, aes(imputation.method, value)) +
   geom_violin() + stat_summary(fun.y=median, geom='point') +
   facet_wrap(c('p'), ncol=4) + theme_bw() +
   ylab("Ranking per dataset") + xlab("Missing Mechanism") +
-  ggtitle("Quality of imputation by ranks\nper simulation") + coord_flip()
+  labs(colour="Imputation method") + theme(legend.position=c(0.6, 0.10)) +
+  guides(col = guide_legend(nrow=1)) +
+  ggtitle("Scores of imputation methods by missing rate under MCAR") + coord_flip()
 
-savePlot(gg, "partial_ranking_plot", height=12, width=10)
-
+# savePlot(gg, "partial_ranking_plot", height=12, width=10)
+savePlot(gg, "partial_ranking_plot", height=9, width=7, TeX=TRUE)
 ### Plots of MSE
 DT <- vals.dt
+
+DT.TeX <- copy(DT)
+DT.TeX[, measures:=gsub('\\_', '\\\\_', measures)]
+
 
 ### MCAR
 preds.low <- c(quote(missing.mechanism=="MCAR"), quote(p < 0.5), quote(imputation.method != 'softImpute'))
 preds.high <- c(quote(missing.mechanism=="MCAR"), quote(p >= 0.5), quote(imputation.method != 'softImpute'))
 preds.mar <- c(quote(missing.mechanism=="MARFrequency"), quote(imputation.method != 'softImpute'))
+
+DT.TeX <- DT.TeX[p %in% c('0.20', '0.50', '0.70')]
+gg <- preds.low[1] %>% {filterPredicates(DT.TeX, .)} %>%
+  msePlot('Missingness pattern: MCAR', 'partial_mcar_measures_prob_selection', TeX=TRUE)
 
 gg <- preds.low[1:2] %>% {filterPredicates(DT, .)} %>%
   msePlot('Missingness pattern: MCAR, low probability of missingness', 'partial_mcar_measures_prob_low')
@@ -83,8 +93,11 @@ gg <- preds.low[1] %>% {filterPredicates(DT, .)} %>%
   imputationPlot('Missingness pattern: MCAR', 'partial_mcar_imputation')
 
 ### MAR Frequency
-gg <- preds.mar[1] %>% {filterPredicates(DT, .)} %>%
-  msePlot('Missingness pattern: MAR Frequency', 'partial_marfrequency_measures')
+
+gg <- preds.mar[1] %>% {filterPredicates(DT.TeX, .)} %>%
+  msePlot('Missingness pattern: MAR Frequency',
+          'partial_marfrequency_measures', ncol=2, TeX=TRUE)
+
 gg <- preds.mar[1] %>% {filterPredicates(DT, .)} %>%
   imputationPlot('Missingness pattern: MARFrequency',
                  'partial_marfrequency_imputation')

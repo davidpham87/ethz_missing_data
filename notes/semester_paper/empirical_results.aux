@@ -1,24 +1,47 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Empirical Comparison of Imputation Methods}{5}{chapter.2}}
+\citation{schafer1997analysis}
+\citation{honaker2011amelia}
+\citation{hastie1999impute}
+\citation{gelman2011mi}
+\citation{vanburren2011mice}
+\citation{hastie2015softimpute}
+\citation{hofert2015simsalpar}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Empirical Comparison of Imputation Methods}{7}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Data set and imputation methods}{5}{section.2.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Methodology}{5}{section.2.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Simulation of missingness}{5}{subsection.2.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Ranking methods}{5}{subsection.2.2.2}}
-\newlabel{eq:score:imputation}{{2.1}{6}{Ranking methods}{equation.2.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Implementation constraints}{6}{section.2.3}}
-\@writefile{toc}{\contentsline {paragraph}{Nearest neighbors imputation}{6}{section*.18}}
-\@writefile{toc}{\contentsline {paragraph}{Colinear dimensions}{6}{section*.19}}
-\@writefile{toc}{\contentsline {paragraph}{Timing}{6}{section*.20}}
-\@writefile{toc}{\contentsline {paragraph}{Tuning parameters}{6}{section*.21}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Results}{7}{section.2.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Open questions}{7}{section.2.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Data set and R packages}{7}{section.2.1}}
+\@writefile{toc}{\contentsline {paragraph}{Data set}{7}{section*.15}}
+\@writefile{toc}{\contentsline {paragraph}{R Packages}{7}{section*.16}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Methodology}{7}{section.2.2}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces FLAS data set, summary of numerical variables}}{8}{table.2.1}}
+\newlabel{tbl:flas:numeric}{{2.1}{8}{FLAS data set, summary of numerical variables}{table.2.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2.2}{\ignorespaces FLAS data set, summary of factor variables}}{8}{table.2.2}}
+\newlabel{tbl:flas:factor}{{2.2}{8}{FLAS data set, summary of factor variables}{table.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Simulation of missingness}{8}{subsection.2.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Ranking methods}{9}{subsection.2.2.2}}
+\newlabel{eq:smse}{{2.1}{9}{Ranking methods}{equation.2.1}{}}
+\newlabel{eq:score:imputation}{{2.2}{9}{Ranking methods}{equation.2.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Implementation constraints}{9}{section.2.3}}
+\@writefile{toc}{\contentsline {paragraph}{Data type for soft impute and nearest neighbors}{9}{section*.17}}
+\@writefile{toc}{\contentsline {paragraph}{Nearest neighbors imputation}{9}{section*.18}}
+\@writefile{toc}{\contentsline {paragraph}{Colinear dimensions}{9}{section*.19}}
+\@writefile{toc}{\contentsline {paragraph}{Timing}{10}{section*.20}}
+\@writefile{toc}{\contentsline {paragraph}{Tuning parameters}{10}{section*.21}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Results}{10}{section.2.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Open questions}{10}{section.2.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Relative ranking of imputation quality of the tuning parameters of softImpute and impute.knn. For impute.knn, the number of neighbors is the tuning parameters, whereas for softimpute, it is the maximum rank and estimation method of the output matrix.}}{11}{figure.2.1}}
+\newlabel{fig:tuning:param:softimpute:imputeknn}{{2.1}{11}{Relative ranking of imputation quality of the tuning parameters of softImpute and impute.knn. For impute.knn, the number of neighbors is the tuning parameters, whereas for softimpute, it is the maximum rank and estimation method of the output matrix}{figure.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Rankings of imputation methods on the FLAS data set grouped by missing rate, under the MCAR mechanism with missing rate. Labels in the boxes provide the missing rate.}}{13}{figure.2.2}}
+\newlabel{fig:ranking:imputations}{{2.2}{13}{Rankings of imputation methods on the FLAS data set grouped by missing rate, under the MCAR mechanism with missing rate. Labels in the boxes provide the missing rate}{figure.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces SMSE for selected missingness rate with MCAR against imputation methods.}}{14}{figure.2.3}}
+\newlabel{fig:mse:mcar}{{2.3}{14}{SMSE for selected missingness rate with MCAR against imputation methods}{figure.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces SMSE of imputation methods on the FLAS data set grouped by missing rate, under the MAR mechanism. Labels in the boxes provide the missing rate.}}{15}{figure.2.4}}
+\newlabel{fig:mse:mar}{{2.4}{15}{SMSE of imputation methods on the FLAS data set grouped by missing rate, under the MAR mechanism. Labels in the boxes provide the missing rate}{figure.2.4}{}}
 \@setckpt{empirical_results}{
-\setcounter{page}{8}
-\setcounter{equation}{1}
-\setcounter{enumi}{0}
+\setcounter{page}{16}
+\setcounter{equation}{2}
+\setcounter{enumi}{2}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
@@ -31,11 +54,11 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
-\setcounter{figure}{0}
-\setcounter{table}{0}
-\setcounter{Item}{0}
+\setcounter{figure}{4}
+\setcounter{table}{2}
+\setcounter{Item}{10}
 \setcounter{Hfootnote}{2}
-\setcounter{bookmark@seq@number}{13}
+\setcounter{bookmark@seq@number}{12}
 \setcounter{AM@survey}{0}
 \setcounter{NAT@ctr}{0}
 \setcounter{lisNr}{0}

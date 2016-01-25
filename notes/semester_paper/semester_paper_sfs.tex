@@ -34,6 +34,7 @@
 \usepackage{amsmath}
 %\usepackage{mathrsfs}% Raph Smith's Formal Script font --> provides \mathscr
 \usepackage{enumerate}% Fuer selbstdefinierte Nummerierungen
+\usepackage{booktabs}
 %--------
 \usepackage{relsize}%-> \smaller (etc) used here
 \usepackage{color} %% to allow cloring in code listings
@@ -90,7 +91,7 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 %%% Path for your figures                      %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set the paths where all figures are taken from:
-\graphicspath{{Pictures/}}
+\graphicspath{{../../plot/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Define your own commands here             %%%
@@ -153,15 +154,15 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 \tableofcontents
 \newpage
 \listoffigures
-\newpage
+% \newpage
 \listoftables
 
 %% Notations and glossary (optional)
-\cleardoublepage
-\phantomsection
-\addcontentsline{toc}{chapter}{\protect\numberline{}{Notation}}
-\markboth{Notation}{Notation}
-\include{Notation}
+% \cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{\protect\numberline{}{Notation}}
+% \markboth{Notation}{Notation}
+% \include{Notation}
 
 \cleardoublepage
 \pagenumbering{arabic}%--- switch back to standard numbering
@@ -175,6 +176,7 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 % \include{Introduction}
 \include{theoretical_background} % Theoretical background
 \include{empirical_results} % Empirical results % Description of data set
+\include{conclusion} % conclusion
 % \include{Summary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -184,7 +186,7 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{\protect\numberline{}{Bibliography}}
-\bibliography{biblio.bib}
+\bibliography{../../biblio.bib}
 %% All books from our library (SfS) are already in a BiBTeX file
 %% (Assbib). You can use Assbib combined with your personal BiBTeX file:
 %% \bibliography{Myreferences,Assbib}. Of course, this will only work on
@@ -206,7 +208,6 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 % \phantomsection
 % \addcontentsline{toc}{chapter}{\protect\numberline{}{Epilogue}}
 % \markboth{Epilogue}{Epilogue}
-% \include{Epilogue}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Declaration of originality (Do not remove!)%%%

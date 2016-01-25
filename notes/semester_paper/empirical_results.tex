@@ -3,7 +3,87 @@
 % Include the sessionInfo
 
 
-\section{Data set and imputation methods}
+\section{Data set and R packages}
+
+\paragraph{Data set} The FLAS data set is studied in \cite{schafer1997analysis} and is a great
+candidate for the simulation study. The data were collected in 1987 to
+investigate the impact of the Foreign Language Attitude Scale (FLAS), a new
+measure, for predicting success in learning new foreign languages. Tables
+\ref{tbl:flas:numeric} and \ref{tbl:flas:factor} provide a short summary of
+data. The \texttt{MICE} and \texttt{mi} packages have been applied to the original
+data set to create an artificial complete one. The latter is used as baseline
+to compare the imputations by different methods.
+
+\paragraph{R Packages}
+
+Five \emph{R} packages were selected in the study.
+
+\begin{description}
+\item[Amelia] implemented by \cite{honaker2011amelia} provides bootstrapping
+  methods and EM algorithm for multiple impute analysis.
+\item[impute] authored by \cite{hastie1999impute} uses the
+  \texttt{impute.knn} function to provide nearest neighbors imputation.
+\item[mi] created by \cite{gelman2011mi} implements the multiple imputations in
+  a Bayesian framework.
+\item[mice] written by \cite{vanburren2011mice} allows the user to impute
+  values with chained equations.
+\item[softImpute] distributed by \cite{hastie2015softimpute} uses singular value
+  decomposition (or a version thereof) to complete data sets.
+\end{description}
+
+Each of these packages offers a function for completing data set. The simslapar
+packages from \cite{hofert2015simsalpar} provides a stable framework to conduct
+the simulation and gather the output from parallel simulations.
+
+\begin{table}[ht] \centering
+  \caption{FLAS data set, summary of numerical variables}
+  \label{tbl:flas:numeric}
+\begin{tabular}{@{\extracolsep{5pt}}lrrrrr}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\
+\hline \\[-1.8ex]
+FLAS & 279 & 82.487 & 14.026 & 28 & 110 \\
+MLAT & 230 & 24.257 & 6.256 & 9 & 40 \\
+vSAT & 245 & 501.514 & 91.162 & 210 & 790 \\
+mSAT & 245 & 564.249 & 88.707 & 320 & 800 \\
+eng & 242 & 53.950 & 15.402 & 19 & 113 \\
+HGPA & 278 & 2.750 & 0.617 & 0.500 & 3.990 \\
+CGPA & 245 & 3.294 & 0.477 & 2.000 & 4.000 \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \caption{FLAS data set, summary of factor variables}
+  \label{tbl:flas:factor}
+  \centering
+\begin{tabular}{lrrrrrr}
+\\[-1.8ex]\hline
+\hline \\[-1.8ex]
+Statistic & \multicolumn{1}{c}{N}  & Factors  &  &  &  &  \\
+\hline \\[-1.8ex]
+  Age  & 268 & -19 & 20+ & & \\
+       & & 124 & 144  & & \\
+\vspace{-5pt} \\
+
+  Sex  & 278 & M & F & &  \\
+       &     & 152 & 126 & &   \\
+\vspace{-5pt} \\
+
+  Number of prior & &  none & 1--2 & 3+ & & \\
+  foreign language & 268  &  71 &  73 & 124 & &  \\
+\vspace{-5pt} \\
+
+  Prior Language & & french & spanish & german & russian & \\
+       & 279 &  67 &  78 & 114 &  20 & \\
+  \vspace{-5pt} \\
+
+  Grades & & F & D & C  & B  & A \\
+         & 232 & 1 & 5 & 22 & 79 & 125 \\
+\hline \\[-1.8ex]
+\end{tabular}
+\end{table}
 
 \section{Methodology}
 % Check if it is not RMSE
@@ -20,7 +100,7 @@ $p \in (0, 1)$, the response\footnote{Recall that $r_{ij}$ is $0$ if $y_{ij}$
 binomial distribution with probability $p$. Implementation of \textsc{mar}
 usually make assumptions on the underlying multivariate distribution is a
 little more involved. Nevertheless, a mechanism based of the empirical
-distribution of the missingnes pattern can also been used.
+distribution of the missingness pattern can also been used.
 
 The original data set contained pattern of missingness and for a missing rate
 $q$, one could sample the patterns from it with the multinomial distribution
@@ -34,25 +114,33 @@ a missingness rate below 30\% were analyzed.
 
 \subsection{Ranking methods}
 
-For a simulated data matrix $Y^l$ with values
-$y_{ij},\, i \in \{1, \dots, n\},\, j \in \{1, \dots, p\}$ and for an
-imputation method $m \in \mathcal{M}$ with predicted values $\hat y_{ij}$ if
-$y_{ij}$ is missing, the scaled mean squared error (SMSE)
-\begin{align*}
-  \textrm{SMSE}^{m}_{l,j} = \Big\{\sum_{i=1}^n 1(r_{ij}=1)\Big\}^{-1} \sum_{i=1}^{n} \frac{(\hat y_{ij} - y_{ij})^2}{\mu_j} \cdot 1(r_{ij}=0),
-\end{align*}
-where $\mu_j = n^{-1}\sum_{i=1}^n Y_{ij}$, is used to assess the quality of
-imputation methods. To aggregate it across the columns of the data matrix,
-for each column, the methods are ranked by SMSE, then thes ranks are summed by
+For a simulated data matrix $Y^l = (y^l_{ij})_{i,j=1}^{n,p}$ with missing
+values, its associated response matrix $R_{ij}^l = (r_{ij}^l)_{i,j=1}^{n, p}$
+and an imputation method $m \in \mathcal{M}$ with predicted values
+$\hat y^l_{ij}$ if $y^l_{ij}$ is missing. For \emph{numerical} variables, the scaled
+mean squared error (SMSE),
+\begin{align}\label{eq:smse}
+  \textrm{SMSE}^{m}_{l,j} = \Big\{\sum_{i=1}^n 1(r^l_{ij}=0)\Big\}^{-1} \sum_{i=1}^{n} \Big(\;\frac{\hat y_{ij}^l - y^l_{ij}}{\mu_j}\;\Big)^2 \cdot 1(r^l_{ij}=0),
+  \, j \in \{1, \dots, p\}, \, m \in \mathcal{M},
+\end{align}
+where $\mu_j = n^{-1}\sum_{i=1}^n y_{ij}$, is used to assess the quality of
+imputation methods. For \emph{factors} variables, the conservative $0-1$ loss
+is employed. To aggregate it across the columns of the data matrix, for each
+column, the methods are ranked by SMSE, then these ranks are summed by
 imputation method. More precisely, the score $s^m_l$ of the imputation methods
-$m$
+$m \in \mathcal{M}$ can be expressed as
 \begin{align} \label{eq:score:imputation}
-  s^{m}_{l} = \sum_{j=1}^p \sum_{\nu \in \mathcal{M}} 1(\textrm{SMSE}^{m}_{l,j} \leq \textrm{SMSE}^{\nu}_{l,j})
+  s^{m}_{l} = \sum_{j=1}^p \sum_{\nu \in \mathcal{M}} 1(\textrm{SMSE}^{m}_{l,j} \leq \textrm{SMSE}^{\nu}_{l,j}).
 \end{align}
 The scores $s^m_l$ are then used to assess the performance of the imputation
 methods.
 
 \section{Implementation constraints}
+
+\paragraph{Data type for soft impute and nearest neighbors}
+The implementation of two methods did not allow for factors variable. Although
+it is not a paramount task to transform the factor into numerical data type,
+some care should be taken to make conversion correctly.
 
 \paragraph{Nearest neighbors imputation}
 It appears that the \texttt{impute.knn} method from the \texttt{impute} package
@@ -85,38 +173,53 @@ implement the parallelism procedures themselves. It leads to underestimated
 human elapsed time as most of the computational burden is performed by
 sub-process.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{tuning_ranking_soft_impute_plot}
+  \caption{Relative ranking of imputation quality of the tuning parameters of
+    softImpute and impute.knn. For impute.knn, the number of neighbors is the
+    tuning parameters, whereas for softimpute, it is the maximum rank and estimation
+    method of the output matrix.}
+  \label{fig:tuning:param:softimpute:imputeknn}
+\end{figure}
+
 \paragraph{Tuning parameters}
 For the packages \texttt{softImpute} and \texttt{impute}, some defaults
-parameters for the imputation methods are provided. For the \texttt{impute.knn}
-function, the quality of the inference grows with the number of neighbors. The
-\texttt{softImpute} function unexpectedly has offers good default parameters,
-even if some restrain should be kept when the missing rate is high.
+parameters for the imputation methods are provided. Figure
+\ref{fig:tuning:param:softimpute:imputeknn} displays how the quality of the
+imputation evolves with the parameters. The \texttt{impute.knn} function, the
+quality of the inference grows with the number of neighbors. The
+\texttt{softImpute} function unexpectedly offers good default parameters, even
+if some restrain should be kept when the missing rate is high.
 
 \section{Results}
-\texttt{softImpute} and \texttt{MICE} were the only package able to cope with a
-quite high missing rate ($p \geq 0.7$).
 
-\texttt{impute.knn} from the \texttt{impute} package, when it works, is almost
-always the method with the best score (as defined in
-Equation \eqref{eq:score:imputation}).
+Figure \ref{fig:ranking:imputations} summarize the results under the
+\textsc{mcar} missing mechanism. \texttt{softImpute} and \texttt{MICE} were the
+only package able to cope with a quite high missing rate ($p \geq
+0.7$). \texttt{impute.knn} from the \texttt{impute} package, when it works, is
+almost always the method with the best score, as defined in Equation
+\eqref{eq:score:imputation}. \texttt{MICE} offers a good balance between speed,
+robustness and quality of imputations, but the methods depends on the linear
+dependency of the columns of the data matrix. Although \texttt{softImpute} can
+cope with almost any type of data matrix, its inferences are sub-par with the
+other methods. Some further analysis might be needed to confirm this
+results. \texttt{Amelia} is the package which is the least able to cope with a
+random impute matrix: routines failed without exception with any missing rate
+above $p > 0.3$. The \texttt{Amelia} and \texttt{mi} packages use by default
+parallel back-ends to perform their computations. However, they are the slowest
+methods in terms of elapsed time. This might be overcome by setting the number
+of iteration to a lower threshold. Nonetheless, this is not recommended as
+convergence is not guaranteed when data input might have dimensions with strong
+linear dependency.
 
-\texttt{MICE} offers a good balance between speed, robustness and quality of
-imputations, but the methods depends on the linear dependence of the columns of
-the data matrix.
-
-Although \texttt{softImpute} can cope with almost any type of data matrix, its
-inferences are subpar with the other methods. Some further analysis might be
-needed to confirm this results.
-
-\texttt{Amelia} is the package which is the least able to cope with a random
-impute matrix: routines failed without exception with any missing rate above
-$p \geq 0.3$.
-
-The \texttt{Amelia} and \texttt{mi} packages use by default parallel backends
-to perform their computations. However, they are the slowest methods in terms
-of elapsed time. This might be overcome by setting the number of iteration to a
-lower threshold. Nonetheless, this is not recommended as convergence is not
-guaranteed with data with dimensions having a strong linear dependence.
+Figure \ref{fig:mse:mcar} shows the measure from Equation \eqref{eq:smse} for
+missingness rates $p \in \{0.2, 0.5, 0.7\}$. For numerical data, all methods
+but \texttt{softImpute} have the same order of errors with K-nearest neighbors
+being slightly better than the others. However, the latter method does not
+allow for inference of the imputation error.  As Figure \ref{fig:mse:mar}
+shows, the previous statements are not impacted by changing the missingness
+mechanism to (our implementation of) \textsc{mar}.
 
 \section{Open questions}
 
@@ -140,6 +243,37 @@ Finally, the concern of this work has been to apply imputation methods to
 retrieve potential candidate values for inference, it would have been
 interesting to verify the quality of inferences performed with the imputed data
 set, for example multiple imputation against nearest neighbors.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{partial_ranking_plot}
+  \caption{Rankings of imputation methods on the FLAS data set grouped by
+    missing rate, under the MCAR mechanism with missing rate. Labels in the
+    boxes provide the missing rate.}
+  \label{fig:ranking:imputations}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{partial_mcar_measures_prob_selection}
+  \caption{SMSE for selected missingness rate with MCAR
+    against imputation methods.}
+  \label{fig:mse:mcar}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{partial_marfrequency_measures}
+  \caption{SMSE of imputation methods on the FLAS data set grouped by missing
+    rate, under the MAR mechanism. Labels in the boxes provide the missing
+    rate.}
+  \label{fig:mse:mar}
+\end{figure}
+
+
 
 %%% Local Variables: ***
 %%% mode:latex ***
