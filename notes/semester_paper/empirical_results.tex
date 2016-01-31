@@ -85,40 +85,53 @@ Statistic & \multicolumn{1}{c}{N}  & Factors  &  &  &  &  \\
 \end{tabular}
 \end{table}
 
+
+
 \section{Methodology}
 % Check if it is not RMSE
 
 Let $\mathcal{M}$ denote the set of imputation methods and let
-$Y \in \mathbb{R}^{n\times p}$ be a complete data matrix.
+$Y = (y_{ij})_{i,j=1}^{n,p} \in \mathbb{R}^{n\times p}$ be a complete data matrix.
+
+The experience requires to chose a complete data matrix, then to replace some
+of its entries with missing values and then to rank the imputation
+methods. In order to cope with the randomness, $N_{sim}$ simulations are
+performed and then aggregated.
 
 \subsection{Simulation of missingness}
 
 Two types of missing were implemented: \textsc{mcar} and \textsc{mar}. The
-former is quit straightforward to implement: For a given missingness rate
-$p \in (0, 1)$, the response\footnote{Recall that $r_{ij}$ is $0$ if $y_{ij}$
-  is missing and $1$ otherwise.} $r_{ij}$ of the value $Y_{ij}$ follows a
-binomial distribution with probability $p$. Implementation of \textsc{mar}
-usually make assumptions on the underlying multivariate distribution is a
-little more involved. Nevertheless, a mechanism based of the empirical
-distribution of the missingness pattern can also been used.
+former is quit straightforward to implement: Given a data matrix and a
+missingness rate, defined as the ratio of missing value over the number of
+entries in the data matrix, the response\footnote{Recall that $r_{ij}$ is $0$
+  if $y_{ij}$ is missing and $1$ otherwise.} $r_{ij}$ for the element $y_{ij}$
+follows a binomial distribution with probability equal to the missingness rate.
 
-The original data set contained pattern of missingness and for a missing rate
-$q$, one could sample the patterns from it with the multinomial distribution
-until the desired rate $q$ is reached. The patterns are then randomly assigned
-to our completed data set. This method has the disadvantage that it can not
-attain any missingness rate $q \in (0, 1)$, as one can only assign one pattern
-per observation.
+Implementation of \textsc{mar} usually make assumptions on the underlying
+multivariate distribution is a little more involved. Nevertheless, a mechanism
+based of the empirical distribution of the missingness pattern can also been
+used. Missingness patterns are defined as $r_{i} = (r_{i1}, \dots, \r_{ip})$,
+where $r_{ij}$ is the response of $y_{ij}$. The raw data set contained pattern
+of missingness and for a missing rate, one could sample the patterns from it
+with the multinomial distribution until the desired missingness rate is
+reached. The patterns are then randomly assigned to our completed data
+set. This method has the disadvantage that it can not attain any missingness
+rate between $0$ and $1$, as one can only assign one pattern per observation.
+
+The FLAS data set contains has the following distribution of missingness pattern.
+
+% TODO implement the table
 
 For our study, it implies that for the \textsc{mar} method, only data set with
 a missingness rate below 30\% were analyzed.
 
 \subsection{Ranking methods}
 
-For a simulated data matrix $Y^l = (y^l_{ij})_{i,j=1}^{n,p}$ with missing
-values, its associated response matrix $R_{ij}^l = (r_{ij}^l)_{i,j=1}^{n, p}$
-and an imputation method $m \in \mathcal{M}$ with predicted values
-$\hat y^l_{ij}$ if $y^l_{ij}$ is missing. For \emph{numerical} variables, the scaled
-mean squared error (SMSE),
+For a simulated data matrix $Y^l = (y^l_{ij})_{i,j=1}^{n,p}$,
+$l \in \{1, \dots, N_{sim}\}$ with missing values, its associated response
+matrix $R_{ij}^l = (r_{ij}^l)_{i,j=1}^{n, p}$ and an imputation method
+$m \in \mathcal{M}$ with predicted values $\hat y^l_{ij}$ if $y^l_{ij}$ is
+missing. For \emph{numerical} variables, the scaled mean squared error (SMSE),
 \begin{align}\label{eq:smse}
   \textrm{SMSE}^{m}_{l,j} = \Big\{\sum_{i=1}^n 1(r^l_{ij}=0)\Big\}^{-1} \sum_{i=1}^{n} \Big(\;\frac{\hat y_{ij}^l - y^l_{ij}}{\mu_j}\;\Big)^2 \cdot 1(r^l_{ij}=0),
   \, j \in \{1, \dots, p\}, \, m \in \mathcal{M},
@@ -148,10 +161,10 @@ from the \emph{bioconductor} repository causes \emph{segmentation fault} (with
 the underlying \textsc{fortran} code) when the number of neighbors is either to
 high with respect to the available data.
 
-\paragraph{Colinear dimensions}
+\paragraph{Collinear dimensions}
 
-If the data matrix $Y$ has colinear variables, then some challenges might occur
-when variables are colinear. More precisely, although multiple imputation
+If the data matrix $Y$ has collinear variables, then some challenges might occur
+when variables are collinear. More precisely, although multiple imputation
 techniques try to estimate
 \begin{align*}
   Y_j \; |\; Y_{k_1}, \dots, Y_{k_j},
@@ -159,11 +172,11 @@ techniques try to estimate
 using regression models, their results might be unstable if
 $Y_{k_i},\, i \in \{1, \dots, k_j\}$ are linearly dependent. Said differently, as
 regression parameters depends on the quality of the inversion the data matrix,
-but a matrix with colinear columns has an unstable inverse\footnote{The matrix
+but a matrix with collinear columns has an unstable inverse\footnote{The matrix
   is so-called \emph{ill conditioned}.}. The \texttt{Amelia}
 package is the most prone to this issue, although \texttt{MICE} and \texttt{mi}
 algorithms fail to converge at some point when $Y_{k_i}$ exhibit high
-colinearity.
+collinearity.
 
 \paragraph{Timing}
 Usually, \textsc{cpu} time, i.e. time spent by the processor on the \emph{R}
@@ -232,7 +245,7 @@ parameters are left unanswered with this work. In order to answer this
 question, a multivariate sampling mechanism should be devised and tested.
 
 Moreover, are there any reasonable solutions which can be applied to overcome
-colinearity? One could cluster the similar dimension and then pick one randomly
+collinearity? One could cluster the similar dimension and then pick one randomly
 to create an imputed value. Nevertheless, such solutions were not yet
 implemented.
 

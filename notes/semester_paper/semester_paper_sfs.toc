@@ -23,11 +23,11 @@
 \contentsline {section}{\numberline {2.3}Implementation constraints}{9}{section.2.3}
 \contentsline {paragraph}{Data type for soft impute and nearest neighbors}{9}{section*.17}
 \contentsline {paragraph}{Nearest neighbors imputation}{9}{section*.18}
-\contentsline {paragraph}{Colinear dimensions}{9}{section*.19}
+\contentsline {paragraph}{Collinear dimensions}{9}{section*.19}
 \contentsline {paragraph}{Timing}{10}{section*.20}
 \contentsline {paragraph}{Tuning parameters}{10}{section*.21}
 \contentsline {section}{\numberline {2.4}Results}{10}{section.2.4}
-\contentsline {section}{\numberline {2.5}Open questions}{10}{section.2.5}
+\contentsline {section}{\numberline {2.5}Open questions}{12}{section.2.5}
 \contentsline {chapter}{\numberline {3}Conclusion}{17}{chapter.3}
 \vspace {.5\baselineskip }
 \contentsline {chapter}{\numberline {}{Bibliography}}{19}{section*.22}
