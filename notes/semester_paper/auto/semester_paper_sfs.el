@@ -33,6 +33,7 @@
     "report"
     "rep11"
     "ETHDAsfs"
+    "hyperref"
     "pdfpages"
     "amsbsy"
     "amssymb"
@@ -54,24 +55,14 @@
     '("seashell" 1)
     '("gray" 1)
     '("Bruch" 2)
-    '("aatop" 2)
-    "plim")
+    '("aatop" 2))
    (LaTeX-add-environments
-    '("Loutput" LaTeX-env-args ["argument"] 0)
-    '("Linput" LaTeX-env-args ["argument"] 0)
     "definition"
     "lemma"
     "theorem"
     "Coro"
     "example")
    (LaTeX-add-bibliographies
-    "biblio.bib")
-   (LaTeX-add-color-definecolors
-    "Mygrey"
-    "Cgrey")
-   (LaTeX-add-listings-lstdefinestyles
-    "input"
-    "output"
-    "Lstyle"
-    "Rstyle")))
+    "biblio.bib"))
+ :latex)
 

@@ -1,0 +1,1115 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.19)  7 FEB 2016 23:52
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input semester_paper_sfs.tex
+(./semester_paper_sfs.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./ETHDAsfs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ae/ae.sty
+Package: ae 2001/02/12 1.3 Almost European Computer Modern
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+)
+LaTeX Font Info:    Try loading font information for T1+aer on input line 105.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ae/t1aer.fd
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2014/09/25 3.9l The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2014/09/25 3.9l Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+)) (./sfs-hyper.sty
+Package: sfs-hyper 
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+ifpdf was true... --- PDF
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 142.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count89
+))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen104
+\Hy@linkcounter=\count90
+\Hy@pagecounter=\count91
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count92
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count93
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen105
+\Fld@menulength=\count94
+\Field@Width=\dimen106
+\Fld@charsize=\dimen107
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count95
+\c@Item=\count96
+\c@Hfootnote=\count97
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count98
+\c@bookmark@seq@number=\count99
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip43
+)
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 38.
+
+Package hyperref Info: Option `colorlinks' set `true' on input line 38.
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 38.
+
+Package hyperref Info: Option `linktocpage' set `true' on input line 38.
+Package hyperref Info: Option `plainpages' set `false' on input line 38.
+) (./ETHDASA.sty
+Document substyle for DA/SA. Released 27 November 1987
+(./articleint.sty
+Document substyle for international articles. Released 26 June 1989
+) (./labdata.gcm) (./perdata.gcm) (./ETHDASA.str) (./ETHform.sty
+Page style with ETH logo. Released 19 February 1988
+(./ETHSfSlogo.sty
+MM's / WSt's ETH logo definitions for ETHletter,ETHvisit,...
+\logounitlength=\skip44
+\ETHlogoETH=\box26
+\ETHlogoETHfull=\box27
+LaTeX Font Info:    Try loading font information for T1+aess on input line 38.
+(/usr/share/texlive/texmf-dist/tex/latex/ae/t1aess.fd
+File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 38.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 38.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 38.
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--39
+
+ []
+
+))) (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks15
+\thm@bodyfont=\toks16
+\thm@headfont=\toks17
+\thm@notefont=\toks18
+\thm@headpunct=\toks19
+\thm@preskip=\skip45
+\thm@postskip=\skip46
+\thm@headsep=\skip47
+\dth@everypar=\toks20
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip48
+\f@ncyO@elh=\skip49
+\f@ncyO@erh=\skip50
+\f@ncyO@olh=\skip51
+\f@ncyO@orh=\skip52
+\f@ncyO@elf=\skip53
+\f@ncyO@erf=\skip54
+\f@ncyO@olf=\skip55
+\f@ncyO@orf=\skip56
+))
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2001/04/09 non-zero parskip adjustments
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2015/06/15 v0.4y Insert pages of external PDF documents (AM)
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count100
+\calc@Bcount=\count101
+\calc@Adimen=\dimen108
+\calc@Bdimen=\dimen109
+\calc@Askip=\skip57
+\calc@Bskip=\skip58
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count102
+\calc@Cskip=\skip59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2015/04/20 v2.0e eso-pic (RN)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+)
+\Gin@req@height=\dimen110
+\Gin@req@width=\dimen111
+)
+\AM@pagewidth=\dimen112
+\AM@pageheight=\dimen113
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2015/06/15 v0.4y Pdfpages driver for pdfTeX (AM)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
+)
+\AM@pagebox=\box28
+\AM@toc@title=\toks21
+\c@AM@survey=\count103
+\AM@templatesizebox=\box29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks22
+\ex@=\dimen114
+)
+\pmbraise@=\dimen115
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip60
+\bibsep=\skip61
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count104
+) (./texab.sty
+Sem.f.Statistik LaTeX Abkuerzungen $Id: texab.sty,v 1.75 2011/02/11 10:18:52 sf
+s Exp $
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/exscale.sty
+Package: exscale 2014/09/29 v2.1h Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+\big@size=\dimen116
+)
+\Lvneed=\skip62
+\LLongpage=\skip63
+\Lenlarge=\skip64
+\Litemskip=\skip65
+\Litemwidth=\skip66
+\centering@tex=\skip67
+\c@lisNr=\count105
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip68
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+)
+\inf@bad=\count106
+LaTeX Info: Redefining \frac on input line 210.
+LaTeX Info: Redefining \binom on input line 213.
+\uproot@=\count107
+\leftroot@=\count108
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count109
+\DOTSCASE@=\count110
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box30
+\strutbox@=\box31
+\big@size=\dimen117
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count111
+\c@MaxMatrixCols=\count112
+\dotsspace@=\muskip11
+\c@parentequation=\count113
+\dspbrk@lvl=\count114
+\tag@help=\toks23
+\row@=\count115
+\column@=\count116
+\maxfields@=\count117
+\andhelp@=\toks24
+\eqnshift@=\dimen118
+\alignsep@=\dimen119
+\tagshift@=\dimen120
+\tagwidth@=\dimen121
+\totwidth@=\dimen122
+\lineht@=\dimen123
+\@envbody=\toks25
+\multlinegap=\skip69
+\multlinetaggap=\skip70
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
+Package: enumerate 2014/10/28 v3.00 enumerate extensions (DPC)
+\@enLab=\toks27
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count118
+\FV@InFile=\read1
+\FV@TabBox=\box32
+\c@FancyVerbLine=\count119
+\FV@StepNumber=\count120
+\FV@OutFile=\write3
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count121
+\lst@gtempboxa=\box33
+\lst@token=\toks28
+\lst@length=\count122
+\lst@currlwidth=\dimen124
+\lst@column=\count123
+\lst@pos=\count124
+\lst@lostspace=\dimen125
+\lst@width=\dimen126
+\lst@newlines=\count125
+\lst@lineno=\count126
+\lst@maxwidth=\dimen127
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count127
+\lst@skipnumbers=\count128
+\lst@framebox=\box34
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+\c@definition=\count129
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\lstFV@gtempboxa=\box35
+)
+(./semester_paper_sfs.aux (./Abstract.aux) (./Notation.aux)
+(./theoretical_background.aux) (./empirical_results.aux) (./Appendix1.aux))
+\openout1 = `semester_paper_sfs.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 195.
+LaTeX Font Info:    ... okay on input line 195.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count130
+\scratchdimen=\dimen128
+\scratchbox=\box36
+\nofMPsegments=\count131
+\nofMParguments=\count132
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count133
+\MPscratchDim=\dimen129
+\MPnumerator=\count134
+\makeMPintoPDFobject=\count135
+\everyMPtoPDFconversion=\toks30
+)
+\AtBeginShipoutBox=\box37
+Package hyperref Info: Link coloring ON on input line 195.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count136
+)
+LaTeX Info: Redefining \ref on input line 195.
+LaTeX Info: Redefining \pageref on input line 195.
+LaTeX Info: Redefining \nameref on input line 195.
+
+(./semester_paper_sfs.out) (./semester_paper_sfs.out)
+\@outlinefile=\write4
+\openout4 = `semester_paper_sfs.out'.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@lstlisting=\count137
+
+Underfull \hbox (badness 10000) in paragraph at lines 215--215
+
+ []
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 215.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 215.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+
+Overfull \vbox (7.17722pt too high) has occurred while \output is active []
+
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+] [2
+
+] [3]
+\openout2 = `Abstract.aux'.
+
+ (./Abstract.tex
+[4
+
+
+]) [5] (./semester_paper_sfs.toc)
+\tf@toc=\write5
+\openout5 = `semester_paper_sfs.toc'.
+
+ [6
+
+] (./semester_paper_sfs.lof)
+\tf@lof=\write6
+\openout6 = `semester_paper_sfs.lof'.
+
+ [7]
+(./semester_paper_sfs.lot)
+\tf@lot=\write7
+\openout7 = `semester_paper_sfs.lot'.
+
+ [8]
+\openout2 = `Notation.aux'.
+
+ (./Notation.tex)
+\openout2 = `theoretical_background.aux'.
+
+ (./theoretical_background.tex
+Chapter 1.
+[1
+
+
+
+
+
+
+] [2] [3] [4]) [5]
+\openout2 = `empirical_results.aux'.
+
+ (./empirical_results.tex [6
+
+
+
+]
+Chapter 2.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 13.
+(/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
+Overfull \hbox (2.48282pt too wide) in paragraph at lines 24--26
+[]\T1/aer/m/n/10.95 authored by [][]Hastie, Tib-shi-rani, Narasimhan, and Chu[]
+[] ([][]1999[][]) uses the \T1/aett/m/n/10.95 im-pute.knn
+ []
+
+
+Underfull \vbox (badness 1742) has occurred while \output is active []
+
+ [7]
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <5> on input line 107.
+
+[8] [9]
+<../../plot/tuning_ranking_soft_impute_plot.pdf, id=289, 578.16pt x 578.16pt>
+File: ../../plot/tuning_ranking_soft_impute_plot.pdf Graphic file (type pdf)
+
+<use ../../plot/tuning_ranking_soft_impute_plot.pdf>
+Package pdftex.def Info: ../../plot/tuning_ranking_soft_impute_plot.pdf used on
+ input line 234.
+(pdftex.def)             Requested size: 426.79134pt x 426.79071pt.
+ [10] [11] [12 <../../plot/tuning_ranking_soft_impute_plot.pdf>]
+<../../plot/partial_ranking_plot.pdf, id=326, 505.89pt x 650.43pt>
+File: ../../plot/partial_ranking_plot.pdf Graphic file (type pdf)
+
+<use ../../plot/partial_ranking_plot.pdf>
+Package pdftex.def Info: ../../plot/partial_ranking_plot.pdf used on input line
+ 307.
+(pdftex.def)             Requested size: 426.79134pt x 548.73941pt.
+
+<../../plot/partial_mcar_measures_prob_selection.pdf, id=327, 867.24pt x 1156.3
+2pt>
+File: ../../plot/partial_mcar_measures_prob_selection.pdf Graphic file (type pd
+f)
+ <use ../../plot/partial_mcar_measures_prob_selection.pdf>
+Package pdftex.def Info: ../../plot/partial_mcar_measures_prob_selection.pdf us
+ed on input line 318.
+(pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
+
+<../../plot/partial_marfrequency_measures.pdf, id=328, 867.24pt x 1156.32pt>
+File: ../../plot/partial_marfrequency_measures.pdf Graphic file (type pdf)
+
+<use ../../plot/partial_marfrequency_measures.pdf>
+Package pdftex.def Info: ../../plot/partial_marfrequency_measures.pdf used on i
+nput line 328.
+(pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
+) [13] [14 <../../plot/partial_ranking_plot.pdf>] [15 <../../plot/partial_mcar_
+measures_prob_selection.pdf>] [16 <../../plot/partial_marfrequency_measures.pdf
+>] (./semester_paper_sfs.bbl) [17
+
+
+
+]
+\openout2 = `Appendix1.aux'.
+
+ (./Appendix1.tex [18
+
+
+]
+Appendix A.
+
+Overfull \hbox (7.86293pt too wide) in paragraph at lines 4--7
+\T1/aer/m/n/10.95 The com-plete \T1/aess/m/n/10.95 R \T1/aer/m/n/10.95 code to 
+gen-er-ate the re-sult is stored on [][]$\T1/aett/m/n/10.95 https : / / github 
+. com / davidpham87 /
+ []
+
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 20.
+(../../R/flas_completion.R
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <7> on input line 13.
+
+../../R/flas_completion.R:13: Undefined control sequence.
+<recently read> \bm 
+                    
+l.13 FLAS <-
+             readRDS('../data/FLAS.rds')
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:17: Undefined control sequence.
+<recently read> \bm 
+                    
+l.17 lower.grades <-
+                     read.csv('../data/flas_lower_grades.csv')
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:18: Undefined control sequence.
+<recently read> \bm 
+                    
+l.18 grades <-
+               as.numeric(FLAS[, 'grade']) + 2
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:21: Undefined control sequence.
+<recently read> \bm 
+                    
+l.21   grades[lower.grades[i, 1]] <-
+                                      lower.grades[i, 2]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[19]
+../../R/flas_completion.R:24: Undefined control sequence.
+<recently read> \bm 
+                    
+l.24 grades <-
+               factor(grades, labels=c('F', 'D', 'C', 'B', 'A'))
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:25: Undefined control sequence.
+<recently read> \bm 
+                    
+l.25 FLAS[, 'grade_complete'] <-
+                                 grades
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:33: Undefined control sequence.
+<recently read> \bm 
+                    
+l.33 dataset <-
+                FLAS
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:34: Undefined control sequence.
+<recently read> \bm 
+                    
+l.34 save.path <-
+                  '../data/FLAS_complete_average.rds'
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:35: Undefined control sequence.
+<recently read> \bm 
+                    
+l.35 column.type.mi <-
+                       list(grade_complete="ordered-categorical")
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:36: Undefined control sequence.
+<recently read> \bm 
+                    
+l.36 n <-
+          20
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:38: Undefined control sequence.
+<recently read> \bm 
+                    
+l.38 data.imputed <-
+                     imputeData(FLAS, n, column.type.mi) # Impute data from ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:39: Undefined control sequence.
+<recently read> \bm 
+                    
+l.39 data.imputed <-
+                     do.call(c, data.imputed) # Flatten the variable as data...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/flas_completion.R:40: Undefined control sequence.
+<recently read> \bm 
+                    
+l.40 data.average <-
+                     averagingImputations(data.imputed) # Mean for numerical...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+) (../../R/bug_replication/bug_amelia.R
+../../R/bug_replication/bug_amelia.R:13: Undefined control sequence.
+<recently read> \bm 
+                    
+l.13 flas.li <-
+                loadFLASData()
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_amelia.R:19: Undefined control sequence.
+<recently read> \bm 
+                    
+l.19 dataset <-
+                MCAR(flas.li$data, p=0.35, random.seed=59)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[20]
+../../R/bug_replication/bug_amelia.R:22: Undefined control sequence.
+<recently read> \bm 
+                    
+l.22 a.out <-
+              amelia(dataset, 20, noms=c("lang", "age",  "priC", "sex"),
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_amelia.R:26: Undefined control sequence.
+<recently read> \bm 
+                    
+l.26 dataset <-
+                MCAR(flas.li$data, p=0.7, random.seed=1)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_amelia.R:28: Undefined control sequence.
+<recently read> \bm 
+                    
+l.28 a.out <-
+              amelia(dataset, 20, noms=c("lang", "age",  "priC", "sex"),
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+) (../../R/bug_replication/bug_impute_knn.R
+../../R/bug_replication/bug_impute_knn.R:14: Undefined control sequence.
+<recently read> \bm 
+                    
+l.14 imputation.methods <-
+                           c("impute.knn")
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:15: Undefined control sequence.
+<recently read> \bm 
+                    
+l.15 sfile.path <-
+                   paste0("simulation_rds/imputation_", "20151230_1430_",
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:21: Undefined control sequence.
+<recently read> \bm 
+                    
+l.21 flas.li <-
+                loadFLASData()
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:22: Undefined control sequence.
+<recently read> \bm 
+                    
+l.22 flas.imputation.args <-
+                             imputationArgsFLAS()
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:25: Undefined control sequence.
+<recently read> \bm 
+                    
+l.25 dataset <-
+                MCAR(flas.li$data, 0.10, random.seed=1)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:29: Undefined control sequence.
+<recently read> \bm 
+                    
+l.29 fctrs <-
+              sapply(1:ncol(dataset), function(jdx)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:31: Undefined control sequence.
+<recently read> \bm 
+                    
+l.31 lvls <-
+             lapply(dataset[, fctrs], levels)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:33: Undefined control sequence.
+<recently read> \bm 
+                    
+l.33 dataset[, fctrs] <-
+                         lapply(dataset[, fctrs], as.numeric)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+../../R/bug_replication/bug_impute_knn.R:34: Undefined control sequence.
+<recently read> \bm 
+                    
+l.34 x <-
+          as.matrix(dataset)
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+)) [21] [22
+
+
+]
+<confirmation-originality-scan.pdf, id=505, 597.432pt x 845.07718pt>
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf>
+Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 3
+16.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf>
+Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 3
+16.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+
+<confirmation-originality-scan.pdf, id=508, page=1, 597.432pt x 845.07718pt>
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf, page 1>
+Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
+ line 316.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf, page 1>
+Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
+ line 316.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf, page 1>
+Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
+ line 316.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf, page 1>
+Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
+ line 316.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf, page 1>
+Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
+ line 316.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+ [23 <./confirmation-originality-scan.pdf, page is rotated 270 degrees>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
+ (./semester_paper_sfs.aux
+(./Abstract.aux) (./Notation.aux) (./theoretical_background.aux)
+(./empirical_results.aux) (./Appendix1.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 317.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
+Package rerunfilecheck Info: File `semester_paper_sfs.out' has not changed.
+(rerunfilecheck)             Checksum: 8BC842AF032C954EB54CF096D38467DD;1115.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 317.
+ ) 
+Here is how much of TeX's memory you used:
+ 11293 strings out of 493085
+ 157516 string characters out of 6136917
+ 496917 words of memory out of 5000000
+ 14205 multiletter control sequences out of 15000+600000
+ 62279 words of font info for 130 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 43i,20n,47p,669b,1152s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/la
+txfont/linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
+ymbols/msbm10.pfb>
+Output written on semester_paper_sfs.pdf (31 pages, 1427883 bytes).
+PDF statistics:
+ 641 PDF objects out of 1000 (max. 8388607)
+ 569 compressed objects within 6 object streams
+ 226 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+

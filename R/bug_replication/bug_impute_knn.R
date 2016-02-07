@@ -8,18 +8,14 @@
 setwd('../')
 source('simulation_fns.R')
 
-################################################################################
-### General simulation arguments
 
-### cl <- makeSimCluster(24) # change here for the number of cluster
-
-################################################################################
+######################################################################
 ### Simulation Args for FLAS
 imputation.methods <- c("impute.knn")
 sfile.path <- paste0("simulation_rds/imputation_", "20151230_1430_",
                      paste0(imputation.methods, collapse='_'), ".rds")
 
-################################################################################
+######################################################################
 ### FLAS
 
 flas.li <- loadFLASData()

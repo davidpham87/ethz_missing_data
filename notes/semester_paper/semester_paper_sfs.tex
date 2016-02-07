@@ -6,6 +6,8 @@
 \usepackage[english]{ETHDAsfs}%--> ETHDASA + fancyheadings + ... "umlaute"
 %  + sfs-hyper -> hyperref
 
+
+\usepackage{hyperref}
 \usepackage{pdfpages}%%to include the confirmation of originality (plagiarism
 \usepackage{amsbsy}%% for \boldsymbol and \pmb{.}
 \usepackage{amssymb}%% calls  amsfonts...
@@ -91,7 +93,8 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 %%% Path for your figures                      %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set the paths where all figures are taken from:
-\graphicspath{{Pictures/}}
+% \graphicspath{{Pictures/}}
+\graphicspath{{../../plot/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Define your own commands here             %%%
@@ -130,7 +133,8 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
   showstringspaces=false,% do not replace spaces in strings by a certain character
   captionpos=b,% positioning of the caption below
   breaklines=true,% automatic line breaking
-  % escapeinside={(*}{*)},% escaping to LaTeX => EVIL since str() may produce "(*" which is then escaped...
+  % escapeinside={(*}{*)},% escaping to LaTeX => EVIL since str() may produce
+  % "(*" which is then escaped... )
   fancyvrb=true,% verbatim code is typeset by listings
   extendedchars=false,% prohibit extended chars (chars of codes 128--255)
   rangeprefix=\#\#'\ \{\ ,% marker opening symbol

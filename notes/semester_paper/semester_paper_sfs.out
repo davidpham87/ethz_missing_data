@@ -12,7 +12,6 @@
 \BOOKMARK [1][-]{section.2.4}{Results}{chapter.2}% 12
 \BOOKMARK [1][-]{section.2.5}{Open questions}{chapter.2}% 13
 \BOOKMARK [0][-]{section*.23}{Bibliography}{}% 14
-\BOOKMARK [0][-]{appendix.A}{Complementary information}{}% 15
-\BOOKMARK [1][-]{section.A.1}{Including Rcode with verbatim}{appendix.A}% 16
-\BOOKMARK [1][-]{section.A.2}{Including Rcode with the listings package}{appendix.A}% 17
-\BOOKMARK [1][-]{section.A.3}{Using Sweave to include Rcode \(and more\) in your report}{appendix.A}% 18
+\BOOKMARK [0][-]{appendix.A}{R Implementation Details}{}% 15
+\BOOKMARK [1][-]{section.A.1}{Artificial complete FLAS data set}{appendix.A}% 16
+\BOOKMARK [1][-]{section.A.2}{Generation of low-level errors}{appendix.A}% 17

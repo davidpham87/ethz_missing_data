@@ -26,5 +26,6 @@
     "eq:svd"
     "enumerate:step:svd:begin"
     "eq:completesvd"
-    "enumerate:step:svd:end")))
+    "enumerate:step:svd:end"))
+ :latex)
 
