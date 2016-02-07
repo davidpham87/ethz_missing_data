@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.19)  31 JAN 2016 23:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.19)  1 FEB 2016 23:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -624,54 +624,58 @@ Overfull \hbox (2.48282pt too wide) in paragraph at lines 24--26
 [] ([][]1999[][]) uses the \T1/aett/m/n/10.95 im-pute.knn
  []
 
-[7]
+
+Underfull \vbox (badness 1742) has occurred while \output is active []
+
+ [7]
 LaTeX Font Info:    External font `cmex7' loaded for size
-(Font)              <5> on input line 104.
- [8] [9]
-<../../plot/tuning_ranking_soft_impute_plot.pdf, id=272, 578.16pt x 578.16pt>
+(Font)              <5> on input line 107.
+
+[8] [9]
+<../../plot/tuning_ranking_soft_impute_plot.pdf, id=273, 578.16pt x 578.16pt>
 File: ../../plot/tuning_ranking_soft_impute_plot.pdf Graphic file (type pdf)
 
 <use ../../plot/tuning_ranking_soft_impute_plot.pdf>
 Package pdftex.def Info: ../../plot/tuning_ranking_soft_impute_plot.pdf used on
- input line 183.
+ input line 231.
 (pdftex.def)             Requested size: 426.79134pt x 426.79071pt.
- [10] [11 <../../plot/tuning_ranking_soft_impute_plot.pdf>]
-<../../plot/partial_ranking_plot.pdf, id=299, 505.89pt x 650.43pt>
+ [10] [11 <../../plot/tuning_ranking_soft_impute_plot.pdf>] [12]
+<../../plot/partial_ranking_plot.pdf, id=309, 505.89pt x 650.43pt>
 File: ../../plot/partial_ranking_plot.pdf Graphic file (type pdf)
 
 <use ../../plot/partial_ranking_plot.pdf>
 Package pdftex.def Info: ../../plot/partial_ranking_plot.pdf used on input line
- 255.
+ 303.
 (pdftex.def)             Requested size: 426.79134pt x 548.73941pt.
 
-<../../plot/partial_mcar_measures_prob_selection.pdf, id=300, 867.24pt x 1156.3
+<../../plot/partial_mcar_measures_prob_selection.pdf, id=310, 867.24pt x 1156.3
 2pt>
 File: ../../plot/partial_mcar_measures_prob_selection.pdf Graphic file (type pd
 f)
  <use ../../plot/partial_mcar_measures_prob_selection.pdf>
 Package pdftex.def Info: ../../plot/partial_mcar_measures_prob_selection.pdf us
-ed on input line 265.
+ed on input line 313.
 (pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
 
-<../../plot/partial_marfrequency_measures.pdf, id=301, 867.24pt x 1156.32pt>
+<../../plot/partial_marfrequency_measures.pdf, id=311, 867.24pt x 1156.32pt>
 File: ../../plot/partial_marfrequency_measures.pdf Graphic file (type pdf)
 
 <use ../../plot/partial_marfrequency_measures.pdf>
 Package pdftex.def Info: ../../plot/partial_marfrequency_measures.pdf used on i
-nput line 274.
+nput line 322.
 (pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
-) [12] [13 <../../plot/partial_ranking_plot.pdf>] [14 <../../plot/partial_mcar_
-measures_prob_selection.pdf>] [15 <../../plot/partial_marfrequency_measures.pdf
+) [13] [14 <../../plot/partial_ranking_plot.pdf>] [15 <../../plot/partial_mcar_
+measures_prob_selection.pdf>] [16 <../../plot/partial_marfrequency_measures.pdf
 >]
 \openout2 = `conclusion.aux'.
 
- (./conclusion.tex [16
-
-
-
-]
+ (./conclusion.tex
 Chapter 3.
-) [17] [18
+) [17
+
+
+
+] [18
 
 
 ] (./semester_paper_sfs.bbl) [19
@@ -679,7 +683,7 @@ Chapter 3.
 ] [20
 
 ]
-<confirmation-originality-scan.pdf, id=355, 597.432pt x 845.07718pt>
+<confirmation-originality-scan.pdf, id=361, 597.432pt x 845.07718pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf>
@@ -693,7 +697,7 @@ Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 2
 25.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 
-<confirmation-originality-scan.pdf, id=358, page=1, 597.432pt x 845.07718pt>
+<confirmation-originality-scan.pdf, id=364, page=1, 597.432pt x 845.07718pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
@@ -737,13 +741,13 @@ Package rerunfilecheck Info: File `semester_paper_sfs.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 226.
  ) 
 Here is how much of TeX's memory you used:
- 10210 strings out of 493085
- 142943 string characters out of 6136917
+ 10217 strings out of 493085
+ 143023 string characters out of 6136917
  292421 words of memory out of 5000000
- 13283 multiletter control sequences out of 15000+600000
- 57469 words of font info for 116 fonts, out of 8000000 for 9000
+ 13285 multiletter control sequences out of 15000+600000
+ 58315 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,20n,47p,444b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,20n,47p,662b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -762,12 +766,13 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/latxfont/linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/symbols/msbm10.pfb>
-Output written on semester_paper_sfs.pdf (29 pages, 1373513 bytes).
+public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/latxfont/linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb>
+Output written on semester_paper_sfs.pdf (29 pages, 1386808 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 103 named destinations out of 1000 (max. 500000)
+ 464 PDF objects out of 1000 (max. 8388607)
+ 398 compressed objects within 4 object streams
+ 105 named destinations out of 1000 (max. 500000)
  153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
