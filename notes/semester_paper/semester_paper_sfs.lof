@@ -1,8 +1,8 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Relative ranking of imputation quality of the tuning parameters of softImpute and impute.knn. For impute.knn, the number of neighbors is the tuning parameters, whereas for softimpute, it is the maximum rank and estimation method of the output matrix.}}{11}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Rankings of imputation methods on the FLAS data set grouped by missing rate, under the MCAR mechanism with missing rate. Labels in the boxes provide the missing rate.}}{13}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces SMSE for selected missingness rate with MCAR against imputation methods.}}{14}{figure.2.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces SMSE of imputation methods on the FLAS data set grouped by missing rate, under the MAR mechanism. Labels in the boxes provide the missing rate.}}{15}{figure.2.4}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Relative ranking of imputation quality of the tuning parameters of softImpute and impute.knn. For impute.knn, the number of neighbors is the tuning parameters, whereas for softimpute, it is the maximum rank and estimation method of the output matrix.}}{10}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Rankings of imputation methods on the FLAS data set grouped by missing rate, under the MCAR mechanism with missing rate. Labels in the boxes provide the missing rate.}}{11}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces SMSE for selected missingness rate with MCAR against imputation methods.}}{11}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces SMSE of imputation methods on the FLAS data set grouped by missing rate, under the MAR mechanism. Labels in the boxes provide the missing rate.}}{11}{figure.2.4}
 \addvspace {10\p@ }

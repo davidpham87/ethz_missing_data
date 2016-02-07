@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.19)  31 JAN 2016 23:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.12.23)  5 FEB 2016 23:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -49,6 +49,8 @@ File: babel.def 2014/09/25 3.9l Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
 )
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -424,45 +426,37 @@ LaTeX Info: Redefining \] on input line 2666.
 Package: enumerate 2014/10/28 v3.00 enumerate extensions (DPC)
 \@enLab=\toks27
 )
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen124
-\lightrulewidth=\dimen125
-\cmidrulewidth=\dimen126
-\belowrulesep=\dimen127
-\belowbottomsep=\dimen128
-\aboverulesep=\dimen129
-\abovetopsep=\dimen130
-\cmidrulesep=\dimen131
-\cmidrulekern=\dimen132
-\defaultaddspace=\dimen133
-\@cmidla=\count118
-\@cmidlb=\count119
-\@aboverulesep=\dimen134
-\@belowrulesep=\dimen135
-\@thisruleclass=\count120
-\@lastruleclass=\count121
-\@thisrulewidth=\dimen136
+(/home/david/texmf/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count118
+\FV@InFile=\read1
+\FV@TabBox=\box32
+\c@FancyVerbLine=\count119
+\FV@StepNumber=\count120
+\FV@OutFile=\write3
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count122
-\lst@gtempboxa=\box32
+\lst@mode=\count121
+\lst@gtempboxa=\box33
 \lst@token=\toks28
-\lst@length=\count123
-\lst@currlwidth=\dimen137
-\lst@column=\count124
-\lst@pos=\count125
-\lst@lostspace=\dimen138
-\lst@width=\dimen139
-\lst@newlines=\count126
-\lst@lineno=\count127
-\lst@maxwidth=\dimen140
+\lst@length=\count122
+\lst@currlwidth=\dimen124
+\lst@column=\count123
+\lst@pos=\count124
+\lst@lostspace=\dimen125
+\lst@width=\dimen126
+\lst@newlines=\count125
+\lst@lineno=\count126
+\lst@maxwidth=\dimen127
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count128
-\lst@skipnumbers=\count129
-\lst@framebox=\box33
+\c@lstnumber=\count127
+\lst@skipnumbers=\count128
+\lst@framebox=\box34
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -478,58 +472,83 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
-\c@definition=\count130
+\c@definition=\count129
 
-(./semester_paper_sfs.aux (./Abstract.aux) (./theoretical_background.aux)
-(./empirical_results.aux) (./conclusion.aux))
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 702.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\lstFV@gtempboxa=\box35
+)
+(./semester_paper_sfs.aux (./Abstract.aux) (./Notation.aux)
+(./theoretical_background.aux) (./empirical_results.aux) (./Appendix1.aux))
 \openout1 = `semester_paper_sfs.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
-LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count131
-\scratchdimen=\dimen141
-\scratchbox=\box34
-\nofMPsegments=\count132
-\nofMParguments=\count133
+\scratchcounter=\count130
+\scratchdimen=\dimen128
+\scratchbox=\box36
+\nofMPsegments=\count131
+\nofMParguments=\count132
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count134
-\MPscratchDim=\dimen142
-\MPnumerator=\count135
-\makeMPintoPDFobject=\count136
+\MPscratchCnt=\count133
+\MPscratchDim=\dimen129
+\MPnumerator=\count134
+\makeMPintoPDFobject=\count135
 \everyMPtoPDFconversion=\toks30
 )
-\AtBeginShipoutBox=\box35
-Package hyperref Info: Link coloring ON on input line 104.
+\AtBeginShipoutBox=\box37
+Package hyperref Info: Link coloring ON on input line 193.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count137
+\c@section@level=\count136
 )
-LaTeX Info: Redefining \ref on input line 104.
-LaTeX Info: Redefining \pageref on input line 104.
-LaTeX Info: Redefining \nameref on input line 104.
+LaTeX Info: Redefining \ref on input line 193.
+LaTeX Info: Redefining \pageref on input line 193.
+LaTeX Info: Redefining \nameref on input line 193.
 
 (./semester_paper_sfs.out) (./semester_paper_sfs.out)
-\@outlinefile=\write3
-\openout3 = `semester_paper_sfs.out'.
+\@outlinefile=\write4
+\openout4 = `semester_paper_sfs.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -547,17 +566,17 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count138
+\c@lstlisting=\count137
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--124
+Underfull \hbox (badness 10000) in paragraph at lines 213--213
 
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 124.
+LaTeX Font Info:    Try loading font information for U+msa on input line 213.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 124.
+LaTeX Font Info:    Try loading font information for U+msb on input line 213.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -582,28 +601,33 @@ Overfull \vbox (7.17722pt too high) has occurred while \output is active []
 
 
 ]) [5] (./semester_paper_sfs.toc)
-\tf@toc=\write4
-\openout4 = `semester_paper_sfs.toc'.
+\tf@toc=\write5
+\openout5 = `semester_paper_sfs.toc'.
 
  [6
 
 ] (./semester_paper_sfs.lof)
-\tf@lof=\write5
-\openout5 = `semester_paper_sfs.lof'.
+\tf@lof=\write6
+\openout6 = `semester_paper_sfs.lof'.
 
-
+ [7]
 (./semester_paper_sfs.lot)
-\tf@lot=\write6
-\openout6 = `semester_paper_sfs.lot'.
+\tf@lot=\write7
+\openout7 = `semester_paper_sfs.lot'.
 
- [7] [8
+ [8]
+\openout2 = `Notation.aux'.
 
-]
+ (./Notation.tex)
 \openout2 = `theoretical_background.aux'.
 
  (./theoretical_background.tex
 Chapter 1.
 [1
+
+
+
+
 
 
 ] [2] [3] [4]) [5]
@@ -624,150 +648,232 @@ Overfull \hbox (2.48282pt too wide) in paragraph at lines 24--26
 [] ([][]1999[][]) uses the \T1/aett/m/n/10.95 im-pute.knn
  []
 
-[7]
+
+Underfull \vbox (badness 1742) has occurred while \output is active []
+
+ [7]
 LaTeX Font Info:    External font `cmex7' loaded for size
-(Font)              <5> on input line 104.
- [8] [9]
-<../../plot/tuning_ranking_soft_impute_plot.pdf, id=272, 578.16pt x 578.16pt>
-File: ../../plot/tuning_ranking_soft_impute_plot.pdf Graphic file (type pdf)
+(Font)              <5> on input line 107.
 
-<use ../../plot/tuning_ranking_soft_impute_plot.pdf>
-Package pdftex.def Info: ../../plot/tuning_ranking_soft_impute_plot.pdf used on
- input line 183.
-(pdftex.def)             Requested size: 426.79134pt x 426.79071pt.
- [10] [11 <../../plot/tuning_ranking_soft_impute_plot.pdf>]
-<../../plot/partial_ranking_plot.pdf, id=299, 505.89pt x 650.43pt>
-File: ../../plot/partial_ranking_plot.pdf Graphic file (type pdf)
+[8] [9]
 
-<use ../../plot/partial_ranking_plot.pdf>
-Package pdftex.def Info: ../../plot/partial_ranking_plot.pdf used on input line
- 255.
-(pdftex.def)             Requested size: 426.79134pt x 548.73941pt.
+./empirical_results.tex:191: LaTeX Error: File `tuning_ranking_soft_impute_plot
+' not found.
 
-<../../plot/partial_mcar_measures_prob_selection.pdf, id=300, 867.24pt x 1156.3
-2pt>
-File: ../../plot/partial_mcar_measures_prob_selection.pdf Graphic file (type pd
-f)
- <use ../../plot/partial_mcar_measures_prob_selection.pdf>
-Package pdftex.def Info: ../../plot/partial_mcar_measures_prob_selection.pdf us
-ed on input line 265.
-(pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.191 ...xtwidth]{tuning_ranking_soft_impute_plot}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<../../plot/partial_marfrequency_measures.pdf, id=301, 867.24pt x 1156.32pt>
-File: ../../plot/partial_marfrequency_measures.pdf Graphic file (type pdf)
+[10]
 
-<use ../../plot/partial_marfrequency_measures.pdf>
-Package pdftex.def Info: ../../plot/partial_marfrequency_measures.pdf used on i
-nput line 274.
-(pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
-) [12] [13 <../../plot/partial_ranking_plot.pdf>] [14 <../../plot/partial_mcar_
-measures_prob_selection.pdf>] [15 <../../plot/partial_marfrequency_measures.pdf
->]
-\openout2 = `conclusion.aux'.
+./empirical_results.tex:263: LaTeX Error: File `partial_ranking_plot' not found
+.
 
- (./conclusion.tex [16
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.263 ...s[width=\textwidth]{partial_ranking_plot}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
+
+./empirical_results.tex:273: LaTeX Error: File `partial_mcar_measures_prob_sele
+ction' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.273 ...th]{partial_mcar_measures_prob_selection}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./empirical_results.tex:282: LaTeX Error: File `partial_marfrequency_measures' 
+not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.282 ...textwidth]{partial_marfrequency_measures}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+) [11] [12
+
+
+] (./semester_paper_sfs.bbl) [13
+
+]
+\openout2 = `Appendix1.aux'.
+
+ (./Appendix1.tex [14
 
 
 ]
-Chapter 3.
-) [17] [18
+Appendix A.
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <7> on input line 9.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 9.
 
 
-] (./semester_paper_sfs.bbl) [19
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                \kern 3.04074pt
+(hyperref)                removed on input line 9.
 
-] [20
 
-]
-<confirmation-originality-scan.pdf, id=355, 597.432pt x 845.07718pt>
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 9.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 35.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                \kern 3.04074pt
+(hyperref)                removed on input line 35.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 35.
+
+
+Underfull \vbox (badness 5345) has occurred while \output is active []
+
+ [15]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 40.
+
+(./Pictures/picture.R)
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 43.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                \kern 3.04074pt
+(hyperref)                removed on input line 43.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 43.
+
+) [16] <confirmation-originality-scan.pdf, id=363, 597.432pt x 845.07718pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf>
-Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 2
-25.
+Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 3
+14.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf>
-Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 2
-25.
+Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 3
+14.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 
-<confirmation-originality-scan.pdf, id=358, page=1, 597.432pt x 845.07718pt>
+<confirmation-originality-scan.pdf, id=366, page=1, 597.432pt x 845.07718pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 225.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
-File: confirmation-originality-scan.pdf Graphic file (type pdf)
-
-<use confirmation-originality-scan.pdf, page 1>
-Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 225.
+ line 314.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 225.
+ line 314.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 225.
+ line 314.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 225.
+ line 314.
 (pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
- [21 <./confirmation-originality-scan.pdf, page is rotated 270 degrees>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
+File: confirmation-originality-scan.pdf Graphic file (type pdf)
+
+<use confirmation-originality-scan.pdf, page 1>
+Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
+ line 314.
+(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+ [17
+
+
+ <./confirmation-originality-scan.pdf, page is rotated 270 degrees>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 315.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 315.
  (./semester_paper_sfs.aux
-(./Abstract.aux) (./theoretical_background.aux) (./empirical_results.aux)
-(./conclusion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 226.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 226.
+(./Abstract.aux) (./Notation.aux) (./theoretical_background.aux)
+(./empirical_results.aux) (./Appendix1.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 315.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 315.
 Package rerunfilecheck Info: File `semester_paper_sfs.out' has not changed.
-(rerunfilecheck)             Checksum: 625D7F53A2ADBEC67AFA48FA9F22C968;896.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 226.
+(rerunfilecheck)             Checksum: 1CDD1EFDA541786CEE15080EA5B07486;1228.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 315.
  ) 
 Here is how much of TeX's memory you used:
- 10210 strings out of 493085
- 142943 string characters out of 6136917
- 292421 words of memory out of 5000000
- 13283 multiletter control sequences out of 15000+600000
- 57469 words of font info for 116 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 43i,20n,47p,444b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 11124 strings out of 495000
+ 154531 string characters out of 6181168
+ 432128 words of memory out of 5000000
+ 13879 multiletter control sequences out of 15000+600000
+ 66231 words of font info for 135 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 43i,20n,47p,444b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/latxfont/linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/symbols/msbm10.pfb>
-Output written on semester_paper_sfs.pdf (29 pages, 1373513 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/latxfont/linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/symbols/msbm10.pfb>
+Output written on semester_paper_sfs.pdf (25 pages, 766780 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 390 compressed objects within 4 object streams
- 103 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 480 PDF objects out of 1000 (max. 8388607)
+ 419 compressed objects within 5 object streams
+ 129 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

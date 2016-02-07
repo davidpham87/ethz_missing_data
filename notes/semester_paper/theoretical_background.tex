@@ -32,7 +32,7 @@ random (MCAR), missing at random (MAR) and missing not at random (MNAR).
 
 Let $Y \in \mathbb{R}^{n\times p}$ be the data matrix containing missing data
 for $n$ observations with $p$ variables,
-$R = (r_{ij})_{i=1,j=1}^{n,p} \in \{0, 1\}^{n\times p}$ denotes the response
+$R = (R_{ij})_{i=1,j=1}^{n,p} \in \{0, 1\}^{n\times p}$ denotes the response
 $y_{ij}$ (i.e. $r_{ij} = 1$ is $y_{ij}$ is observed, and is $0$
 otherwise). $Y_{obs}$ and $Y_{mis}$ denote the observation that is observed,
 respectively, missing, such that $Y=(Y_{obs}, Y_{mis})$. Note that we always
@@ -40,30 +40,31 @@ observed $R$ whereas we usually do not have $Y_{mis}$.
 
 \paragraph{MCAR}
 
-The data are said to be \emph{MCAR} if
+The data are said to be \emph{MCAR} if, for all $i \in \{1, \dots, n\}$ and
+$j \in \{1, \dots, p\}$,
 \begin{align*}
-P(R=0 \; \vert \;  Y_{obs}, Y_{mis}) = P(R=0),
+P(R_{ij}=0 \; \vert \;  Y_{obs}, Y_{mis}) = P(R_{ij}=0),
 \end{align*}
 or equivalently
 \begin{align*}
-P(Y = y \; \vert \;  R=i) = P(Y=y),\; i \in \{0, 1\},\; y \in \mathbb{R}^{n\times p}.
+  P(Y = y \; \vert \;  R_{ij}=r) = P(Y=y), \; y \in \mathbb{R}^{n\times p}, \; k \in \{0, 1\}.
 \end{align*}
 It means the probability of being missing depends does not depends on the
 actual value of $Y$.
 
-\paragraph{MAR} For multiple imputation, one requires only $R \perp Y_{mis}$,
-that is
+\paragraph{MAR} For multiple imputation, one requires only $R_{ij} \perp Y_{mis}$,
+for all $i \in \{1, \dots, n\}$ and $j \in \{1, \dots, p\}$, that is
 \begin{align*}
-  P(R=0 \; \vert \;  Y_{obs}, Y_{mis}) = P(R=0 \; \vert \;  Y_{obs}),
+  P(R_{ij}=0 \; \vert \;  Y_{obs}, Y_{mis}) = P(R_{ij}=0 \; \vert \;  Y_{obs}),
 \end{align*}
 that is other observed variables impact of the probability of missingness but
 the missing mechanism only depends on the observed variables and not the actual
 missing value. In this case, we say the data $Y$ are \emph{MAR}.
 
 \paragraph{MNAR}
-The data are MNAR if
+The data are MNAR if for any valid pair of indices $(i, j)$,
 \begin{align*}
-  P(R=0 \; \vert \;  Y_{obs}, Y_{mis})
+  P(R_{ij}=0 \; \vert \;  Y_{obs}, Y_{mis})
 \end{align*}
 can not be simplified. It essentially means that the rate of response depends
 on the actual value of the missing observations. The standard example is the

@@ -102,23 +102,6 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Listings parameters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[dvipsnames]{xcolor}
-\xdefinecolor{lightgray}{RGB}{247, 247, 247}% R's col2rgb("gray97"); #F7F7F7
-\xdefinecolor{semilightgray}{RGB}{240, 240, 240}% R's col2rgb("gray94"); #F0F0F0
-\xdefinecolor{middlegray}{RGB}{127, 127, 127}% R's col2rgb("gray50"); #7F7F7F
-\xdefinecolor{seashell}{RGB}{255, 245, 238}% R's col2rgb("seashell"); "#FFF5EE"
-\xdefinecolor{yellow}{RGB}{255, 255, 128}% R's self-defined (weakened yellow); #FFFF80
-\xdefinecolor{orange}{RGB}{238, 118, 0}% R's col2rgb("darkorange2"); #EE7600
-\xdefinecolor{red}{RGB}{178, 34, 34}% R's col2rgb("firebrick"); #B22222
-\xdefinecolor{blue}{RGB}{58, 95, 205}% R's col2rgb("royalblue3"); #3A5FCD
-\xdefinecolor{deepskyblue}{RGB}{0, 154, 205}% R's col2rgb("deepskyblue3"); #009ACD
-\xdefinecolor{chocolate}{RGB}{205, 102, 29}% R's col2rgb("chocolate3"); #CD661D
-\newcommand*{\gray}[1]{\textcolor{gray}{#1}}
-\newcommand*{\seashell}[1]{\textcolor{seashell}{#1}}
-\newcommand*{\yellow}[1]{\colorbox{yellow}{#1}}
-\newcommand*{\orange}[1]{\textcolor{orange}{#1}}
-\newcommand*{\red}[1]{\textcolor{red}{#1}}
-\newcommand*{\blue}[1]{\textcolor{blue}{#1}}
 
 % general listings settings
 % see http://tex.stackexchange.com/questions/94238/listings-general-settings-for-a-language-seem-to-be-overwritten-not-respected/94242#comment201538_94242
@@ -135,13 +118,7 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
   extendedchars=false,% prohibit extended chars (chars of codes 128--255)
   rangeprefix=\#\#'\ \{\ ,% marker opening symbol
   rangesuffix=\ \},% marker closing symbol
-  includerangemarker=false,% hide markers
-  backgroundcolor=\color{semilightgray},% background color
-  commentstyle=\itshape\color{chocolate},% comment style
-  keywordstyle=\color{blue},% keyword style
-  stringstyle=\color{deepskyblue},% string style
-  numbers=left,% display line numbers on the left side
-  numberstyle=\color{middlegray}\tiny% use small line numbers
+  includerangemarker=false% hide markers
 }
 
 % lower priority settings (should be used first in lstlisting environments; will
@@ -185,9 +162,37 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
   otherkeywords={}% undefine otherkeywords to remove !,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,_,/
 }
 
+% undefine Sinput, and Soutput (due to missing 'lstrenewenvironment')
+\expandafter\let\csname Sinput\endcsname\relax
+\expandafter\let\csname endSinput\endcsname\relax
+\expandafter\let\csname Soutput\endcsname\relax
+\expandafter\let\csname endSoutput\endcsname\relax
+
+% R input with listings
+\lstnewenvironment{Sinput}[1][]{%
+  \lstset{style=input, style=Rstyle}
+  #1% content
+}{\vspace{-0.25\baselineskip}}% note: -\baselineskip leads to no space
+
+% R output with listings
+\lstnewenvironment{Soutput}[1][]{%
+  \lstset{style=output, style=Rstyle}
+  #1% content
+}{\vspace{-0.25\baselineskip}}% note: -\baselineskip leads to no space
+
+% inline code commands
+% \newcommand*{\R}{\textsf{R}}
+\newcommand*{\Rcode}{\lstinline[language=R, basicstyle=\ttfamily]}% for inline R code
+\newcommand*{\LL}{\lstinline[{language=[LaTeX]TeX}, basicstyle=\ttfamily]}% for inline LaTeX code
+\newcommand*{\cmd}{\lstinline[basicstyle=\ttfamily]}% for shell commands, file names etc.
+\newcommand*{\file}[1]{\texttt{#1}}% for file names or endings
+\newcommand*{\HRule}[1][0.95]{\par\noindent\rule{#1\linewidth}{0.5mm}\\}% in tabular\newcommand{\Hline}[1]{\\[5pt]\hline#1\\[-10pt]}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% End of listing parameters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{document}
 \bibliographystyle{chicago}% ---> Hampel,F., E.Ronchetti,... W.Stahel(1986) ...
  %was \bibliographystyle{sfsbib}\citationstyle{dcu} %OR DEFAULT : \citationstyle{agsm}
@@ -285,7 +290,7 @@ literate={<-}{{$\leftarrow$}}1 {~}{{$\sim$}}1}
 \addtocontents{toc}{\vspace{.5\baselineskip}}
 \appendix
 \include{Appendix1}
-
+\include{Appendix2}
 
 
 % %% Epilogue (optional)
