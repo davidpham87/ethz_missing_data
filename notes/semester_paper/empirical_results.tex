@@ -5,19 +5,15 @@
 
 \section{Data set and R packages}
 
-\paragraph{Data set} The FLAS data set is studied in \cite{schafer1997analysis} and is a great
+The FLAS data set is studied in \cite{schafer1997analysis} and is a great
 candidate for the simulation study. The data were collected in 1987 to
 investigate the impact of the Foreign Language Attitude Scale (FLAS), a new
 measure, for predicting success in learning new foreign languages. Tables
 \ref{tbl:flas:numeric} and \ref{tbl:flas:factor} provide a short summary of
-data. The \texttt{mice} and \texttt{mi} packages have been applied to the original
-data set to create an artificial complete one. The latter is used as baseline
-to compare the imputations by different methods.
-
-\paragraph{R Packages}
-
-Five \emph{R} packages were selected in the study.
-
+data. The \texttt{mice} and \texttt{mi} packages have been applied to the
+original data set to create an artificial complete one. The latter is used as
+baseline to compare the imputations by different methods. Five \emph{R}
+packages were selected in the study.
 \begin{description}
 \item[Amelia] implemented by \cite{honaker2011amelia} provides bootstrapping
   methods and EM algorithm for multiple impute analysis.
@@ -156,13 +152,13 @@ approximately this threshold.
   \hline
 \end{tabular}
 \caption{
-  Distribution of the vector of reponse (or missingness pattern) over the
+  Distribution of the vector of response (or missingness pattern) over the
   observation of the FLAS data set.  Each observation of the data set is a $p$
   dimensional vector with a corresponding vector of response $R_i = (R_{i1},
   \dots, R_{ip})$, where $R_{ij} = 0$ if the $j$-th entries of the $i$-th observation is
   missing. The third column is the second column normalized after leaving the
   first row (as there are no missing data). The last column is the proportion
-  of $0$ in each missing pattern.}
+  of $0$ in each missing pattern (the first column).}
 \label{tbl:flas:missingness:pattern}
 \end{table}
 

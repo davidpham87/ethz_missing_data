@@ -1,14 +1,14 @@
 \chapter{Conclusion}
 
-In this semester papers, part of theory of data completion is reviewed. The
-main work is devoted to build a framework to test several R packages for
-imputation methods on the FLAS data set. With this data set, it appears that
-K-nearest neighbor imputation works fairly well, although its implementation
-might throw frustrating low level errors (segmentation faults). Except
-for \texttt{softImpute}, all methods have the same order of error (distance
-between the imputed and true value). In practice, they could unfortunately not
-be use as black-box as most data matrix have colinear dimensions which
-constitutes an issue for all the algorithms based on regressions.
+In this semester paper, part of theory of data completion is reviewed. The main
+work is devoted to build a framework to test several R packages for imputation
+methods on the FLAS data set. With this data set, it appears that K-nearest
+neighbor imputation works fairly well, although its implementation might throw
+frustrating low level errors (segmentation faults). Except for
+\texttt{softImpute}, all methods have the same order of error (distance between
+the imputed and true value). In practice, they could unfortunately not be used
+as black-box as most data matrix have collinear dimensions which constitutes an
+issue for all the algorithms based on regression.
 
 Finally, as departing words, one should not forget why these technique
 exists. From \cite{schafer2002missing},
