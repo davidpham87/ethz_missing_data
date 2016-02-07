@@ -3,4 +3,5 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces FLAS data set, summary of numerical variables}}{8}{table.2.1}
 \contentsline {table}{\numberline {2.2}{\ignorespaces FLAS data set, summary of factor variables}}{8}{table.2.2}
+\contentsline {table}{\numberline {2.3}{\ignorespaces Distribution of the vector of reponse (or missingness pattern) over the observation of the FLAS data set. Each observation of the data set is a $p$ dimensional vector with a corresponding vector of response $r_i = (r_{i1}, \dots , r_{ip})$, where $r_{ij} = 0$ if the $j$-th entries of the observation is missing. The third column is the second column normalized after leaving the first row (as there are no missing data). The last column is the proportion of $0$ in each missing pattern.}}{9}{table.2.3}
 \addvspace {10\p@ }

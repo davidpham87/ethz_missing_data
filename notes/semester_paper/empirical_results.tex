@@ -118,12 +118,52 @@ reached. The patterns are then randomly assigned to our completed data
 set. This method has the disadvantage that it can not attain any missingness
 rate between $0$ and $1$, as one can only assign one pattern per observation.
 
-The FLAS data set contains has the following distribution of missingness pattern.
+Table \ref{tbl:flas:missingness:pattern} displays the distribution of
+missingness pattern in the FLAS data set\footnote{The distribution might be
+  computed thanks to the \texttt{na.pattern} function from the \texttt{Hmisc}
+  package, although the $0$ and $1$ are swapped.} Using the third and last
+column of the same table, the expected missing rate ($\approx 20.8\%$) can be
+computed. Hence, there exists some threshold for the missing rate which our
+version of the MAR mechanism can not overcome. In the FLAS data set, 30\% is
+approximately this threshold.
 
 % TODO implement the table
-
-For our study, it implies that for the \textsc{mar} method, only data set with
-a missingness rate below 30\% were analyzed.
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrrr}
+  \hline
+  Missingness pattern & Frequency & Probability & $\sharp$ of missing values & Missing rate \\
+  \hline
+  111111111111 & 174 &      &   0 & 0.00 \\
+  111110111111 &  26 & 0.25 &   1 & 0.08 \\
+  111111000101 &  20 & 0.19 &   4 & 0.33 \\
+  111111111110 &  18 & 0.17 &   1 & 0.08 \\
+  111110111110 &  15 & 0.14 &   2 & 0.17 \\
+  111111000100 &   7 & 0.07 &   5 & 0.42 \\
+  100111111111 &   3 & 0.03 &   2 & 0.17 \\
+  100110111111 &   3 & 0.03 &   3 & 0.25 \\
+  111111110110 &   2 & 0.02 &   2 & 0.17 \\
+  111110000101 &   2 & 0.02 &   5 & 0.42 \\
+  100111000101 &   2 & 0.02 &   6 & 0.50 \\
+  111111110111 &   1 & 0.01 &   1 & 0.08 \\
+  111111000001 &   1 & 0.01 &   5 & 0.42 \\
+  111110000100 &   1 & 0.01 &   6 & 0.50 \\
+  111011111110 &   1 & 0.01 &   2 & 0.17 \\
+  100111111110 &   1 & 0.01 &   3 & 0.25 \\
+  100110111110 &   1 & 0.01 &   4 & 0.33 \\
+  100110000100 &   1 & 0.01 &   8 & 0.67 \\
+  \hline
+\end{tabular}
+\caption{
+  Distribution of the vector of reponse (or missingness pattern) over the
+  observation of the FLAS data set.  Each observation of the data set is a $p$
+  dimensional vector with a corresponding vector of response $r_i = (r_{i1},
+  \dots, r_{ip})$, where $r_{ij} = 0$ if the $j$-th entries of the observation is
+  missing. The third column is the second column normalized after leaving the
+  first row (as there are no missing data). The last column is the proportion
+  of $0$ in each missing pattern.}
+\label{tbl:flas:missingness:pattern}
+\end{table}
 
 \subsection{Ranking methods}
 

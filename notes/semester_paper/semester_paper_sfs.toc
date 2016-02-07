@@ -16,19 +16,20 @@
 \contentsline {chapter}{\numberline {}{Notation}}{1}{section*.5}
 \contentsline {chapter}{\numberline {2}Empirical Comparison of Imputation Methods}{7}{chapter.2}
 \contentsline {section}{\numberline {2.1}Data set and R packages}{7}{section.2.1}
-\contentsline {paragraph}{Data set}{7}{section*.16}
-\contentsline {paragraph}{R Packages}{7}{section*.17}
+\contentsline {paragraph}{Data set}{7}{section*.15}
+\contentsline {paragraph}{R Packages}{7}{section*.16}
 \contentsline {section}{\numberline {2.2}Methodology}{8}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Simulation of missingness}{8}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Ranking methods}{9}{subsection.2.2.2}
-\contentsline {section}{\numberline {2.3}Implementation constraints}{9}{section.2.3}
-\contentsline {paragraph}{Data type for soft impute and nearest neighbors}{9}{section*.18}
-\contentsline {paragraph}{Nearest neighbors imputation}{9}{section*.19}
-\contentsline {paragraph}{Collinear dimensions}{10}{section*.20}
-\contentsline {paragraph}{Timing}{10}{section*.21}
-\contentsline {paragraph}{Tuning parameters}{10}{section*.22}
-\contentsline {section}{\numberline {2.4}Results}{10}{section.2.4}
-\contentsline {section}{\numberline {2.5}Open questions}{11}{section.2.5}
+\contentsline {section}{\numberline {2.3}Implementation constraints}{10}{section.2.3}
+\contentsline {paragraph}{Data type for soft impute and nearest neighbors}{10}{section*.17}
+\contentsline {paragraph}{Nearest neighbors imputation}{10}{section*.18}
+\contentsline {paragraph}{Collinear dimensions}{10}{section*.19}
+\contentsline {paragraph}{Timing}{10}{section*.20}
+\contentsline {paragraph}{Tuning parameters}{12}{section*.21}
+\contentsline {section}{\numberline {2.4}Results}{12}{section.2.4}
+\contentsline {section}{\numberline {2.5}Open questions}{12}{section.2.5}
+\contentsline {chapter}{\numberline {3}Conclusion}{17}{chapter.3}
 \vspace {.5\baselineskip }
 \contentsline {chapter}{\numberline {}{Bibliography}}{13}{section*.23}
 \vspace {.5\baselineskip }
