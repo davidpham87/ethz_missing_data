@@ -1,10 +1,48 @@
-\chapter{Introduction} 
+\chapter{Introduction}
 
-Description of the work. Prepare the reader for the following chapters.
+Data has never been so cheap to create and to collect. Sensors for genetic
+studies, sensors on smartphone or cookies on most web browsers produce a vast
+amount of new data to analyze. Because of this quantity of data, new
+methodology had to be developed to cope with new problems: more features than
+observations in a data set, how to store and retrieve data efficiently and how
+to visualize it. One point that is not often emphasized is that most of the
+data are cleaned before they are analyze and one step is usually to handle
+missing data: that could be a observation or a feature that could not be
+measured
 
-You will cite litterature here, typically
+At some occasion, researchers just can ignore the incomplete
+observations. Nevertheless, in many modern problems, the probabilty of getting
+one complete observation is near $0$ and these researchers should then discard
+almost the entire data set.  \emph{Multiple imputation} methods are one
+solution to this problem has been developped at the end of the twentieeth
+century and the beginning of the new millenium with the idea that under some
+assumption, possibles values for the missing variables could be retrieved
+by estimating the relationship of the missing features with the other observed
+variable and then sampling from this relationship. As an advantage, imputation
+methods also provide an estimate about the uncertainty that is inserted in the
+analysis by filling missing values.
 
-%%% Local Variables: 
+A theoretical disadvantage of these methods is the computational costs as one
+has to fit many models.  In contrast, \emph{algorithmic methods} based on
+linear algebra and matrix completion, like nearest neighbors or the singular
+value decomposition are much faster, but they can not assess how much
+uncertainty is included through data completion.
+
+Using the statistical software R, this semester paper studies some
+implementations of both methods in order to measure how they compare to each
+other. To that end, artifical missingness is created under several settings by
+deleting point from a complete data set and each of the implementation are
+ranked by how well they can retrieve the unboserved point. Theoretical
+definitions are prestened in the first chapter before digging into the results
+of the expermient.
+
+\cite{schafer2002missing} and \cite{little2002statistical} offer a good
+technical overview of the multiple imputation, whereas \cite{van2012flexible},
+\cite{gelman2006data}, and \cite{matloffblog2015} are more
+accessible. \cite{troyanskaya2001missing} describes in detail how the
+algorithmic based methods are built with a comparision with data on genetics.
+
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "MasterThesisSfS"
-%%% End: 
+%%% End:
