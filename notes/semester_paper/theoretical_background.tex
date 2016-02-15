@@ -1,8 +1,8 @@
 \chapter{Theoretical Background}
 
 This chapter provides an overview and an intuition on the field of missing
-data. It follows mainly \cite{schafer2002missing},
-\cite{little2002statistical}, \cite{van2012flexible}, with some impute from
+data. It mainly follows \cite{schafer2002missing},
+\cite{little2002statistical}, \cite{van2012flexible}, with some input from
 \cite{wikipediaImputation2015}, \cite{matloffblog2015}, \cite{gelman2006data},
 \cite{troyanskaya2001missing}. This chapter begins with a short description on
 the nature missingness, then describes several procedures in order to handle
@@ -14,15 +14,15 @@ missing data.
 \cite{van2012flexible} describes two concepts helping us to understand how to
 solve the problem of missing data: intentional and unintentional missingness,
 as well as unit and item missingness. The experimenter can decide to not
-measures all possible variable in an experiment and encode his decisions as
+measures all possible variables in an experiment and encode his decisions as
 missing observations. This is a reasonable decision if the cost of measuring
 variables is material and unnecessary for some experimental case, such as in
 medical experimentation. However, it might also happen that the experimenter
 could not measure some variable, e.g. when a respondent to a survey refuse to
-answer to some question. In this case, the missingness is named
-unintentional. The second concept is often missingness is about unit and items:
-one says a unit is missing when none of the variables of interest could be
-measured, whereas item refers to some variable missing.
+answer to some questions. In this case, the missingness is named
+unintentional. The second concept of missingness is about unit and items: one
+says a unit is missing when none of the variables of interest could be
+measured, whereas item missinginess refers to some variable missing.
 
 In order to complete missing data, assumptions need to be taken about the
 underlying mechanism creating missing observations: missing completely at
@@ -90,7 +90,8 @@ points would be discarded.
 This methods improve from the previous one by deleting observations only if the
 variable which is missing must be used in the model. This is typically relevant
 for computing correlation for example, although some care must be taken in this
-case.
+case, as the resulting correlation matrix might not be semi-positive definite
+anymore.
 
 \paragraph{Single imputation}
 
