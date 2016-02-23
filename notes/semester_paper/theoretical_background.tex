@@ -216,10 +216,10 @@ circumvent the problem at the cost of more computation.
   row.
 \item \label{enumerate:step:svd:begin} Solve the problem
   \begin{align} \label{eq:completesvd}
-    \min_{V_J, D_J, U_J} \vert \vert Y^* - m 1^T - U_J D_J V_J^T \vert \vert^*
+    \min_{V_J, D_J, U_J} \vert \vert Y^* - m 1^T - U_J D_J V_J^T \vert \vert^2_F
   \end{align}
-  where $\vert\vert \cdot \vert\vert^*$ is the sum of squares of all non-missing
-  elements and $m \in \mathbb{R}^N$ is the row means of $X^*$.
+  where $\vert\vert \cdot \vert\vert^2_F$ is the sum of squares of all non-missing
+  elements and $m \in \mathbb{R}^N$ is the row means of $Y^*$.
 \item Predict the missing values of $Y$ with the fitted values.
 \item Reset $Y^*$ as $Y$ with the missing values replaced by the result of
   previous step.
@@ -232,6 +232,49 @@ According to \cite{hastie1999imputing}, only 6 iterations are
 necessary. Interestingly, the solution of Equation \eqref{eq:completesvd} is a
 fixed point, i.e. if missing values are filled, and the SVD algorithm is
 executed on the complete matrix, the solution remains identical.
+
+
+\paragraph{Soft-impute completion}
+
+The representation of the data $Y$ described in Equation \eqref{eq:svd}
+can be softened a little bit to get faster and more stable completion. In order
+to do so, define $\mathcal{P}_\Omega(Y)$ as the operator that \emph{projects}
+entries in $Y$ with indices not in $\Omega$ to $0$ and keep the other elements
+unchanged. If $\Omega$ is the set of indices $(i, j)$ where $Y$ have
+non-missing values (i.e. $R_{ij}=1$), then $\Omega^{\perp}$ is the set of
+indices where $Y$ has missing value and $\mathcal{P}_{\Omega}(Y)$ is a version of
+$Y$ where missing value have been replaced with $0$. The data completion
+problem can be interpreted as finding a matrix $M$ minimizing
+\begin{align*}
+\frac{1}{2} \vert\vert \mathcal{P}_\Omega(Y) - \mathcal{P}(M) \vert\vert_F^2 + \lambda \vert \vert M \vert \vert_*,
+\end{align*}
+where $\vert\vert M \vert \vert^2_F$ is the sum of the squared elements of $M$
+and $\vert \vert M \vert \vert_*$ is the sum of singular value of $M$ (also
+called the nuclear norm). If $Y^*$ solves this problem then it satisfies the
+following condition
+\begin{align*}
+  Y^* = S_{\lambda}(Z),
+\end{align*}
+where
+\begin{align*}
+Z = \mathcal{P}_{\Omega}(Y) + \mathcal{P}_{\Omega^{\perp}}(Y^*).
+\end{align*}
+and the operator $S_\lambda(Z)$ is defined as following.
+
+\begin{enumerate}
+\item Find the SVD decomposition of $Z = UDV^T$ and let $d_i$ be the singular
+  value of $D$.
+\item Put a soft threshold on the singular values, that is, define
+  \begin{align*}
+    d_i^* = (d_i - \lambda)_+
+  \end{align*}
+\item Reconstruct $S_\lambda(Z) = UD^*V^T$. This is called the
+  \emph{soft-thresholded SVD}. A sufficiently large $\lambda$ reduce the ranks
+  of $D^*$ and consequently of $S_\lambda(Z)$ as well.
+\end{enumerate}
+$Z$ is thus a completed version of $Y$, with missing value filled in. For small
+matrices, this is computationally feasible and for large matrices, consult
+\ref{hastie2015softimpute} for the methodology using sparse representation of matrices.
 
 \paragraph{K-nearest neighbors completion}
 
