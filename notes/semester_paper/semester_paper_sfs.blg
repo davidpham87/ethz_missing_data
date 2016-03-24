@@ -1,5 +1,5 @@
 [0] Config.pm:325> INFO - This is Biber 2.1
 [0] Config.pm:328> INFO - Logfile is 'semester_paper_sfs.blg'
-[22] biber:276> INFO - === Mon Jan 25, 2016, 12:36:45
-[63] Utils.pm:162> ERROR - Cannot find control file 'semester_paper_sfs.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
-[63] Biber.pm:111> INFO - ERRORS: 1
+[21] biber:276> INFO - === Die Feb 23, 2016, 22:28:49
+[65] Utils.pm:162> ERROR - Cannot find control file 'semester_paper_sfs.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
+[65] Biber.pm:111> INFO - ERRORS: 1

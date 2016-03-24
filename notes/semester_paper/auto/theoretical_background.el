@@ -29,6 +29,8 @@
     "eq:svd"
     "enumerate:step:svd:begin"
     "eq:completesvd"
-    "enumerate:step:svd:end"))
+    "enumerate:step:svd:end")
+   (LaTeX-add-environments
+    '("innerlist" LaTeX-env-args ["argument"] 0)))
  :latex)
 

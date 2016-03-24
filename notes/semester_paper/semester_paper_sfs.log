@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.19)  8 FEB 2016 00:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.19)  23 FEB 2016 22:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -497,8 +497,8 @@ File: dvipsnam.def 2014/10/14 v3.0j Driver-dependent file (DPC,SPQR)
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \lstFV@gtempboxa=\box35
 )
-(./semester_paper_sfs.aux (./Abstract.aux) (./Notation.aux)
-(./theoretical_background.aux) (./empirical_results.aux) (./conclusion.aux)
+(./semester_paper_sfs.aux (./abstract.aux) (./Notation.aux) (./introduction.aux
+) (./theoretical_background.aux) (./empirical_results.aux) (./conclusion.aux)
 (./Appendix1.aux))
 \openout1 = `semester_paper_sfs.aux'.
 
@@ -593,51 +593,62 @@ Overfull \vbox (7.17722pt too high) has occurred while \output is active []
 ] [2
 
 ] [3]
-\openout2 = `Abstract.aux'.
-
- (./Abstract.tex
-[4
+\openout2 = `abstract.aux'.
 
 
-]) [5] (./semester_paper_sfs.toc)
+No file abstract.tex.
+(./semester_paper_sfs.toc)
 \tf@toc=\write5
 \openout5 = `semester_paper_sfs.toc'.
 
- [6
+ [4
+
 
 ] (./semester_paper_sfs.lof)
 \tf@lof=\write6
 \openout6 = `semester_paper_sfs.lof'.
 
- [7]
-(./semester_paper_sfs.lot)
+ [5]
+(./semester_paper_sfs.lot
+Overfull \hbox (4.97308pt too wide) in paragraph at lines 7--7
+ \T1/aer/m/n/10.95 men-sional vec-tor with a cor-re-spond-ing vec-tor of re-spo
+nse $\OML/cmm/m/it/10.95 R[] \OT1/cmr/m/n/10.95 = (\OML/cmm/m/it/10.95 R[]; [] 
+; R[]\OT1/cmr/m/n/10.95 )$\T1/aer/m/n/10.95 , 
+ []
+
+)
 \tf@lot=\write7
 \openout7 = `semester_paper_sfs.lot'.
 
- [8]
+ [6]
 \openout2 = `Notation.aux'.
 
  (./Notation.tex)
+\openout2 = `introduction.aux'.
+
+ (./introduction.tex
+Chapter 1.
+) [1
+
+
+
+
+
+
+]
 \openout2 = `theoretical_background.aux'.
 
- (./theoretical_background.tex
-Chapter 1.
-[1
-
-
-
-
-
-
-] [2] [3] [4]) [5]
-\openout2 = `empirical_results.aux'.
-
- (./empirical_results.tex [6
+ (./theoretical_background.tex [2
 
 
 
 ]
 Chapter 2.
+[3] [4] [5] [6] [7]) [8]
+\openout2 = `empirical_results.aux'.
+
+ (./empirical_results.tex
+Chapter 3.
 LaTeX Font Info:    Try loading font information for T1+aett on input line 13.
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
@@ -647,22 +658,26 @@ Overfull \hbox (2.48282pt too wide) in paragraph at lines 20--22
 [] ([][]1999[][]) uses the \T1/aett/m/n/10.95 im-pute.knn
  []
 
-[7]
+[9
+
+
+
+]
 LaTeX Font Info:    External font `cmex7' loaded for size
 (Font)              <5> on input line 103.
- [8]
+ [10]
 Underfull \vbox (badness 2035) has occurred while \output is active []
 
- [9]
-<../../plot/tuning_ranking_soft_impute_plot.pdf, id=293, 578.16pt x 578.16pt>
+ [11]
+<../../plot/tuning_ranking_soft_impute_plot.pdf, id=318, 578.16pt x 578.16pt>
 File: ../../plot/tuning_ranking_soft_impute_plot.pdf Graphic file (type pdf)
 
 <use ../../plot/tuning_ranking_soft_impute_plot.pdf>
 Package pdftex.def Info: ../../plot/tuning_ranking_soft_impute_plot.pdf used on
  input line 230.
 (pdftex.def)             Requested size: 426.79134pt x 426.79071pt.
- [10] [11 <../../plot/tuning_ranking_soft_impute_plot.pdf>] [12]
-<../../plot/partial_ranking_plot.pdf, id=329, 505.89pt x 650.43pt>
+ [12] [13 <../../plot/tuning_ranking_soft_impute_plot.pdf>] [14]
+<../../plot/partial_ranking_plot.pdf, id=354, 505.89pt x 650.43pt>
 File: ../../plot/partial_ranking_plot.pdf Graphic file (type pdf)
 
 <use ../../plot/partial_ranking_plot.pdf>
@@ -670,7 +685,7 @@ Package pdftex.def Info: ../../plot/partial_ranking_plot.pdf used on input line
  303.
 (pdftex.def)             Requested size: 426.79134pt x 548.73941pt.
 
-<../../plot/partial_mcar_measures_prob_selection.pdf, id=330, 867.24pt x 1156.3
+<../../plot/partial_mcar_measures_prob_selection.pdf, id=355, 867.24pt x 1156.3
 2pt>
 File: ../../plot/partial_mcar_measures_prob_selection.pdf Graphic file (type pd
 f)
@@ -679,33 +694,33 @@ Package pdftex.def Info: ../../plot/partial_mcar_measures_prob_selection.pdf us
 ed on input line 314.
 (pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
 
-<../../plot/partial_marfrequency_measures.pdf, id=331, 867.24pt x 1156.32pt>
+<../../plot/partial_marfrequency_measures.pdf, id=356, 867.24pt x 1156.32pt>
 File: ../../plot/partial_marfrequency_measures.pdf Graphic file (type pdf)
 
 <use ../../plot/partial_marfrequency_measures.pdf>
 Package pdftex.def Info: ../../plot/partial_marfrequency_measures.pdf used on i
 nput line 324.
 (pdftex.def)             Requested size: 426.79134pt x 569.05428pt.
-) [13] [14 <../../plot/partial_ranking_plot.pdf>] [15 <../../plot/partial_mcar_
-measures_prob_selection.pdf>] [16 <../../plot/partial_marfrequency_measures.pdf
+) [15] [16 <../../plot/partial_ranking_plot.pdf>] [17 <../../plot/partial_mcar_
+measures_prob_selection.pdf>] [18 <../../plot/partial_marfrequency_measures.pdf
 >]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex
-Chapter 3.
-) [17
+Chapter 4.
+) [19
 
 
 
-] [18
+] [20
 
 
-] (./semester_paper_sfs.bbl) [19
+] (./semester_paper_sfs.bbl) [21
 
 ]
 \openout2 = `Appendix1.aux'.
 
- (./Appendix1.tex [20
+ (./Appendix1.tex [22
 
 
 ]
@@ -767,7 +782,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[21]
+[23]
 ../../R/flas_completion.R:24: Undefined control sequence.
 <recently read> \bm 
                     
@@ -890,7 +905,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[22]
+[24]
 ../../R/bug_replication/bug_amelia.R:22: Undefined control sequence.
 <recently read> \bm 
                     
@@ -1024,79 +1039,75 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-)) [23] [24
+)) [25] [26
 
 
 ]
-<confirmation-originality-scan.pdf, id=520, 597.432pt x 845.07718pt>
+<confirmation-originality-scan.pdf, id=545, 600.2425pt x 846.16125pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf>
 Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 3
-16.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+15.
+(pdftex.def)             Requested size: 600.24103pt x 846.1592pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf>
 Package pdftex.def Info: confirmation-originality-scan.pdf used on input line 3
-16.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+15.
+(pdftex.def)             Requested size: 600.24103pt x 846.1592pt.
 
-<confirmation-originality-scan.pdf, id=523, page=1, 597.432pt x 845.07718pt>
+<confirmation-originality-scan.pdf, id=548, page=1, 600.2425pt x 846.16125pt>
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 316.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+ line 315.
+(pdftex.def)             Requested size: 600.24103pt x 846.1592pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 316.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+ line 315.
+(pdftex.def)             Requested size: 600.24103pt x 846.1592pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 316.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+ line 315.
+(pdftex.def)             Requested size: 600.24103pt x 846.1592pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 316.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
+ line 315.
+(pdftex.def)             Requested size: 600.24103pt x 846.1592pt.
 File: confirmation-originality-scan.pdf Graphic file (type pdf)
 
 <use confirmation-originality-scan.pdf, page 1>
 Package pdftex.def Info: confirmation-originality-scan.pdf, page1 used on input
- line 316.
-(pdftex.def)             Requested size: 597.43054pt x 845.07512pt.
- [25 <./confirmation-originality-scan.pdf, page is rotated 270 degrees>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
- (./semester_paper_sfs.aux
-(./Abstract.aux) (./Notation.aux) (./theoretical_background.aux)
-(./empirical_results.aux) (./conclusion.aux) (./Appendix1.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 317.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
+ line 315.
+(pdftex.def)             Requested size: 600.24103pt x 846.1592pt.
+ [27 <./confirmation-originality-scan.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 316.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 316.
+ (./semester_paper_sfs.aux (./abstract.aux) (./Notation.aux)
+(./introduction.aux) (./theoretical_background.aux) (./empirical_results.aux)
+(./conclusion.aux) (./Appendix1.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 316.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 316.
 Package rerunfilecheck Info: File `semester_paper_sfs.out' has not changed.
-(rerunfilecheck)             Checksum: 3C568CD6D84515B09046794740BBAB32;1161.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 317.
+(rerunfilecheck)             Checksum: E7B45AF0A78404DFE606B8E893A04A53;1216.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 316.
  ) 
 Here is how much of TeX's memory you used:
- 11303 strings out of 493085
- 157641 string characters out of 6136917
- 497421 words of memory out of 5000000
- 14207 multiletter control sequences out of 15000+600000
+ 11313 strings out of 493085
+ 157774 string characters out of 6136917
+ 497958 words of memory out of 5000000
+ 14209 multiletter control sequences out of 15000+600000
  62279 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,20n,47p,689b,1152s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,20n,47p,690b,1152s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1113,17 +1124,18 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/la
-txfont/linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb>
-Output written on semester_paper_sfs.pdf (33 pages, 1430073 bytes).
+st/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/
+linew10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on semester_paper_sfs.pdf (33 pages, 1416023 bytes).
 PDF statistics:
- 655 PDF objects out of 1000 (max. 8388607)
- 581 compressed objects within 6 object streams
- 227 named destinations out of 1000 (max. 500000)
- 185 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 686 PDF objects out of 1000 (max. 8388607)
+ 610 compressed objects within 7 object streams
+ 231 named destinations out of 1000 (max. 500000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 
